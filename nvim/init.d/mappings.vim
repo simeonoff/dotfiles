@@ -1,4 +1,4 @@
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :GFiles<CR>
 noremap <C-F> :Ag<CR>
 
 " Angular mappings

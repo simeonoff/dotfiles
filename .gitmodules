@@ -86,10 +86,6 @@
 	path = vim/plugged/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb.git
 	ignore = untracked
-[submodule "vim/plugged/vim-rooter"]
-	path = vim/plugged/vim-rooter
-	url = https://github.com/airblade/vim-rooter.git
-	ignore = untracked
 [submodule "vim/plugged/vim-signify"]
 	path = vim/plugged/vim-signify
 	url = https://github.com/mhinz/vim-signify.git

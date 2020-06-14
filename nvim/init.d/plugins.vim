@@ -10,7 +10,6 @@ Plug 'ayu-theme/ayu-vim'
 " Enables fuzzy search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
 
 " A collection of language packs (syntax, indent, etc.)
 Plug 'sheerun/vim-polyglot'
