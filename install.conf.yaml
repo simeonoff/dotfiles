@@ -10,6 +10,7 @@
    ~/.config/alacritty:
       force: true
       path: alacritty/
+   ~/.bashrc:
    ~/.config/nvim:
       force: true
       path: nvim/
