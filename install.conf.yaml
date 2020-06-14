@@ -15,6 +15,7 @@
    ~/.config/ranger:
    ~/.config/redshift.conf:
    ~/.config/rofi:
+   ~/.tmux:
    ~/.tmux.conf:
    ~/.vim:
    ~/.zshrc:

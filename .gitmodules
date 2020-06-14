@@ -117,3 +117,24 @@
 [submodule "bin/rofi-wifi-menu"]
 	path = bin/rofi-wifi-menu
 	url = https://github.com/zbaylin/rofi-wifi-menu.git
+	ignore = untracked
+[submodule "tmux/plugins/tmux-gruvbox"]
+	path = tmux/plugins/tmux-gruvbox
+	url = https://git::@github.com/egel/tmux-gruvbox
+	ignore = untracked
+[submodule "tmux/plugins/tmux-pain-control"]
+	path = tmux/plugins/tmux-pain-control
+	url = https://git::@github.com/tmux-plugins/tmux-pain-control
+	ignore = untracked
+[submodule "tmux/plugins/tmux-resurrect"]
+	path = tmux/plugins/tmux-resurrect
+	url = https://git::@github.com/tmux-plugins/tmux-resurrect
+	ignore = untracked
+[submodule "tmux/plugins/tmux-sensible"]
+	path = tmux/plugins/tmux-sensible
+	url = https://git::@github.com/tmux-plugins/tmux-sensible
+	ignore = untracked
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+	ignore = untracked
