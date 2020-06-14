@@ -2,3 +2,115 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "vim/plugged/gruvbox"]
+	path = vim/plugged/gruvbox
+	url = https://github.com/morhetz/gruvbox
+	ignore = untracked
+[submodule "vim/plugged/ayu-vim"]
+	path = vim/plugged/ayu-vim
+	url = https://github.com/ayu-theme/ayu-vim.git
+	ignore = untracked
+[submodule "vim/plugged/BufOnly.vim"]
+	path = vim/plugged/BufOnly.vim
+	url = https://github.com/vim-scripts/BufOnly.vim.git
+	ignore = untracked
+[submodule "vim/plugged/coc.nvim"]
+	path = vim/plugged/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+	ignore = untracked
+[submodule "vim/plugged/editorconfig-vim"]
+	path = vim/plugged/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
+	ignore = untracked
+[submodule "vim/plugged/fzf"]
+	path = vim/plugged/fzf
+	url = https://github.com/junegunn/fzf.git
+	ignore = untracked
+[submodule "vim/plugged/fzf.vim"]
+	path = vim/plugged/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+	ignore = untracked
+[submodule "vim/plugged/nvim-colorizer.lua"]
+	path = vim/plugged/nvim-colorizer.lua
+	url = https://github.com/norcalli/nvim-colorizer.lua.git
+	ignore = untracked
+[submodule "vim/plugged/palenight.vim"]
+	path = vim/plugged/palenight.vim
+	url = https://github.com/drewtempelmeyer/palenight.vim.git
+	ignore = untracked
+[submodule "vim/plugged/presenting.vim"]
+	path = vim/plugged/presenting.vim
+	url = https://github.com/sotte/presenting.vim.git
+	ignore = untracked
+[submodule "vim/plugged/tabular"]
+	path = vim/plugged/tabular
+	url = https://github.com/godlygeek/tabular.git
+	ignore = untracked
+[submodule "vim/plugged/vim"]
+	path = vim/plugged/vim
+	url = https://github.com/dracula/vim.git
+	ignore = untracked
+[submodule "vim/plugged/vim-airline"]
+	path = vim/plugged/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+	ignore = untracked
+[submodule "vim/plugged/vim-airline-themes"]
+	path = vim/plugged/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+	ignore = untracked
+[submodule "vim/plugged/vim-autoread"]
+	path = vim/plugged/vim-autoread
+	url = https://github.com/djoshea/vim-autoread.git
+	ignore = untracked
+[submodule "vim/plugged/vim-commentary"]
+	path = vim/plugged/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+	ignore = untracked
+[submodule "vim/plugged/vim-dispatch"]
+	path = vim/plugged/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
+	ignore = untracked
+[submodule "vim/plugged/vim-fugitive"]
+	path = vim/plugged/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+	ignore = untracked
+[submodule "vim/plugged/vim-markdown"]
+	path = vim/plugged/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
+	ignore = untracked
+[submodule "vim/plugged/vim-polyglot"]
+	path = vim/plugged/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
+	ignore = untracked
+[submodule "vim/plugged/vim-rhubarb"]
+	path = vim/plugged/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git
+	ignore = untracked
+[submodule "vim/plugged/vim-rooter"]
+	path = vim/plugged/vim-rooter
+	url = https://github.com/airblade/vim-rooter.git
+	ignore = untracked
+[submodule "vim/plugged/vim-signify"]
+	path = vim/plugged/vim-signify
+	url = https://github.com/mhinz/vim-signify.git
+	ignore = untracked
+[submodule "vim/plugged/vim-sleuth"]
+	path = vim/plugged/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth.git
+	ignore = untracked
+[submodule "vim/plugged/vim-styled-components"]
+	path = vim/plugged/vim-styled-components
+	url = https://github.com/styled-components/vim-styled-components.git
+	ignore = untracked
+[submodule "vim/plugged/vim-surround"]
+	path = vim/plugged/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+	ignore = untracked
+[submodule "vim/plugged/vim-unimpaired"]
+	path = vim/plugged/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+	ignore = untracked
+[submodule "vim/plugged/vim-visual-star-search"]
+	path = vim/plugged/vim-visual-star-search
+	url = https://github.com/nelstrom/vim-visual-star-search.git
+	ignore = untracked
