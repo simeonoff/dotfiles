@@ -7,15 +7,30 @@
 
 - link:
    ~/.dotfiles: ''
+   ~/.config/alacritty:
+      force: true
+      path: alacritty/
    ~/.config/nvim:
       force: true
       path: nvim/
-   ~/.zshrc:
+   ~/.gitconfig:
+   ~/.config/neofetch:
       force: true
-      path: zshrc
+      path: neofetch/
+   ~/.config/ranger:
+      force: true
+      path: ranger/
+   ~/.config/redshift.conf:
+   ~/.config/rofi:
+      force: true
+      path: rofi/
+   ~/.tmux.conf:
    ~/.vim:
       force: true
       path: vim/
+   ~/.zshrc:
+      force: true
+      path: zshrc
 
 - shell: []
 
