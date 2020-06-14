@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/home/simeonoff/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export TERM=xterm-256color
 
 # Set name of the theme to load --- if set to "random", it will load a random theme each time oh-my-zsh is loaded, in which case,
@@ -65,7 +65,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git node npm npx gpg-agent tmux zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -94,8 +94,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+bindkey -v
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 alias vim=nvim
-if [ -e /home/simeonoff/.nix-profile/etc/profile.d/nix.sh ]; then . /home/simeonoff/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 export PATH="${PATH}:${HOME}/.local/bin/"
 export PATH=~/.dotfiles/bin:${PATH}
-#export PROMPT=$'%B%F{3} %1~ %k%f '
