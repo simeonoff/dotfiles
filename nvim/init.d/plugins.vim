@@ -30,6 +30,9 @@ Plug 'tpope/vim-commentary'
 " Kick off builds and test suites.
 Plug 'tpope/vim-dispatch'
 
+" Make '.' work with plugin motions
+Plug 'tpope/vim-repeat'
+
 " Lean & mean status/tabline for vim that's light as air.
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

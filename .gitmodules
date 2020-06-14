@@ -138,3 +138,6 @@
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 	ignore = untracked
+[submodule "vim/plugged/vim-repeat"]
+	path = vim/plugged/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
