@@ -6,19 +6,25 @@
 - clean: ['~']
 
 - link:
-   ~/.dotfiles: ''
-   ~/.config/alacritty:
-   ~/.bashrc:
-   ~/.config/nvim:
-   ~/.gitconfig:
-   ~/.config/neofetch:
-   ~/.config/ranger:
-   ~/.config/redshift.conf:
-   ~/.config/rofi:
-   ~/.tmux:
-   ~/.tmux.conf:
-   ~/.vim:
-   ~/.zshrc:
+      ~/.bashrc:
+      ~/.config/alacritty:
+      ~/.config/neofetch:
+      ~/.config/nvim:
+      ~/.config/ranger:
+      ~/.config/redshift.conf:
+      ~/.config/rofi:
+      ~/.dotfiles: ''
+      ~/.gitconfig:
+      ~/.smbcredentials.asc:
+      ~/.ssh/config.asc: ssh/config.asc
+      ~/.tmux.conf:
+      ~/.tmux:
+      ~/.vim:
+      ~/.zshrc:
 
-- shell: []
-
+- shell:
+   - git submodule sync --recursive
+   - git submodule update --init --recursive
+   - gpg --decrypt $HOME/.ssh/config.asc > $HOME/.ssh/config
+   - chmod 0600 ~/.ssh/config
+   - gpg --decrypt $HOME/.smbcredentials.asc > $HOME/.smbcredentials
