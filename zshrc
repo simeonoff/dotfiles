@@ -1,15 +1,11 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="/home/simeonoff/.oh-my-zsh"
 export TERM=xterm-256color
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# Set name of the theme to load --- if set to "random", it will load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -101,4 +97,5 @@ source $ZSH/oh-my-zsh.sh
 alias vim=nvim
 if [ -e /home/simeonoff/.nix-profile/etc/profile.d/nix.sh ]; then . /home/simeonoff/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 export PATH="${PATH}:${HOME}/.local/bin/"
-export PROMPT=$'%B%F{3} %1~ %k%f '
+export PATH=~/.dotfiles/bin:${PATH}
+#export PROMPT=$'%B%F{3} %1~ %k%f '

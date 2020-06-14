@@ -114,3 +114,6 @@
 	path = vim/plugged/vim-visual-star-search
 	url = https://github.com/nelstrom/vim-visual-star-search.git
 	ignore = untracked
+[submodule "bin/rofi-wifi-menu"]
+	path = bin/rofi-wifi-menu
+	url = https://github.com/zbaylin/rofi-wifi-menu.git

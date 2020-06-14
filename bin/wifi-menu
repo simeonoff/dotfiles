@@ -1,0 +1,3 @@
+#!/bin/bash
+
+source $HOME/.dotfiles/bin/rofi-wifi-menu/rofi-wifi-menu.sh

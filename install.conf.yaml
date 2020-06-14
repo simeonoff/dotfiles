@@ -6,6 +6,7 @@
 - clean: ['~']
 
 - link:
+   ~/.dotfiles: ''
    ~/.config/nvim:
       force: true
       path: nvim/
