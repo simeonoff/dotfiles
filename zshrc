@@ -99,6 +99,8 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 alias vim=nvim
 
+source /usr/share/fzf/shell/key-bindings.zsh
+
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 export PATH="${PATH}:${HOME}/.local/bin/"
 export PATH=~/.dotfiles/bin:${PATH}
