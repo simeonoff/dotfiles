@@ -137,3 +137,9 @@
 [submodule "vim/plugged/vim-repeat"]
 	path = vim/plugged/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
+[submodule "bin/trashy-src"]
+	path = bin/trashy-src
+	url = https://gitlab.com/trashy/trashy.git
+[submodule "zsh/powerlevel10k"]
+	path = zsh/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
