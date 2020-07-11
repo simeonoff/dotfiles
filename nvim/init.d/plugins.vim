@@ -60,6 +60,10 @@ Plug 'norcalli/nvim-colorizer.lua'
 " Select the current buffer only.
 Plug 'vim-scripts/BufOnly.vim'
 
+" Use Ranger as the file manager
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
+
 " Version Control "
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'

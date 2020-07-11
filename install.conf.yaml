@@ -15,11 +15,14 @@
       ~/.config/rofi:
       ~/.dotfiles: ''
       ~/.gitconfig:
+      ~/.p10k.zsh: zsh/p10k.zsh
+      ~/.shell:
       ~/.smbcredentials.asc:
       ~/.ssh/config.asc: ssh/config.asc
       ~/.tmux.conf:
       ~/.tmux:
       ~/.vim:
+      ~/.zsh:
       ~/.zshrc:
 
 - shell:

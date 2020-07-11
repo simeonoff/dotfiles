@@ -1,13 +1,12 @@
-rofi.modi: window,run,ssh
+rofi.modi: window,run,ssh,calc
 rofi.dpi: 120
-rofi.font: Noto Sans 14
+rofi.font: Noto Sans 11
 rofi.terminal: alacritty
 rofi.show-icons: true
-rofi.matching: fuzzy
-rofi.lines: 8
-rofi.columns: 2
+rofi.matching: normal
+rofi.columns: 3
 rofi.bw: 0
-rofi.padding: 320
+rofi.padding: 120
 rofi.hide-scrollbar: true
 rofi.line-margin: 14
 rofi.fullscreen: true

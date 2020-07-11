@@ -1,5 +1,5 @@
 nnoremap <C-p> :GFiles<CR>
-noremap <C-F> :Ag<CR>
+noremap <C-F> :Rg<CR>
 
 " Angular mappings
 nnoremap <silent> <leader>at /@Component<CR>/templateUrl<CR>:noh<CR>f'gf<ESC>

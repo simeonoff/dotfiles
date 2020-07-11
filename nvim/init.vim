@@ -8,3 +8,4 @@ source ~/.config/nvim/airline.vim
 source ~/.config/nvim/markdown.vim
 source ~/.config/nvim/editorconfig.vim
 source ~/.config/nvim/init.d/nvim-colorizer.vim
+source ~/.config/nvim/init.d/ranger.vim

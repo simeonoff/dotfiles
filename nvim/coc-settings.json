@@ -4,20 +4,20 @@
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+  "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "tslint.jsEnable": false,
+  "eslint.filetypes": ["javascript", "javascriptreact"],
   "css.colorDecorators.enable": false,
   "scss.colorDecorators.enable": false,
   "coc.preferences.colorSupport": false,
+  "prettier.tslintIntegration": true,
+  "prettier.eslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.disableLanguages": ["css", "scss"],
   "languageserver": {
     "ccls": {
       "command": "ccls",
-      "filetypes": [
-        "c",
-        "cpp",
-        "cuda",
-        "objc",
-        "objcpp"
-      ],
+      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
       "rootPatterns": [
         ".ccls",
         "compile_commands.json",
