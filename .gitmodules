@@ -14,6 +14,10 @@
 	path = vim/plugged/BufOnly.vim
 	url = https://github.com/vim-scripts/BufOnly.vim.git
 	ignore = untracked
+[submodule "vim/plugged/bclose.vim"]
+	path = vim/plugged/bclose.vim
+	url = https://github.com/rbgrouleff/bclose.vim.git
+	ignore = untracked
 [submodule "vim/plugged/coc.nvim"]
 	path = vim/plugged/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
@@ -41,6 +45,10 @@
 [submodule "vim/plugged/presenting.vim"]
 	path = vim/plugged/presenting.vim
 	url = https://github.com/sotte/presenting.vim.git
+	ignore = untracked
+[submodule "vim/plugged/ranger.vim"]
+	path = vim/plugged/ranger.vim
+	url = https://github.com/francoiscabrol/ranger.vim.git
 	ignore = untracked
 [submodule "vim/plugged/tabular"]
 	path = vim/plugged/tabular
