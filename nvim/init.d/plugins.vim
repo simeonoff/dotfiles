@@ -42,17 +42,11 @@ Plug 'nelstrom/vim-visual-star-search'
 " Align text automatically. http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'godlygeek/tabular'
 
-" Syntax highlighting, matching rules and mappings for the original Markdown and extensions.  
-Plug 'plasticboy/vim-markdown'
-
 " Read .editorconfig rules.
 Plug 'editorconfig/editorconfig-vim'
 
 " Enables a file open in vim to be edited using another application and saved.
 Plug 'djoshea/vim-autoread'
-
-" Enables CSS syntax highlighting in JS files.
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " Color highlighter for Neovim.
 Plug 'norcalli/nvim-colorizer.lua'

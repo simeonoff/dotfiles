@@ -82,10 +82,6 @@
 	path = vim/plugged/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 	ignore = untracked
-[submodule "vim/plugged/vim-markdown"]
-	path = vim/plugged/vim-markdown
-	url = https://github.com/plasticboy/vim-markdown.git
-	ignore = untracked
 [submodule "vim/plugged/vim-polyglot"]
 	path = vim/plugged/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
@@ -101,10 +97,6 @@
 [submodule "vim/plugged/vim-sleuth"]
 	path = vim/plugged/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth.git
-	ignore = untracked
-[submodule "vim/plugged/vim-styled-components"]
-	path = vim/plugged/vim-styled-components
-	url = https://github.com/styled-components/vim-styled-components.git
 	ignore = untracked
 [submodule "vim/plugged/vim-surround"]
 	path = vim/plugged/vim-surround
