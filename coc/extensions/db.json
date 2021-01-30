@@ -1,0 +1,29 @@
+{
+  "lastUpdate": 1611737495503,
+  "extension": {
+    "coc-markdownlint": {
+      "disabled": true
+    },
+    "coc-prettier": {
+      "disabled": false
+    },
+    "coc-tslint-plugin": {
+      "disabled": false
+    },
+    "coc-highlight": {
+      "disabled": true
+    },
+    "coc-css": {
+      "disabled": false
+    },
+    "coc-angular": {
+      "disabled": false
+    },
+    "coc-tsserver": {
+      "disabled": false
+    },
+    "coc-styled-components": {
+      "disabled": false
+    }
+  }
+}
