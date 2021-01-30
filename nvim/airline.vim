@@ -3,6 +3,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_skip_empty_sections = 1
 let g:airline_theme='gruvbox'
 let g:airline_detect_spell=1
+let g:airline_section_c='%'
 
 let g:airline_mode_map = {
     \ '__' : '-',
