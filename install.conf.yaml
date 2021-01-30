@@ -29,8 +29,27 @@
       ~/.zshrc:
 
 - shell:
-   - git submodule sync --recursive
-   - git submodule update --init --recursive
-   - gpg --decrypt $HOME/.ssh/config.asc > $HOME/.ssh/config
-   - chmod 0600 ~/.ssh/config
-   - gpg --decrypt $HOME/.smbcredentials.asc > $HOME/.smbcredentials
+   - 
+     command: git submodule sync --recursive
+     description: Sync Submodules
+     quiet: true
+   - 
+     command: git submodule update --init --recursive
+     description: Update Submodules
+     quiet: true
+   - 
+     command: gpg --decrypt $HOME/.ssh/config.asc > $HOME/.ssh/config
+     description: Decrypt SSH Config
+     quiet: true
+   - 
+     command: chmod 0600 ~/.ssh/config
+     description: Set permissions for SSH Config
+     quiet: true
+   - 
+     command: gpg --decrypt $HOME/.smbcredentials.asc > $HOME/.smbcredentials
+     description: Link media folders from server
+     quiet: true
+   -
+     command: pushd ~/.config/coc/extensions && npm install && popd
+     description: Install COC Extensions
+     quiet: true
