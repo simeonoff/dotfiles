@@ -110,6 +110,10 @@
 	path = vim/plugged/vim-visual-star-search
 	url = https://github.com/nelstrom/vim-visual-star-search.git
 	ignore = untracked
+[submodule "vim/plugged/minimap.vim"]
+	path = vim/plugged/minimap.vim
+	url = https://github.com/wfxr/minimap.vim
+	ignore = untracked
 [submodule "bin/rofi-wifi-menu"]
 	path = bin/rofi-wifi-menu
 	url = https://github.com/zbaylin/rofi-wifi-menu.git
@@ -129,6 +133,10 @@
 [submodule "tmux/plugins/tmux-sensible"]
 	path = tmux/plugins/tmux-sensible
 	url = https://git::@github.com/tmux-plugins/tmux-sensible
+	ignore = untracked
+[submodule "tmux/plugins/zsh-titles"]
+	path = tmux/plugins/zsh-titles
+	url = https://git::@github.com/jreese/zsh-titles
 	ignore = untracked
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm

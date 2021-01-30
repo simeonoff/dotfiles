@@ -62,7 +62,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
-Plug 'zeekay/vim-beautify'
+" Eye candy
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
 if has('nvim') || has('patch-8.0.902')
