@@ -10,6 +10,7 @@
 	ca = commit --amend -v
 	save = commit -a -m "Save"
 	co = checkout
+	dang = ! "git log --graph --oneline --decorate --all $( git fsck --no-reflog | awk '/dangling commit/ {print $3}' )"
 	di = diff
 	dis = diff --stat
 	diw = diff --color-words
