@@ -1,9 +1,10 @@
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_skip_empty_sections = 1
-let g:airline_theme='gruvbox'
-let g:airline_detect_spell=1
-let g:airline_section_c='%'
+let g:airline_skip_empty_sections = 0
+let g:airline_theme = 'moonfly'
+let g:airline_detect_spell = 1
+let g:airline#extensions#coc#enabled = 1
+let g:airline_section_c = airline#section#create(["%{get(g:, 'coc_status', '')}"])
 
 let g:airline_mode_map = {
     \ '__' : '-',

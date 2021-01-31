@@ -151,3 +151,9 @@
 [submodule "zsh/powerlevel10k"]
 	path = zsh/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "vim/plugged/FixCursorHold.nvim"]
+	path = vim/plugged/FixCursorHold.nvim
+	url = https://github.com/antoinemadec/FixCursorHold.nvim.git
+[submodule "vim/plugged/vim-moonfly-colors"]
+	path = vim/plugged/vim-moonfly-colors
+	url = https://github.com/bluz71/vim-moonfly-colors.git

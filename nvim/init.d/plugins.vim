@@ -5,6 +5,7 @@ Plug 'morhetz/gruvbox'
 Plug 'dracula/vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'bluz71/vim-moonfly-colors'
 
 " Utils "
 " Enables fuzzy search
@@ -76,5 +77,14 @@ Plug 'sotte/presenting.vim'
 
 " Language Server "
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Fix Cursor Hold
+Plug 'antoinemadec/FixCursorHold.nvim'
+
 call plug#end()
+
+" in millisecond, used for both CursorHold and CursorHoldI,
+" use updatetime instead if not defined
+let g:cursorhold_updatetime = 100
+
 
