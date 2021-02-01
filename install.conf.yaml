@@ -8,14 +8,15 @@
 - link:
       ~/.bashrc:
       ~/.config/alacritty:
+      ~/.config/coc/:
+         glob: true
+         path: coc/*
+      ~/.config/kitty:
       ~/.config/neofetch:
       ~/.config/nvim:
       ~/.config/ranger:
       ~/.config/redshift.conf:
       ~/.config/rofi:
-      ~/.config/coc/:
-         glob: true
-         path: coc/*
       ~/.dotfiles: ''
       ~/.gitconfig:
       ~/.p10k.zsh: zsh/p10k.zsh
