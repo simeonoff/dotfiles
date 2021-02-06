@@ -1,6 +1,10 @@
 nnoremap <C-p> :GFiles<CR>
 noremap <C-F> :Rg<CR>
 
+" Easily switch between buffers
+nnoremap <leader>bb :buffers<cr>:b<space>
+nnoremap <leader><tab> :b#<cr>
+
 " Angular mappings
 nnoremap <silent> <leader>at /@Component<CR>/templateUrl<CR>:noh<CR>f'gf<ESC>
 nnoremap <silent> <leader>as /@Component<CR>/styleUrl<CR>:noh<CR>f'gf<ESC>
