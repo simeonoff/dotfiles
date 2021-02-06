@@ -59,7 +59,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
-" Version Control "
+" Version Control
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
@@ -72,10 +72,10 @@ else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 
-" Presentations "
+" Presentations
 Plug 'sotte/presenting.vim'
 
-" Language Server "
+" Language Server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Fix Cursor Hold
@@ -86,5 +86,3 @@ call plug#end()
 " in millisecond, used for both CursorHold and CursorHoldI,
 " use updatetime instead if not defined
 let g:cursorhold_updatetime = 100
-
-

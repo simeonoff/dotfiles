@@ -41,6 +41,7 @@ if [ -e $HOME/.dotfiles/vim/plugged/fzf/shell/key-bindings.zsh ]; then . $HOME/.
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
 export PATH="${PATH}:${HOME}/.local/bin/"
+if [ -e $HOME/.local/bin/flutter/bin/flutter ]; then export PATH="${PATH}:${HOME}/.local/bin/flutter/bin/"; fi
 export PATH=~/.dotfiles/bin:${PATH}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
