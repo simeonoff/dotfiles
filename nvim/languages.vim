@@ -80,6 +80,18 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 " Use `:Prettier` to format using Prettier"
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
+" Use `:Emulators` to list all Flutter Emulators
+command! -nargs=0 Emulators :CocList FlutterEmulators
+
+" Use `:FlutterRun` to start current project
+command! -nargs=0 FlutterRun :CocCommand flutter.run
+
+" Use `:FlutterAttach` to start current project
+command! -nargs=0 FlutterAttach :CocCommand flutter.attach
+
+" Hot restart a running flutter app
+nnoremap <silent> <space>r :<C-u>CocCommand flutter.dev.hotRestart<cr>
+
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
