@@ -7,10 +7,13 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'bluz71/vim-moonfly-colors'
 
-" Utils "
+" Utils
 " Enables fuzzy search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" Search globally in all documents and output the result in a quickfix list.
+Plug 'mhinz/vim-grepper'
 
 " A collection of language packs (syntax, indent, etc.)
 Plug 'sheerun/vim-polyglot'

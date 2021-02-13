@@ -157,3 +157,6 @@
 [submodule "vim/plugged/vim-moonfly-colors"]
 	path = vim/plugged/vim-moonfly-colors
 	url = https://github.com/bluz71/vim-moonfly-colors.git
+[submodule "vim/plugged/vim-grepper"]
+	path = vim/plugged/vim-grepper
+	url = https://github.com/mhinz/vim-grepper.git
