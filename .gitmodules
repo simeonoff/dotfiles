@@ -160,3 +160,15 @@
 [submodule "vim/plugged/vim-grepper"]
 	path = vim/plugged/vim-grepper
 	url = https://github.com/mhinz/vim-grepper.git
+[submodule "vim/plugged/popup.nvim"]
+	path = vim/plugged/popup.nvim
+	url = https://github.com/nvim-lua/popup.nvim.git
+[submodule "vim/plugged/plenary.nvim"]
+	path = vim/plugged/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "vim/plugged/telescope.nvim"]
+	path = vim/plugged/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule "vim/plugged/telescope-fzy-native.nvim"]
+	path = vim/plugged/telescope-fzy-native.nvim
+	url = https://github.com/nvim-telescope/telescope-fzy-native.nvim.git

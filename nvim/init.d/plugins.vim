@@ -11,6 +11,10 @@ Plug 'bluz71/vim-moonfly-colors'
 " Enables fuzzy search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Search globally in all documents and output the result in a quickfix list.
 Plug 'mhinz/vim-grepper'

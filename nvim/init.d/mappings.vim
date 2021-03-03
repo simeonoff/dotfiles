@@ -1,9 +1,12 @@
-nnoremap <C-p> :GFiles<CR>
-noremap <C-F> :Rg<CR>
+nnoremap <C-p> :Telescope find_files<CR>
+noremap <C-F> :Telescope live_grep<CR>
 
 " Easily switch between buffers
-nnoremap <leader>bb :buffers<cr>:b<space>
+nnoremap <leader>bb :Telescope buffers<CR>
 nnoremap <leader><tab> :b#<cr>
+
+" Switch git branches
+nnoremap <leader>gb :Telescope git_branches<CR>
 
 " Angular mappings
 nnoremap <silent> <leader>at /@Component<CR>/templateUrl<CR>:noh<CR>f'gf<ESC>

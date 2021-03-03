@@ -9,3 +9,5 @@ source ~/.config/nvim/markdown.vim
 source ~/.config/nvim/editorconfig.vim
 source ~/.config/nvim/init.d/nvim-colorizer.vim
 source ~/.config/nvim/init.d/ranger.vim
+source ~/.config/nvim/telescope.vim
+source ~/.config/nvim/url.vim
