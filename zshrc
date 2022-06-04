@@ -22,7 +22,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git node npm npx gpg-agent tmux)
+plugins=(git node npm gpg-agent tmux)
 #source ~/.zsh/prompt.zsh
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source $ZSH/oh-my-zsh.sh
@@ -51,3 +51,12 @@ export PATH=~/.dotfiles/bin:${PATH}
 # export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 # nvm use default
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# alias -s exe=mono
+export PATH="${PATH}:${HOME}/.local/bin/docfx"
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
