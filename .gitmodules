@@ -2,21 +2,9 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "vim/plugged/gruvbox"]
-	path = vim/plugged/gruvbox
-	url = https://github.com/morhetz/gruvbox
-	ignore = untracked
-[submodule "vim/plugged/ayu-vim"]
-	path = vim/plugged/ayu-vim
-	url = https://github.com/ayu-theme/ayu-vim.git
-	ignore = untracked
 [submodule "vim/plugged/BufOnly.vim"]
 	path = vim/plugged/BufOnly.vim
 	url = https://github.com/vim-scripts/BufOnly.vim.git
-	ignore = untracked
-[submodule "vim/plugged/bclose.vim"]
-	path = vim/plugged/bclose.vim
-	url = https://github.com/rbgrouleff/bclose.vim.git
 	ignore = untracked
 [submodule "vim/plugged/coc.nvim"]
 	path = vim/plugged/coc.nvim
@@ -34,57 +22,21 @@
 	path = vim/plugged/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
 	ignore = untracked
-[submodule "vim/plugged/nvim-colorizer.lua"]
-	path = vim/plugged/nvim-colorizer.lua
-	url = https://github.com/norcalli/nvim-colorizer.lua.git
-	ignore = untracked
-[submodule "vim/plugged/palenight.vim"]
-	path = vim/plugged/palenight.vim
-	url = https://github.com/drewtempelmeyer/palenight.vim.git
-	ignore = untracked
 [submodule "vim/plugged/presenting.vim"]
 	path = vim/plugged/presenting.vim
 	url = https://github.com/sotte/presenting.vim.git
-	ignore = untracked
-[submodule "vim/plugged/ranger.vim"]
-	path = vim/plugged/ranger.vim
-	url = https://github.com/francoiscabrol/ranger.vim.git
 	ignore = untracked
 [submodule "vim/plugged/tabular"]
 	path = vim/plugged/tabular
 	url = https://github.com/godlygeek/tabular.git
 	ignore = untracked
-[submodule "vim/plugged/vim"]
-	path = vim/plugged/vim
-	url = https://github.com/dracula/vim.git
-	ignore = untracked
-[submodule "vim/plugged/vim-airline"]
-	path = vim/plugged/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
-	ignore = untracked
-[submodule "vim/plugged/vim-airline-themes"]
-	path = vim/plugged/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes.git
-	ignore = untracked
 [submodule "vim/plugged/vim-autoread"]
 	path = vim/plugged/vim-autoread
 	url = https://github.com/djoshea/vim-autoread.git
 	ignore = untracked
-[submodule "vim/plugged/vim-commentary"]
-	path = vim/plugged/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
-	ignore = untracked
-[submodule "vim/plugged/vim-dispatch"]
-	path = vim/plugged/vim-dispatch
-	url = https://github.com/tpope/vim-dispatch.git
-	ignore = untracked
 [submodule "vim/plugged/vim-fugitive"]
 	path = vim/plugged/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-	ignore = untracked
-[submodule "vim/plugged/vim-polyglot"]
-	path = vim/plugged/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot.git
 	ignore = untracked
 [submodule "vim/plugged/vim-rhubarb"]
 	path = vim/plugged/vim-rhubarb
@@ -93,10 +45,6 @@
 [submodule "vim/plugged/vim-signify"]
 	path = vim/plugged/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
-	ignore = untracked
-[submodule "vim/plugged/vim-sleuth"]
-	path = vim/plugged/vim-sleuth
-	url = https://github.com/tpope/vim-sleuth.git
 	ignore = untracked
 [submodule "vim/plugged/vim-surround"]
 	path = vim/plugged/vim-surround
@@ -109,10 +57,6 @@
 [submodule "vim/plugged/vim-visual-star-search"]
 	path = vim/plugged/vim-visual-star-search
 	url = https://github.com/nelstrom/vim-visual-star-search.git
-	ignore = untracked
-[submodule "vim/plugged/minimap.vim"]
-	path = vim/plugged/minimap.vim
-	url = https://github.com/wfxr/minimap.vim
 	ignore = untracked
 [submodule "bin/rofi-wifi-menu"]
 	path = bin/rofi-wifi-menu
@@ -148,15 +92,9 @@
 [submodule "bin/trashy-src"]
 	path = bin/trashy-src
 	url = https://gitlab.com/trashy/trashy.git
-[submodule "zsh/powerlevel10k"]
-	path = zsh/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
 [submodule "vim/plugged/FixCursorHold.nvim"]
 	path = vim/plugged/FixCursorHold.nvim
 	url = https://github.com/antoinemadec/FixCursorHold.nvim.git
-[submodule "vim/plugged/vim-moonfly-colors"]
-	path = vim/plugged/vim-moonfly-colors
-	url = https://github.com/bluz71/vim-moonfly-colors.git
 [submodule "vim/plugged/vim-grepper"]
 	path = vim/plugged/vim-grepper
 	url = https://github.com/mhinz/vim-grepper.git
