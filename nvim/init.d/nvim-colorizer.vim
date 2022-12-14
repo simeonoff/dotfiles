@@ -1,3 +1,5 @@
+if exists('g:vscode')
+else
 lua << EOF
 require 'colorizer'.setup {
   'javascript';
@@ -31,3 +33,4 @@ require 'colorizer'.setup {
   };
 }
 EOF
+endif

@@ -5,15 +5,21 @@
     "coc-emmet": ">=1.1.6",
     "coc-eslint": ">=1.5.2",
     "coc-flutter": ">=1.9.7",
-    "coc-html": ">=1.6.1",
     "coc-json": ">=1.4.1",
     "coc-marketplace": ">=1.8.1",
-    "coc-prettier": ">=1.1.25",
+    "coc-prettier": ">=9.3.1",
     "coc-rls": ">=1.1.6",
     "coc-rust-analyzer": ">=0.59.1",
-    "coc-scssmodules": ">=0.2.2",
     "coc-styled-components": ">=0.5.0",
     "coc-stylelintplus": ">=1.5.0",
-    "coc-tsserver": ">=1.9.8"
-  }
+    "coc-tsserver": ">=1.9.8",
+    "coc-svelte": ">=0.4.2",
+    "coc-html": ">=1.8.0"
+  },
+  "disabled": [
+    "coc-markdownlint",
+    "coc-highlight"
+  ],
+  "locked": [],
+  "lastUpdate": 1670942503990
 }

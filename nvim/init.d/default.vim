@@ -4,6 +4,7 @@ set hidden
 " Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
+set noshowmode
 
 " Better display for messages
 set cmdheight=1
@@ -25,10 +26,11 @@ endif
 let mapleader = ',' 
 
 set number relativenumber
-set shiftwidth=2
-set mouse=a
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set smartindent
+set mouse=a
 set clipboard+=unnamedplus
 
 set wildignore+=*/node_modules/**/*

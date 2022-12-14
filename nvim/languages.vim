@@ -7,24 +7,6 @@ if exists('g:vscode')
   nnoremap <silent> ]p <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
   nnoremap <silent> [p <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
 else
-  function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
-
-  inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ coc#refresh()
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-  " Use <c-space> for trigger completion.
-  inoremap <silent><expr> <c-space> coc#refresh()
-
-  " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
-  " Coc only does snippet and additional edit on confirm.
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
   " Use `[p` and `]p` for navigate diagnostics
   nmap <silent> [p <Plug>(coc-diagnostic-prev)
   nmap <silent> ]p <Plug>(coc-diagnostic-next)
@@ -33,6 +15,7 @@ else
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
+
   " Clear search highlight by pressing <leader>/
   nmap <silent> <leader>/ :noh<CR>
 
@@ -52,10 +35,6 @@ else
 
   " Remap for rename current word
   nmap <leader>rn <Plug>(coc-rename)
-
-  " Remap for format selected region
-  vmap <leader>f  <Plug>(coc-format-selected)
-  nmap <leader>f  <Plug>(coc-format-selected)
 
   augroup mygroup
     autocmd!

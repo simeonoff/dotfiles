@@ -8,7 +8,6 @@ if exists('g:vscode')
   nnoremap <silent> ]b :Tabnext<CR>
   nnoremap <silent> [b :Tabprevious<CR>
 
-  nnoremap Git <Cmd>call VSCodeNotify('workbench.view.scm')<CR>
   command! -nargs=0 Git :call VSCodeNotify('workbench.view.scm')
   command! -nargs=0 Gstage :call VSCodeNotify('git.stageAll')
   command! -nargs=0 Gcommit :call VSCodeNotify('git.commit')
@@ -30,6 +29,22 @@ else
   nnoremap <leader>bb :Telescope buffers<CR>
   nnoremap <leader><tab> :b#<cr>
 
+  " Use tab for trigger completion with characters ahead and navigate
+  " NOTE: There's always complete item selected by default, you may want to enable
+  " no select by `"suggest.noselect": true` in your configuration file
+  " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+  " other plugin before putting this into your config
+  inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1) :
+        \ CheckBackspace() ? "\<Tab>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+  " Make <CR> to accept selected completion item or notify coc.nvim to format
+  " <C-g>u breaks current undo, please make your own choice
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
   " Switch git branches
   nnoremap <leader>gb :Telescope git_branches<CR>
 
@@ -39,6 +54,9 @@ else
 
   nnoremap <silent> <leader>= :exe "resize " . (winheight(0) + 10)<CR>
   nnoremap <silent> <leader>- :exe "resize " . (winheight(0) - 10)<CR>
+
+  " Find Angular spec file.
+  nnoremap <silent> <leader>sp :call ToggleSpecFile()<CR>
 
   " Use <C-l> for trigger snippet expand.
   imap <C-l> <Plug>(coc-snippets-expand)
@@ -75,6 +93,7 @@ function! ToggleSpecFile()
   endif
 endfunction
 
-" Find Angular spec file.
-nnoremap <silent> <leader>sp :call ToggleSpecFile()<CR>
-
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction

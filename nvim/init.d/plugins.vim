@@ -6,11 +6,9 @@ endfunction
 call plug#begin('~/.vim/plugged')
 
 " Visuals "
-Plug 'morhetz/gruvbox'
-Plug 'dracula/vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'bluz71/vim-moonfly-colors'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " Utils
 " Enables fuzzy search
@@ -25,10 +23,8 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'mhinz/vim-grepper'
 
 " A collection of language packs (syntax, indent, etc.)
-Plug 'sheerun/vim-polyglot', Cond(!exists('g:vscode'))
-
-" Automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file.
-Plug 'tpope/vim-sleuth', Cond(!exists('g:vscode'))
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'leafOfTree/vim-svelte-plugin'
 
 " Provides mappings to easily delete, change and add such surroundings in pairs.
 Plug 'tpope/vim-surround', Cond(!exists('g:vscode'))
@@ -37,20 +33,22 @@ Plug 'tpope/vim-surround', Cond(!exists('g:vscode'))
 Plug 'tpope/vim-unimpaired', Cond(!exists('g:vscode'))
 
 " Comment stuff out. Use gcc to comment out a line.
-Plug 'tpope/vim-commentary', Cond(!exists('g:vscode'))
-
-" Kick off builds and test suites.
-Plug 'tpope/vim-dispatch', Cond(!exists('g:vscode'))
+Plug 'numToStr/Comment.nvim'
 
 " Make '.' work with plugin motions
 Plug 'tpope/vim-repeat', Cond(!exists('g:vscode'))
 
-" Lean & mean status/tabline for vim that's light as air.
-Plug 'vim-airline/vim-airline', Cond(!exists('g:vscode'))
-Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:vscode'))
+" A minimal, stylish and customizable statusline / winbar for Neovim written in Lua
+Plug 'feline-nvim/feline.nvim', Cond(!exists('g:vscode'))
 
 " Select text using Vim's visual mode, hit * to search for it in the file.
-Plug 'nelstrom/vim-visual-star-search'
+Plug 'nelstrom/vim-visual-star-search', Cond(!exists('g:vscode'))
+
+" A snazzy buffer line (with tabpage integration) for Neovim built using lua.
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
+
+" A File Explorer For Neovim Written In Lua
+Plug 'nvim-tree/nvim-tree.lua'
 
 " Align text automatically. http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'godlygeek/tabular', Cond(!exists('g:vscode'))
@@ -61,34 +59,22 @@ Plug 'editorconfig/editorconfig-vim', Cond(!exists('g:vscode'))
 " Enables a file open in vim to be edited using another application and saved.
 Plug 'djoshea/vim-autoread', Cond(!exists('g:vscode'))
 
-" Color highlighter for Neovim.
-Plug 'norcalli/nvim-colorizer.lua'
-
 " Select the current buffer only.
 Plug 'vim-scripts/BufOnly.vim', Cond(!exists('g:vscode'))
-
-" Use Ranger as the file manager
-Plug 'francoiscabrol/ranger.vim', Cond(!exists('g:vscode'))
-Plug 'rbgrouleff/bclose.vim', Cond(!exists('g:vscode'))
 
 " Version Control
 Plug 'tpope/vim-fugitive', Cond(!exists('g:vscode'))
 Plug 'tpope/vim-rhubarb', Cond(!exists('g:vscode'))
-
-" Eye candy
-Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
-
-if has('nvim') || has('patch-8.0.902')
-  Plug 'mhinz/vim-signify', Cond(!exists('g:vscode'))
-else
-  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-endif
+Plug 'lewis6991/gitsigns.nvim'
 
 " Presentations
 Plug 'sotte/presenting.vim', Cond(!exists('g:vscode'))
 
 " Language Server
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+
+" Terminal toggler
+Plug 'akinsho/toggleterm.nvim'
 
 " Fix Cursor Hold
 Plug 'antoinemadec/FixCursorHold.nvim', Cond(!exists('g:vscode'))
@@ -98,3 +84,10 @@ call plug#end()
 " in millisecond, used for both CursorHold and CursorHoldI,
 " use updatetime instead if not defined
 let g:cursorhold_updatetime = 100
+
+" highlight svelte 
+let g:vim_svelte_plugin_load_full_syntax = 1
+" let g:vim_svelte_plugin_use_typescript = 1
+
+" enable vim comment
+lua require('Comment').setup()

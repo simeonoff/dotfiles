@@ -1,20 +1,12 @@
 {
-  "tsserver.npm": "/usr/local/bin/npm",
-  "tsserver.log": "verbose",
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "css.validate": false,
-  "scss.validate": false,
+  "scss.validate": true,
   "less.validate": false,
-  "wxss.validate": false,
   "stylelintplus.autoFixOnFormat": true,
-  "css.colorDecorators.enable": false,
-  "scss.colorDecorators.enable": false,
-  "coc.preferences.colorSupport": false,
-  "prettier.eslintIntegration": true,
-  "prettier.stylelintIntegration": true,
   "prettier.disableLanguages": ["css", "scss"],
   "languageserver": {
     "ccls": {
@@ -33,5 +25,21 @@
         }
       }
     }
-  }
+  },
+  "svelte.enable-ts-plugin": true,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "svelte"
+  ],
+  "eslint.options": {
+    "ignorePath": ".gitignore"
+  },
+  "eslint.lintTask.options": ["--ignore-path", ".gitignore", "."],
+  "eslint.validate": ["svelte"]
 }
