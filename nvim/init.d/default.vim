@@ -40,7 +40,7 @@ set diffopt+=vertical
 
 set path+=./**
 set wildoptions=pum
-set conceallevel=2
+set conceallevel=0
 set completeopt=menu,menuone,noinsert,noselect
 
 let g:netrw_banner = 0

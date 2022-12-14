@@ -70,8 +70,31 @@ Plug 'lewis6991/gitsigns.nvim'
 " Presentations
 Plug 'sotte/presenting.vim', Cond(!exists('g:vscode'))
 
-" Language Server
-Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+" LSP
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
+" Linter
+Plug 'jose-elias-alvarez/null-ls.nvim'
+
+" Autocompletion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+
+"  Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
+
+Plug 'VonHeikemen/lsp-zero.nvim'
+
+" A pretty list for showing diagnostics, references, telescope results, quickfix and location lists.
+Plug 'folke/trouble.nvim'
 
 " Terminal toggler
 Plug 'akinsho/toggleterm.nvim'
@@ -87,7 +110,10 @@ let g:cursorhold_updatetime = 100
 
 " highlight svelte 
 let g:vim_svelte_plugin_load_full_syntax = 1
-" let g:vim_svelte_plugin_use_typescript = 1
+let g:vim_svelte_plugin_use_typescript = 1
 
-" enable vim comment
+" enable plugins comment
 lua require('Comment').setup()
+lua require("trouble").setup()
+lua require("mason").setup()
+lua require("mason-lspconfig").setup()

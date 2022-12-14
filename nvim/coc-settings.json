@@ -3,10 +3,6 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
-  "css.validate": false,
-  "scss.validate": true,
-  "less.validate": false,
-  "stylelintplus.autoFixOnFormat": true,
   "prettier.disableLanguages": ["css", "scss"],
   "languageserver": {
     "ccls": {

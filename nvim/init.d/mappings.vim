@@ -19,7 +19,7 @@ if exists('g:vscode')
   omap gc  <Plug>VSCodeCommentary
   nmap gcc <Plug>VSCodeCommentaryLine
 else
-  nnoremap <silent> <leader>i :Format<CR>
+  " nnoremap <silent> <leader>i :Format<CR>
   nnoremap <silent> <leader>] :exe "vertical resize " . (winwidth(0) + 30)<CR>
   nnoremap <silent> <leader>[ :exe "vertical resize " . (winwidth(0) - 30)<CR>
 
@@ -34,16 +34,16 @@ else
   " no select by `"suggest.noselect": true` in your configuration file
   " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
   " other plugin before putting this into your config
-  inoremap <silent><expr> <TAB>
-        \ coc#pum#visible() ? coc#pum#next(1) :
-        \ CheckBackspace() ? "\<Tab>" :
-        \ coc#refresh()
-  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-  " Make <CR> to accept selected completion item or notify coc.nvim to format
-  " <C-g>u breaks current undo, please make your own choice
-  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  " inoremap <silent><expr> <TAB>
+  "       \ coc#pum#visible() ? coc#pum#next(1) :
+  "       \ CheckBackspace() ? "\<Tab>" :
+  "       \ coc#refresh()
+  " inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+  "
+  " " Make <CR> to accept selected completion item or notify coc.nvim to format
+  " " <C-g>u breaks current undo, please make your own choice
+  " inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+  "                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
   " Switch git branches
   nnoremap <leader>gb :Telescope git_branches<CR>
@@ -59,19 +59,19 @@ else
   nnoremap <silent> <leader>sp :call ToggleSpecFile()<CR>
 
   " Use <C-l> for trigger snippet expand.
-  imap <C-l> <Plug>(coc-snippets-expand)
+  " imap <C-l> <Plug>(coc-snippets-expand)
 
   " Use <C-j> for select text for visual placeholder of snippet.
-  vmap <C-j> <Plug>(coc-snippets-select)
+  " vmap <C-j> <Plug>(coc-snippets-select)
 
   " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-  let g:coc_snippet_next = '<c-j>'
+  " let g:coc_snippet_next = '<c-j>'
 
   " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-  let g:coc_snippet_prev = '<c-k>'
+  " let g:coc_snippet_prev = '<c-k>'
 
   " Use <C-j> for both expand and jump (make expand higher priority.)
-  imap <C-j> <Plug>(coc-snippets-expand-jump)
+  " imap <C-j> <Plug>(coc-snippets-expand-jump)
 endif
 
 function! ToggleSpecFile()
