@@ -8,9 +8,6 @@
 - link:
       ~/.bashrc:
       ~/.config/alacritty:
-      ~/.config/coc/:
-         glob: true
-         path: coc/*
       ~/.config/kitty:
       ~/.config/neofetch:
       ~/.config/nvim:
@@ -19,10 +16,8 @@
       ~/.config/rofi:
       ~/.dotfiles: ''
       ~/.gitconfig:
-      ~/.p10k.zsh: zsh/p10k.zsh
       ~/.shell:
-      ~/.smbcredentials.asc:
-      ~/.ssh/config.asc: ssh/config.asc
+      ~/.ssh/config: ssh/config
       ~/.tmux.conf:
       ~/.tmux:
       ~/.vim:
@@ -39,18 +34,6 @@
      description: Update Submodules
      quiet: true
    - 
-     command: gpg --decrypt $HOME/.ssh/config.asc > $HOME/.ssh/config
-     description: Decrypt SSH Config
-     quiet: true
-   - 
      command: chmod 0600 ~/.ssh/config
      description: Set permissions for SSH Config
-     quiet: true
-   - 
-     command: gpg --decrypt $HOME/.smbcredentials.asc > $HOME/.smbcredentials
-     description: Link media folders from server
-     quiet: true
-   -
-     command: pushd ~/.config/coc/extensions && npm install && popd
-     description: Install COC Extensions
      quiet: true

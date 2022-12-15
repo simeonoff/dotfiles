@@ -24,10 +24,12 @@ Plug 'mhinz/vim-grepper'
 
 " A collection of language packs (syntax, indent, etc.)
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'leafOfTree/vim-svelte-plugin'
+Plug 'tpope/vim-sensible'
 
-" Provides mappings to easily delete, change and add such surroundings in pairs.
-Plug 'tpope/vim-surround', Cond(!exists('g:vscode'))
+" Provides mappings to easily delete, change targets.
+Plug 'wellle/targets.vim'
 
 " Short normal mode aliases for commonly used ex commands.
 Plug 'tpope/vim-unimpaired', Cond(!exists('g:vscode'))
@@ -39,7 +41,8 @@ Plug 'numToStr/Comment.nvim'
 Plug 'tpope/vim-repeat', Cond(!exists('g:vscode'))
 
 " A minimal, stylish and customizable statusline / winbar for Neovim written in Lua
-Plug 'feline-nvim/feline.nvim', Cond(!exists('g:vscode'))
+Plug 'nvim-lualine/lualine.nvim'
+" Plug 'feline-nvim/feline.nvim', Cond(!exists('g:vscode'))
 
 " Select text using Vim's visual mode, hit * to search for it in the file.
 Plug 'nelstrom/vim-visual-star-search', Cond(!exists('g:vscode'))
@@ -98,6 +101,9 @@ Plug 'folke/trouble.nvim'
 
 " Terminal toggler
 Plug 'akinsho/toggleterm.nvim'
+
+" Distraction free coding
+Plug 'folke/zen-mode.nvim'
 
 " Fix Cursor Hold
 Plug 'antoinemadec/FixCursorHold.nvim', Cond(!exists('g:vscode'))

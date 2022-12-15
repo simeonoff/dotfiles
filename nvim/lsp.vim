@@ -88,17 +88,15 @@ null_ls.setup({
 })
 
 lsp.configure('stylelint_lsp', {
-    on_attach = function(client, bufnr)
-        print('StyleLint initialized')
-    end,
     filetypes = { 'css', 'scss', 'sass', 'less', 'typescriptreact', 'javascriptreact' }
 })
 
 lsp.configure('html', {
-    on_attach = function(client, bufnr)
-        print('HTML LSP initialized')
-    end,
     filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' }
+})
+
+lsp.configure('emmet_ls', {
+    filetypes = { 'html', 'typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'svelte' }
 })
 
 lsp.setup()

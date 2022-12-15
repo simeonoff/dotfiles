@@ -7,10 +7,10 @@ set nowritebackup
 set noshowmode
 
 " Better display for messages
-set cmdheight=1
+set cmdheight=0
 
 " Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
+set updatetime=50
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
@@ -27,6 +27,7 @@ let mapleader = ','
 
 set number relativenumber
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
@@ -41,7 +42,9 @@ set diffopt+=vertical
 set path+=./**
 set wildoptions=pum
 set conceallevel=0
-set completeopt=menu,menuone,noinsert,noselect
+set completeopt=menu,menuone,noselect
+set scrolloff=8
+set colorcolumn=120
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
