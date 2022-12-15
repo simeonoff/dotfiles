@@ -25,6 +25,7 @@ else
 
   nnoremap <C-p> :Telescope find_files<CR>
   noremap <C-F> :Telescope live_grep<CR>
+  nnoremap <C-L> :Telescope projects<CR>
 
   nnoremap <leader>bb :Telescope buffers<CR>
   nnoremap <leader><tab> :b#<cr>

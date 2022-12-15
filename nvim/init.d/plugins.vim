@@ -106,6 +106,9 @@ Plug 'akinsho/toggleterm.nvim'
 " Distraction free coding
 Plug 'folke/zen-mode.nvim'
 
+" Project management
+Plug 'ahmedkhalf/project.nvim'
+
 " Fix Cursor Hold
 Plug 'antoinemadec/FixCursorHold.nvim', Cond(!exists('g:vscode'))
 

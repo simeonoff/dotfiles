@@ -17,3 +17,4 @@ source ~/.config/nvim/url.vim
 source ~/.config/nvim/lsp.vim
 source ~/.config/nvim/cmp.vim
 source ~/.config/nvim/zenmode.vim
+source ~/.config/nvim/projects.vim
