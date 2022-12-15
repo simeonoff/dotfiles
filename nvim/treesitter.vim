@@ -24,6 +24,9 @@ require('nvim-treesitter.configs').setup({
         'css',
         'json',
         'lua',
+        'svelte',
+        'yaml',
+        'markdown',
     },
     indent = {
         enable = true,
