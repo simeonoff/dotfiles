@@ -69,7 +69,8 @@ Plug 'vim-scripts/BufOnly.vim', Cond(!exists('g:vscode'))
 Plug 'tpope/vim-fugitive', Cond(!exists('g:vscode'))
 Plug 'tpope/vim-rhubarb', Cond(!exists('g:vscode'))
 Plug 'lewis6991/gitsigns.nvim'
-
+Plug 'sindrets/diffview.nvim'
+ 
 " Presentations
 Plug 'sotte/presenting.vim', Cond(!exists('g:vscode'))
 
