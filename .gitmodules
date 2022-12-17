@@ -73,21 +73,40 @@
 [submodule "vim/plugged/vim-repeat"]
 	path = vim/plugged/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
+	ignore = untracked
 [submodule "bin/trashy-src"]
 	path = bin/trashy-src
 	url = https://gitlab.com/trashy/trashy.git
+	ignore = untracked
 [submodule "vim/plugged/vim-grepper"]
 	path = vim/plugged/vim-grepper
 	url = https://github.com/mhinz/vim-grepper.git
+	ignore = untracked
 [submodule "vim/plugged/popup.nvim"]
 	path = vim/plugged/popup.nvim
 	url = https://github.com/nvim-lua/popup.nvim.git
+	ignore = untracked
 [submodule "vim/plugged/plenary.nvim"]
 	path = vim/plugged/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim.git
+	ignore = untracked
 [submodule "vim/plugged/telescope.nvim"]
 	path = vim/plugged/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim.git
+	ignore = untracked
 [submodule "vim/plugged/telescope-fzy-native.nvim"]
 	path = vim/plugged/telescope-fzy-native.nvim
 	url = https://github.com/nvim-telescope/telescope-fzy-native.nvim.git
+	ignore = untracked
+[submodule "vim/plugged/bufferline.nvim"]
+	path = vim/plugged/bufferline.nvim
+	url = https://github.com/akinsho/bufferline.nvim
+	ignore = untracked
+[submodule "vim/plugged/lsp-zero.nvim"]
+	path = vim/plugged/lsp-zero.nvim
+	url = https://github.com/VonHeikemen/lsp-zero.nvim
+	ignore = untracked
+[submodule "vim/plugged/toggleterm.nvim"]
+	path = vim/plugged/toggleterm.nvim
+	url = https://github.com/akinsho/toggleterm.nvim
+	ignore = untracked
