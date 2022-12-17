@@ -16,7 +16,6 @@
     ~/.ssh/config: ssh/config
     ~/.tmux.conf:
     ~/.tmux:
-    ~/.vim:
     ~/.zsh:
     ~/.zshrc:
 
