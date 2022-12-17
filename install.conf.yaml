@@ -1,39 +1,34 @@
 - defaults:
-   link:
+    link:
       create: true
       relink: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
-      ~/.bashrc:
-      ~/.config/alacritty:
-      ~/.config/kitty:
-      ~/.config/neofetch:
-      ~/.config/nvim:
-      ~/.config/ranger:
-      ~/.config/redshift.conf:
-      ~/.config/rofi:
-      ~/.dotfiles: ''
-      ~/.gitconfig:
-      ~/.shell:
-      ~/.ssh/config: ssh/config
-      ~/.tmux.conf:
-      ~/.tmux:
-      ~/.vim:
-      ~/.zsh:
-      ~/.zshrc:
+    ~/.bashrc:
+    ~/.config/neofetch:
+    ~/.config/nvim:
+    ~/.config/ranger:
+    ~/.config/redshift.conf:
+    ~/.config/rofi:
+    ~/.dotfiles: ""
+    ~/.gitconfig:
+    ~/.shell:
+    ~/.ssh/config: ssh/config
+    ~/.tmux.conf:
+    ~/.tmux:
+    ~/.vim:
+    ~/.zsh:
+    ~/.zshrc:
 
 - shell:
-   - 
-     command: git submodule sync --recursive
-     description: Sync Submodules
-     quiet: true
-   - 
-     command: git submodule update --init --recursive
-     description: Update Submodules
-     quiet: true
-   - 
-     command: chmod 0600 ~/.ssh/config
-     description: Set permissions for SSH Config
-     quiet: true
+    - command: git submodule sync --recursive
+      description: Sync Submodules
+      quiet: true
+    - command: git submodule update --init --recursive
+      description: Update Submodules
+      quiet: true
+    - command: chmod 0600 ~/.ssh/config
+      description: Set permissions for SSH Config
+      quiet: true
