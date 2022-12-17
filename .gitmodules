@@ -2,50 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "vim/plugged/BufOnly.vim"]
-	path = vim/plugged/BufOnly.vim
-	url = https://github.com/vim-scripts/BufOnly.vim.git
-	ignore = untracked
-[submodule "vim/plugged/editorconfig-vim"]
-	path = vim/plugged/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim.git
-	ignore = untracked
-[submodule "vim/plugged/fzf"]
-	path = vim/plugged/fzf
-	url = https://github.com/junegunn/fzf.git
-	ignore = untracked
-[submodule "vim/plugged/fzf.vim"]
-	path = vim/plugged/fzf.vim
-	url = https://github.com/junegunn/fzf.vim.git
-	ignore = untracked
-[submodule "vim/plugged/tabular"]
-	path = vim/plugged/tabular
-	url = https://github.com/godlygeek/tabular.git
-	ignore = untracked
-[submodule "vim/plugged/vim-autoread"]
-	path = vim/plugged/vim-autoread
-	url = https://github.com/djoshea/vim-autoread.git
-	ignore = untracked
-[submodule "vim/plugged/vim-fugitive"]
-	path = vim/plugged/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-	ignore = untracked
-[submodule "vim/plugged/vim-rhubarb"]
-	path = vim/plugged/vim-rhubarb
-	url = https://github.com/tpope/vim-rhubarb.git
-	ignore = untracked
-[submodule "vim/plugged/vim-unimpaired"]
-	path = vim/plugged/vim-unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
-	ignore = untracked
-[submodule "vim/plugged/vim-visual-star-search"]
-	path = vim/plugged/vim-visual-star-search
-	url = https://github.com/nelstrom/vim-visual-star-search.git
-	ignore = untracked
-[submodule "bin/rofi-wifi-menu"]
-	path = bin/rofi-wifi-menu
-	url = https://github.com/zbaylin/rofi-wifi-menu.git
-	ignore = untracked
 [submodule "tmux/plugins/tmux-gruvbox"]
 	path = tmux/plugins/tmux-gruvbox
 	url = https://git::@github.com/egel/tmux-gruvbox
@@ -70,43 +26,7 @@
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 	ignore = untracked
-[submodule "vim/plugged/vim-repeat"]
-	path = vim/plugged/vim-repeat
-	url = https://github.com/tpope/vim-repeat.git
-	ignore = untracked
 [submodule "bin/trashy-src"]
 	path = bin/trashy-src
 	url = https://gitlab.com/trashy/trashy.git
-	ignore = untracked
-[submodule "vim/plugged/vim-grepper"]
-	path = vim/plugged/vim-grepper
-	url = https://github.com/mhinz/vim-grepper.git
-	ignore = untracked
-[submodule "vim/plugged/popup.nvim"]
-	path = vim/plugged/popup.nvim
-	url = https://github.com/nvim-lua/popup.nvim.git
-	ignore = untracked
-[submodule "vim/plugged/plenary.nvim"]
-	path = vim/plugged/plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim.git
-	ignore = untracked
-[submodule "vim/plugged/telescope.nvim"]
-	path = vim/plugged/telescope.nvim
-	url = https://github.com/nvim-telescope/telescope.nvim.git
-	ignore = untracked
-[submodule "vim/plugged/telescope-fzy-native.nvim"]
-	path = vim/plugged/telescope-fzy-native.nvim
-	url = https://github.com/nvim-telescope/telescope-fzy-native.nvim.git
-	ignore = untracked
-[submodule "vim/plugged/bufferline.nvim"]
-	path = vim/plugged/bufferline.nvim
-	url = https://github.com/akinsho/bufferline.nvim
-	ignore = untracked
-[submodule "vim/plugged/lsp-zero.nvim"]
-	path = vim/plugged/lsp-zero.nvim
-	url = https://github.com/VonHeikemen/lsp-zero.nvim
-	ignore = untracked
-[submodule "vim/plugged/toggleterm.nvim"]
-	path = vim/plugged/toggleterm.nvim
-	url = https://github.com/akinsho/toggleterm.nvim
 	ignore = untracked

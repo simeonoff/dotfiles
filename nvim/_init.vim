@@ -18,3 +18,5 @@ source ~/.config/nvim/lsp.vim
 source ~/.config/nvim/cmp.vim
 source ~/.config/nvim/zenmode.vim
 source ~/.config/nvim/projects.vim
+
+lua require('lua/plugins')
