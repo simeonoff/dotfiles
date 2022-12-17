@@ -10,8 +10,6 @@
     ~/.config/neofetch:
     ~/.config/nvim:
     ~/.config/ranger:
-    ~/.config/redshift.conf:
-    ~/.config/rofi:
     ~/.dotfiles: ""
     ~/.gitconfig:
     ~/.shell:
