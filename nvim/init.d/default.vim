@@ -7,7 +7,7 @@ set nowritebackup
 set noshowmode
 
 " Better display for messages
-set cmdheight=0
+set cmdheight=1
 
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=50
