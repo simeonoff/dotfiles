@@ -1,6 +1,6 @@
-require('config.set')
-require('config.remap')
-require('config.plugins')
+require("config.set")
+require("config.remap")
+require("config.plugins")
 
 -- disable netrw at the very start
 vim.g.loaded_netrw = 1

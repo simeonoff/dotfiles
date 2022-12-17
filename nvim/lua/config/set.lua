@@ -5,7 +5,7 @@ vim.opt.hidden = true
 vim.opt.cmdheight = 1
 
 -- always show signcolumns
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- show the relative numbers
 vim.opt.relativenumber = true
@@ -20,14 +20,14 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- enable mouse support
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- do not highlight search matches
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 -- colors and column width
-vim.opt.colorcolumn = '120'
+vim.opt.colorcolumn = "120"
 
 -- row offset number before scrolling
 vim.opt.scrolloff = 8
@@ -36,13 +36,13 @@ vim.opt.scrolloff = 8
 vim.opt.conceallevel = 0
 
 -- configure completion menu
-vim.opt.completeopt = 'menu', 'menuone', 'noselect'
+vim.opt.completeopt = "menu", "menuone", "noselect"
 
 -- configure clipboard
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- ignore node_modules folders
-vim.opt.wildignore = '*/node_modules/**/*'
+vim.opt.wildignore = "*/node_modules/**/*"
 
 -- Smaller updatetime for CursorHold & CursorHoldI
 vim.opt.updatetime = 50
