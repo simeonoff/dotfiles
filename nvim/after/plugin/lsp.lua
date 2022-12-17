@@ -1,7 +1,7 @@
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
-lsp.ensure_installed({ 
+lsp.ensure_installed({
     'angularls',
     'tsserver',
     'eslint',
@@ -21,6 +21,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local sync_formatting = function(client, bufnr)
     vim.lsp.buf.format({
         bufnr = bufnr,
+        async = true,
         filter = function(client)
             return client.name == "null-ls"
         end
@@ -34,8 +35,8 @@ local null_opts = lsp.build_options('null-ls', {
             vim.api.nvim_create_autocmd("BufWritePre", {
                 group = augroup,
                 buffer = bufnr,
-                callback = function()
-                    sync_formatting(client, buffnr)
+                callback = function(client)
+                    sync_formatting(client, bufnr)
                 end,
             })
         end
