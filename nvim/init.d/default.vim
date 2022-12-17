@@ -45,6 +45,8 @@ set conceallevel=0
 set completeopt=menu,menuone,noselect
 set scrolloff=8
 set colorcolumn=120
+set nohlsearch
+set incsearch
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3

@@ -71,9 +71,6 @@ Plug 'tpope/vim-rhubarb', Cond(!exists('g:vscode'))
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'sindrets/diffview.nvim'
  
-" Presentations
-Plug 'sotte/presenting.vim', Cond(!exists('g:vscode'))
-
 " LSP
 " Plug 'neoclide/coc.nvim', {'branch': 'release'} 
 Plug 'neovim/nvim-lspconfig'
@@ -108,9 +105,6 @@ Plug 'folke/zen-mode.nvim'
 
 " Project management
 Plug 'ahmedkhalf/project.nvim'
-
-" Fix Cursor Hold
-Plug 'antoinemadec/FixCursorHold.nvim', Cond(!exists('g:vscode'))
 
 call plug#end()
 
