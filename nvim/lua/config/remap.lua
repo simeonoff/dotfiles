@@ -1,5 +1,5 @@
 -- map leader
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 
 -- center view when navigating
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
