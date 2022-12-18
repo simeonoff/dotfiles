@@ -9,6 +9,10 @@ vim.opt.signcolumn = "yes"
 
 -- show the relative numbers
 vim.opt.relativenumber = true
+vim.opt.number = true
+
+-- highlight the cursorline
+vim.opt.cursorline = true
 
 -- configure tab with
 vim.opt.tabstop = 4
