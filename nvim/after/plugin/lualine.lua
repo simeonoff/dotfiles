@@ -196,6 +196,8 @@ require("lualine").setup({
 		},
 		lualine_x = {
 			diagnostics,
+			encoding,
+			treesitter,
 			lsp,
 			spaces,
 			filetype,
@@ -217,8 +219,6 @@ require("lualine").setup({
 		},
 		lualine_x = {
 			diagnostics,
-			encoding,
-			treesitter,
 			lsp,
 			spaces,
 			filetype,

@@ -63,6 +63,11 @@ telescope.setup({
 			override_file_sorter = true,
 		},
 	},
+	pickers = {
+		colorscheme = {
+			enable_preview = true,
+		},
+	},
 })
 
 telescope.load_extension("projects")

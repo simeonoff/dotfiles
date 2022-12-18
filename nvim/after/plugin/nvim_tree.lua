@@ -15,7 +15,7 @@ require("nvim-tree").setup({
 			},
 		},
 		float = {
-			enable = true,
+			enable = false,
 		},
 	},
 	renderer = {

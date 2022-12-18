@@ -50,3 +50,6 @@ vim.opt.wildignore = "*/node_modules/**/*"
 
 -- Smaller updatetime for CursorHold & CursorHoldI
 vim.opt.updatetime = 50
+
+-- enable gui colors
+vim.opt.termguicolors = true

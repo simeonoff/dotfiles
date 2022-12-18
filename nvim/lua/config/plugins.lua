@@ -23,7 +23,6 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"akinsho/bufferline.nvim",
-        after = "catppuccin",
 		tag = "v3.*",
 		requires = { "nvim-tree/nvim-web-devicons" },
 	})
