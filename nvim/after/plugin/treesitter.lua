@@ -16,11 +16,13 @@ require("nvim-treesitter.configs").setup({
 		},
 	},
 	ensure_installed = {
+		"help",
 		"javascript",
 		"typescript",
 		"tsx",
 		"html",
 		"css",
+		"scss",
 		"json",
 		"lua",
 		"svelte",
