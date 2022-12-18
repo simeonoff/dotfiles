@@ -34,3 +34,9 @@ else
 		print("Error: gx is not supported on this OS")
 	end)
 end
+
+-- Git related bindings
+--
+-- open git diffview
+vim.keymap.set("n", "<leader>gs", ":DiffviewOpen<CR>")
+vim.keymap.set("n", "<leader>gc", ":tab Git commit<CR>", { silent = true })

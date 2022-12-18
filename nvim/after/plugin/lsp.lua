@@ -18,10 +18,10 @@ local null_ls = require("null-ls")
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local sync_formatting = function(client, bufnr)
+local format_buffer = function(bufnr, async)
 	vim.lsp.buf.format({
 		bufnr = bufnr,
-		async = true,
+		async = async,
 		filter = function(client)
 			return client.name == "null-ls"
 		end,
@@ -35,8 +35,8 @@ local null_opts = lsp.build_options("null-ls", {
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
 				buffer = bufnr,
-				callback = function(client)
-					sync_formatting(client, bufnr)
+				callback = function()
+					format_buffer(bufnr, false)
 				end,
 			})
 		end
@@ -47,7 +47,7 @@ lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
 	vim.keymap.set("n", "<leader>i", function()
-		sync_formatting(client, bufnr)
+		format_buffer(bufnr, true)
 	end, opts)
 	vim.keymap.set("n", "gd", function()
 		vim.lsp.buf.definition()
