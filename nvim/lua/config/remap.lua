@@ -36,7 +36,16 @@ else
 end
 
 -- Git related bindings
---
--- open git diffview
-vim.keymap.set("n", "<leader>gs", ":DiffviewOpen<CR>")
+
+-- toggle git diffview
+vim.keymap.set("n", "<leader>gs", function()
+	local diffview = vim.bo.filetype == "DiffviewFiles"
+	if diffview then
+		return vim.cmd("DiffviewClose")
+	else
+		return vim.cmd("DiffviewOpen")
+	end
+end)
+
+-- commit screen
 vim.keymap.set("n", "<leader>gc", ":tab Git commit<CR>", { silent = true })
