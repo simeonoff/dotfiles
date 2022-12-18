@@ -83,7 +83,7 @@ return require("packer").startup(function(use)
 	})
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
-	-- Language Server Providers
+	-- Language Server
 	use({
 		"VonHeikemen/lsp-zero.nvim",
 		requires = {
