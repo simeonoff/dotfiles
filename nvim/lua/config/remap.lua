@@ -1,43 +1,30 @@
--- map leader
+local utils = require("config.utils")
+
 vim.g.mapleader = " "
 
--- center view when navigating
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center the view when navigating down" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center the view when navigation up" })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Center the view when going over next match" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Center the view when going over previous match" })
 
--- move lines easily in visual mode
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move visual selection up" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move visual selection down" })
 
--- rename the word under the cursor
-vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+vim.keymap.set(
+	"n",
+	"<leader>s",
+	":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+	{ desc = "Rename the word under the cursor" }
+)
 
--- handle url/file opening
-if vim.fn.has("mac") == 1 then
-	vim.keymap.set(
-		"n",
-		"<leader>gx",
-		":call jobstart(['open', expand('<cfile>')], {'detach': v:true})<CR>",
-		{ silent = true }
-	)
-elseif vim.fn.has("unix") == 1 then
-	vim.keymap.set(
-		"n",
-		"<leader>gx",
-		":call jobstart(['xdg-open', expand('<cfile>')], {'detach': v:true})<CR>",
-		{ silent = true }
-	)
-else
-	vim.keymap.set("n", "<leader>gx", function()
-		print("Error: gx is not supported on this OS")
-	end)
-end
+vim.keymap.set(
+	"n",
+	"<leader>gx",
+	utils.open_location,
+	{ silent = true },
+	{ desc = "Open the file/url under the cursor" }
+)
 
--- Git related bindings
-
--- toggle git diffview
 vim.keymap.set("n", "<leader>gs", function()
 	local diffview = vim.bo.filetype == "DiffviewFiles"
 	if diffview then
@@ -45,7 +32,8 @@ vim.keymap.set("n", "<leader>gs", function()
 	else
 		return vim.cmd("DiffviewOpen")
 	end
-end)
+end, { desc = "Toggle Diffview" })
 
--- commit screen
-vim.keymap.set("n", "<leader>gc", ":tab Git commit<CR>", { silent = true })
+vim.keymap.set("n", "<leader>gc", function()
+	vim.cmd("Git commit")
+end, { silent = true, desc = "Open git commit" })

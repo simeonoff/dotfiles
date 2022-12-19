@@ -27,4 +27,6 @@ require("nvim-tree").setup({
 })
 
 -- Mappings
-vim.keymap.set("n", "<leader>f", "<cmd>NvimTreeToggle<cr>")
+vim.keymap.set("n", "<leader>f", function()
+	vim.cmd("NvimTreeToggle")
+end, { desc = "Toggle File Explorer" })
