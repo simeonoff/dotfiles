@@ -1,6 +1,7 @@
 -- Setup and configuration
 local telescope = require("telescope")
 local actions = require("telescope.actions")
+local builtin = require("telescope.builtin")
 
 telescope.setup({
 	defaults = {
@@ -73,8 +74,10 @@ telescope.setup({
 telescope.load_extension("projects")
 
 -- Mappings
-vim.keymap.set("n", "<C-p>", ":Telescope find_files<cr>")
-vim.keymap.set("n", "<C-F>", ":Telescope live_grep<cr>")
-vim.keymap.set("n", "<C-L>", ":Telescope projects<cr>")
-vim.keymap.set("n", "<leader>bb", ":Telescope buffers<cr>")
-vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<cr>")
+vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Search for files in current project" })
+vim.keymap.set("n", "<C-F>", builtin.live_grep, { desc = "Search for files on the computer" })
+vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "Search existing buffers" })
+vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Search git branches in current project" })
+vim.keymap.set("n", "<C-L>", function()
+	telescope.extensions.projects.projects()
+end, { desc = "Search for projects" })
