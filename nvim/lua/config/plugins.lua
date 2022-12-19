@@ -66,7 +66,7 @@ return require("packer").startup(function(use)
 	use("wellle/targets.vim")
 
 	-- Short normal mode aliases for commonly used ex commands.
-	use("tpope/vim-unimpaired")
+	use({ "tpope/vim-unimpaired", disable = true })
 
 	-- Comment stuff out. Use gcc to comment out a line.
 	use({
