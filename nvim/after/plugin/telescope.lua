@@ -76,7 +76,7 @@ telescope.load_extension("projects")
 -- Mappings
 vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Search for files in current project" })
 vim.keymap.set("n", "<C-F>", builtin.live_grep, { desc = "Search for files on the computer" })
-vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "Search existing buffers" })
+vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "Search existing buffers" })
 vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Search git branches in current project" })
 vim.keymap.set("n", "<C-L>", function()
 	telescope.extensions.projects.projects()
