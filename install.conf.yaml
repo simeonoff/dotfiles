@@ -9,10 +9,10 @@
     ~/.bashrc:
     ~/.config/neofetch:
     ~/.config/nvim:
+    ~/.config/iterm2/save:
     ~/.config/ranger:
     ~/.dotfiles: ""
     ~/.gitconfig:
-    ~/.shell:
     ~/.ssh/config: ssh/config
     ~/.tmux.conf:
     ~/.tmux:
