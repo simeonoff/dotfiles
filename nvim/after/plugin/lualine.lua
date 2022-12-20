@@ -39,7 +39,7 @@ local branch_icon = ""
 
 local mode = {
 	function()
-		return " " .. " " .. " "
+		return " " .. "" .. " "
 	end,
 	padding = { left = 0, right = 0 },
 	color = {},

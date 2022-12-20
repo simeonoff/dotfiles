@@ -41,7 +41,7 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
-	use("RRethy/vim-illuminate")
+	use({ "RRethy/vim-illuminate", disable = true })
 
 	-- Utilities
 	-- Enable fuzzy search
