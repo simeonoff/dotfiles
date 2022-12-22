@@ -2171,7 +2171,7 @@
 			<key>Allow Title Reporting</key>
 			<false/>
 			<key>Allow Title Setting</key>
-			<false/>
+			<true/>
 			<key>Ambiguous Double Width</key>
 			<false/>
 			<key>Ansi 0 Color</key>
@@ -2396,7 +2396,7 @@
 			<key>Character Encoding</key>
 			<integer>4</integer>
 			<key>Close Sessions On End</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>Columns</key>
 			<integer>120</integer>
 			<key>Command</key>
@@ -2935,6 +2935,8 @@
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.047740822208737849</real>
+	<key>SuppressRestartAnnouncement</key>
+	<true/>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
 	<key>TabViewType</key>
