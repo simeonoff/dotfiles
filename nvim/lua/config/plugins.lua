@@ -132,15 +132,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- Terminal toggler
-	use({
-		"akinsho/toggleterm.nvim",
-		tag = "*",
-		config = function()
-			require("toggleterm").setup()
-		end,
-	})
-
 	-- Distraction free coding
 	use("folke/zen-mode.nvim")
 
