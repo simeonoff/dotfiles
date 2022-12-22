@@ -17,16 +17,28 @@ require("nvim-tree").setup({
 		float = {
 			enable = false,
 		},
+		hide_root_folder = true,
 	},
 	renderer = {
 		group_empty = true,
+		highlight_git = true,
+		indent_markers = {
+			enable = true,
+		},
+		icons = {
+			git_placement = "after",
+		},
 	},
 	filters = {
 		dotfiles = false,
+	},
+	diagnostics = {
+		enable = true,
+		show_on_dirs = true,
 	},
 })
 
 -- Mappings
 vim.keymap.set("n", "<leader>f", function()
-	vim.cmd("NvimTreeToggle")
+	require("nvim-tree").toggle()
 end, { desc = "Toggle File Explorer" })

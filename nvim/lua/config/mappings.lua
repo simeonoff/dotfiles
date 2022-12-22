@@ -30,7 +30,7 @@ vim.keymap.set("n", "<leader>gs", function()
 end, { desc = "Toggle Diffview" })
 
 vim.keymap.set("n", "<leader>gc", function()
-	vim.cmd("Git commit")
+	vim.cmd("tab Git commit")
 end, { silent = true, desc = "Open git commit" })
 
 vim.keymap.set("n", "<leader>bd", require("bufdelete").bufdelete, { desc = "Deletes the current buffer" })
