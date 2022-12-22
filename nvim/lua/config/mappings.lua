@@ -33,6 +33,10 @@ vim.keymap.set("n", "<leader>gc", function()
 	vim.cmd("tab Git commit")
 end, { silent = true, desc = "Open git commit" })
 
+vim.keymap.set("n", "<leader>gp", function()
+	vim.cmd("Git push")
+end, { silent = true, desc = "Git push" })
+
 vim.keymap.set("n", "<leader>bd", require("bufdelete").bufdelete, { desc = "Deletes the current buffer" })
 
 vim.keymap.set("n", "[b", function()
