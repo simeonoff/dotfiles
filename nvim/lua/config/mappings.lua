@@ -26,12 +26,7 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>gs", function()
-	local diffview = vim.bo.filetype == "DiffviewFiles"
-	if diffview then
-		vim.cmd("DiffviewClose")
-	else
-		vim.cmd("DiffviewOpen")
-	end
+	vim.cmd("DiffViewToggle")
 end, { desc = "Toggle Diffview" })
 
 vim.keymap.set("n", "<leader>gc", function()
