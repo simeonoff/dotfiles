@@ -1,4 +1,35 @@
 local lsp = require("lsp-zero")
+local null_ls = require("null-ls")
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+local prettier_filetypes = {
+	"javascript",
+	"javascriptreact",
+	"typescript",
+	"typescriptreact",
+	"vue",
+	"less",
+	"html",
+	"json",
+	"jsonc",
+	"yaml",
+	"markdown",
+	"markdown.mdx",
+	"graphql",
+	"handlebars",
+	"svelte",
+}
+
+local format_buffer = function(bufnr, async)
+	vim.lsp.buf.format({
+		bufnr = bufnr,
+		async = async,
+		filter = function(client)
+			return client.name == "null-ls"
+		end,
+	})
+end
+
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -13,20 +44,6 @@ lsp.ensure_installed({
 	"svelte",
 	"jsonls",
 })
-
-local null_ls = require("null-ls")
-
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-local format_buffer = function(bufnr, async)
-	vim.lsp.buf.format({
-		bufnr = bufnr,
-		async = async,
-		filter = function(client)
-			return client.name == "null-ls"
-		end,
-	})
-end
 
 local null_opts = lsp.build_options("null-ls", {
 	on_attach = function(client, bufnr)
@@ -43,7 +60,7 @@ local null_opts = lsp.build_options("null-ls", {
 	end,
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
 	vim.keymap.set("n", "<leader>i", function()
@@ -73,31 +90,13 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>vrr", function()
 		vim.lsp.buf.references()
 	end, opts)
-	vim.keymap.set("n", "F2", function()
+	vim.keymap.set("n", "<F2>", function()
 		vim.lsp.buf.rename()
 	end, opts)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, opts)
 end)
-
-local prettier_filetypes = {
-	"javascript",
-	"javascriptreact",
-	"typescript",
-	"typescriptreact",
-	"vue",
-	"less",
-	"html",
-	"json",
-	"jsonc",
-	"yaml",
-	"markdown",
-	"markdown.mdx",
-	"graphql",
-	"handlebars",
-	"svelte",
-}
 
 null_ls.setup({
 	on_attach = null_opts.on_attach,

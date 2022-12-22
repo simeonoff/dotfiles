@@ -1,22 +1,22 @@
-local utils = {
-	open_location = function()
-		local loc = vim.fn.expand("<cfile>")
-		local executable = nil
+local M = {}
 
-		if vim.fn.has("mac") == 1 then
-			executable = "open"
-		elseif vim.fn.has("unix") == 1 then
-			executable = "xdg-open"
-		end
+M.open_location = function()
+	local loc = vim.fn.expand("<cfile>")
+	local executable = nil
 
-		if executable then
-			vim.loop.spawn(executable, {
-				args = { loc },
-			})
-		else
-			print("Error: gx is not supported on this OS")
-		end
-	end,
-}
+	if vim.fn.has("mac") == 1 then
+		executable = "open"
+	elseif vim.fn.has("unix") == 1 then
+		executable = "xdg-open"
+	end
 
-return utils
+	if executable then
+		vim.loop.spawn(executable, {
+			args = { loc },
+		})
+	else
+		print("Error: opening locations is not supported on this OS")
+	end
+end
+
+return M

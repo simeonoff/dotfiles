@@ -28,12 +28,22 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>gs", function()
 	local diffview = vim.bo.filetype == "DiffviewFiles"
 	if diffview then
-		return vim.cmd("DiffviewClose")
+		vim.cmd("DiffviewClose")
 	else
-		return vim.cmd("DiffviewOpen")
+		vim.cmd("DiffviewOpen")
 	end
 end, { desc = "Toggle Diffview" })
 
 vim.keymap.set("n", "<leader>gc", function()
 	vim.cmd("Git commit")
 end, { silent = true, desc = "Open git commit" })
+
+vim.keymap.set("n", "<leader>bd", require("bufdelete").bufdelete, { desc = "Deletes the current buffer" })
+
+vim.keymap.set("n", "[b", function()
+	vim.cmd("bprevious")
+end, { desc = "Navigates to the previous buffer" })
+
+vim.keymap.set("n", "]b", function()
+	vim.cmd("bnext")
+end, { desc = "Navigates to the next buffer" })

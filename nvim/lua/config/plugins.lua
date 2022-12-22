@@ -83,6 +83,9 @@ return require("packer").startup(function(use)
 	-- Read .editorconfig rules.
 	use("editorconfig/editorconfig-vim")
 
+	-- Handle buffer deletion
+	use("famiu/bufdelete.nvim")
+
 	-- Version Control
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb")
