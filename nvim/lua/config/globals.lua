@@ -1,16 +1,10 @@
+local utils = require("config.utils")
+
 P = function(v)
 	print(vim.inspect(v))
 	return v
 end
 
-DiffViewToggle = function()
-	local diffview = require("diffview.lib").get_current_view()
+vim.api.nvim_create_user_command("DiffViewToggle", utils.toggle_diffview, {})
 
-	if not diffview then
-		vim.cmd("DiffviewOpen")
-	else
-		vim.cmd("DiffviewClose")
-	end
-end
-
-vim.api.nvim_create_user_command("DiffViewToggle", DiffViewToggle, {})
+vim.api.nvim_create_user_command("BufOnly", utils.delete_buffers, {})
