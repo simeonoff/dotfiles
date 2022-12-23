@@ -97,6 +97,14 @@ return require("packer").startup(function(use)
 	})
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
+	-- Auto pair characters
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
+
 	-- Language Server
 	use({
 		"VonHeikemen/lsp-zero.nvim",

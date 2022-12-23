@@ -1,6 +1,7 @@
 local lsp = require("lsp-zero")
 local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local format_on_save = false
 
 local prettier_filetypes = {
 	"javascript",
@@ -53,7 +54,9 @@ local null_opts = lsp.build_options("null-ls", {
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					format_buffer(bufnr, false)
+					if format_on_save then
+						format_buffer(bufnr, false)
+					end
 				end,
 			})
 		end
@@ -90,7 +93,7 @@ lsp.on_attach(function(_, bufnr)
 	vim.keymap.set("n", "<leader>vrr", function()
 		vim.lsp.buf.references()
 	end, opts)
-	vim.keymap.set("n", "<F2>", function()
+	vim.keymap.set("n", "<leader>vrn", function()
 		vim.lsp.buf.rename()
 	end, opts)
 	vim.keymap.set("i", "<C-h>", function()
@@ -104,7 +107,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylelint,
 		null_ls.builtins.formatting.eslint,
 		null_ls.builtins.formatting.stylua,
-		require("null-ls").builtins.formatting.prettierd.with({ filetypes = prettier_filetypes }),
+		null_ls.builtins.formatting.prettierd.with({ filetypes = prettier_filetypes }),
 	},
 })
 
