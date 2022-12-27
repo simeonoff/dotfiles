@@ -1,6 +1,6 @@
 require("config.set")
 require("config.mappings")
-require("config.plugins")
+require("config.lazy")
 require("config.visuals")
 require("config.globals")
 

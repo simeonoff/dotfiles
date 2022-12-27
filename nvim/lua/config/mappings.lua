@@ -37,8 +37,6 @@ vim.keymap.set("n", "<leader>gp", function()
 	vim.cmd("Git push")
 end, { silent = true, desc = "Git push" })
 
-vim.keymap.set("n", "<leader>bd", require("bufdelete").bufdelete, { desc = "Deletes the current buffer" })
-
 vim.keymap.set("n", "<leader>bo", function()
 	vim.cmd("BufOnly")
 end, { desc = "Deletes all buffers except the current one" })

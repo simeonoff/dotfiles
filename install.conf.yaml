@@ -26,7 +26,7 @@
     - command: git submodule update --init --recursive
       description: Update Submodules
       quiet: true
-    - command: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+    - command: nvim --headless "+Lazy! sync" +qa
       description: Prepare Neovim
       quiet: false
     - command: chmod 0600 ~/.ssh/config
