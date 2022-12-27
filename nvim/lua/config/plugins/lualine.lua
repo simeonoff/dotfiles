@@ -184,7 +184,7 @@ return {
 				},
 			},
 			tabline = {},
-			extensions = {},
+			extensions = { "nvim-tree" },
 		})
 	end,
 }

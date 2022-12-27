@@ -1,7 +1,7 @@
 return {
 	"akinsho/bufferline.nvim",
-    lazy = true,
-    event = "BufAdd",
+	lazy = true,
+	event = "BufAdd",
 	version = "v3.*",
 
 	config = function()
@@ -37,7 +37,7 @@ return {
 				buffer_close_icon = "",
 				left_trunc_marker = "",
 				right_trunc_marker = "",
-				separator_style = { "", "" },
+				separator_style = "thick",
 				diagnostics = "nvim_lsp",
 				show_close_icon = false,
 			},

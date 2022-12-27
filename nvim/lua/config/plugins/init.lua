@@ -2,8 +2,8 @@ return {
 	-- Eyecandy
 	{
 		"lukas-reineke/indent-blankline.nvim",
-        lazy = true,
-        event = "BufReadPre",
+		lazy = true,
+		event = "BufReadPre",
 		config = function()
 			require("indent_blankline").setup({
 				-- for example, context is off by default, use this to turn it on
@@ -33,9 +33,6 @@ return {
 	-- Sensible defaults
 	"tpope/vim-sensible",
 
-	-- LSP addition for svelte
-	"leafOfTree/vim-svelte-plugin",
-
 	-- Provides mappings to easily delete, change targets.
 	"wellle/targets.vim",
 
@@ -62,15 +59,8 @@ return {
 	},
 
 	-- Version Control
-	"tpope/vim-fugitive",
+	{ "tpope/vim-fugitive", cmd = { "Git" }, lazy = true },
 	"tpope/vim-rhubarb",
-	{
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup()
-		end,
-	},
-	"sindrets/diffview.nvim",
 
 	-- Auto pair characters
 	{
@@ -81,5 +71,5 @@ return {
 	},
 
 	-- A pretty list for showing diagnostics, references, etc.
-	"folke/trouble.nvim",
+	{ "folke/trouble.nvim", lazy = true },
 }

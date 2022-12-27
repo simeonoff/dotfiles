@@ -26,7 +26,7 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>gs", function()
-	vim.cmd("DiffViewToggle")
+	vim.cmd("DiffviewToggle")
 end, { desc = "Toggle Diffview" })
 
 vim.keymap.set("n", "<leader>gc", function()
