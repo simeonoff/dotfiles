@@ -1,8 +1,9 @@
 return {
 	"akinsho/bufferline.nvim",
-	lazy = true,
-	event = "BufAdd",
 	version = "v3.*",
+    dependencies = {
+	    "EdenEast/nightfox.nvim",
+    },
 
 	config = function()
 		local bufferline = require("bufferline")
