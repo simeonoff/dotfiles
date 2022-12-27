@@ -1,4 +1,4 @@
-local utils = require("config.utils")
+local utils = require("utils")
 
 P = function(v)
 	print(vim.inspect(v))

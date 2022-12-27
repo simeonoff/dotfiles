@@ -107,7 +107,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylelint,
 		null_ls.builtins.formatting.eslint,
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettierd.with({ filetypes = prettier_filetypes }),
+		null_ls.builtins.formatting.prettier.with({ filetypes = prettier_filetypes }),
 	},
 })
 
