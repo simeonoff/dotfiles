@@ -128,10 +128,6 @@ local plugins = {
 return {
 	"nvim-lualine/lualine.nvim",
 
-	dependencies = {
-		"EdenEast/nightfox.nvim",
-	},
-
 	config = function()
 		local lualine = require("lualine")
 

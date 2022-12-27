@@ -39,7 +39,7 @@
   "vim-fugitive": { "branch": "master", "commit": "5b0b138483de17a8fd8dfcec0b491782c8fbf102" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
   "vim-rhubarb": { "branch": "master", "commit": "cad60fe382f3f501bbb28e113dfe8c0de6e77c75" },
-  "vim-sensible": { "branch": "master", "commit": "c48736b2c390a0bf7737c634a6c875ac61662750" },
+  "vim-sensible": { "branch": "master", "commit": "d4b12eaf84c4a3079b6228769ee9ad2380bd42b3" },
   "vim-svelte-plugin": { "branch": "master", "commit": "a7161aed8dec74508bbf98224b7e68d63be1207a" },
   "zen-mode.nvim": { "branch": "main", "commit": "6f5702db4fd4a4c9a212f8de3b7b982f3d93b03c" }
 }

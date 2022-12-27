@@ -1,17 +1,9 @@
 return {
 	-- Eyecandy
 	{
-		"EdenEast/nightfox.nvim",
-		lazy = false,
-		config = function()
-			vim.cmd.colorscheme("carbonfox")
-		end,
-	},
-	{
 		"lukas-reineke/indent-blankline.nvim",
-        dependencies = {
-		    "EdenEast/nightfox.nvim",
-        },
+        lazy = true,
+        event = "BufReadPre",
 		config = function()
 			require("indent_blankline").setup({
 				-- for example, context is off by default, use this to turn it on
