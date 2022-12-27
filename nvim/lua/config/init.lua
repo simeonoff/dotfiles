@@ -1,7 +1,6 @@
 require("config.set")
 require("config.mappings")
 require("config.lazy")
-require("config.visuals")
 require("config.globals")
 
 -- disable netrw at the very start
