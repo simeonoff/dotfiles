@@ -1,5 +1,6 @@
 return {
 	"folke/zen-mode.nvim",
+    event = "BufAdd",
 
 	config = function()
 		require("zen-mode").setup({
@@ -9,6 +10,9 @@ return {
 					number = true,
 					relativenumber = true,
 				},
+			},
+			plugins = {
+				gitsigns = true,
 			},
 		})
 

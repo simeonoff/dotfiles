@@ -1,6 +1,5 @@
 local M = {
 	"ggandor/leap.nvim",
-    lazy = true,
 	event = "VeryLazy",
 
 	dependencies = {

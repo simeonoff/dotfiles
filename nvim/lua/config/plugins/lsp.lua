@@ -32,6 +32,7 @@ end
 
 local M = {
 	"VonHeikemen/lsp-zero.nvim",
+	event = "BufReadPre",
 }
 
 M.dependencies = {
@@ -133,11 +134,11 @@ M.config = function()
 	})
 
 	lsp.configure("html", {
-		filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+		filetypes = { "typescriptreact", "javascriptreact" },
 	})
 
 	lsp.configure("emmet_ls", {
-		filetypes = { "html", "typescript", "typescriptreact", "javascript", "javascriptreact", "svelte" },
+		filetypes = { "html", "typescriptreact", "javascriptreact", "svelte" },
 	})
 
 	lsp.configure("sumneko_lua", {

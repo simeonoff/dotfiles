@@ -1,7 +1,5 @@
 local utils = require("utils")
 
-vim.g.mapleader = " "
-
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center the view when navigating down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center the view when navigation up" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "Center the view when going over next match" })
@@ -26,7 +24,7 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>gs", function()
-	vim.cmd("DiffviewToggle")
+	utils.toggle_diffview()
 end, { desc = "Toggle Diffview" })
 
 vim.keymap.set("n", "<leader>gc", function()

@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- if hidden is not set, TextEdit might fail
 vim.opt.hidden = true
 
@@ -53,3 +55,9 @@ vim.opt.updatetime = 50
 
 -- enable gui colors
 vim.opt.termguicolors = true
+
+-- disable netrw at the very start
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.vim_svelte_plugin_load_full_syntax = 1
+vim.g.vim_svelte_plugin_use_typescript = 1

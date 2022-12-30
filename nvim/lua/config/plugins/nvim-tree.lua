@@ -1,6 +1,7 @@
 return {
 	"nvim-tree/nvim-tree.lua",
 	version = "nightly",
+    enabled = false,
 
 	config = function()
 		local tree = require("nvim-tree")
@@ -45,8 +46,8 @@ return {
 		})
 
 		-- Mappings
-		vim.keymap.set("n", "<leader>f", function()
-			tree.toggle()
-		end, { desc = "Toggle File Explorer" })
+		-- vim.keymap.set("n", "<leader>f", function()
+		-- 	tree.toggle()
+		-- end, { desc = "Toggle File Explorer" })
 	end,
 }

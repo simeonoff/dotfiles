@@ -127,6 +127,7 @@ local plugins = {
 
 return {
 	"nvim-lualine/lualine.nvim",
+    lazy = false,
 
 	config = function()
 		local lualine = require("lualine")
@@ -138,7 +139,7 @@ return {
 				icons_enabled = true,
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
-				disabled_filetypes = { "alpha" },
+				disabled_filetypes = {},
 			},
 			sections = {
 				lualine_a = {
@@ -156,7 +157,7 @@ return {
 					treesitter,
 					spaces,
 					filetype,
-                    plugins,
+					plugins,
 				},
 				lualine_y = { location },
 				lualine_z = {
@@ -184,7 +185,7 @@ return {
 				},
 			},
 			tabline = {},
-			extensions = { "nvim-tree" },
+			extensions = {},
 		})
 	end,
 }

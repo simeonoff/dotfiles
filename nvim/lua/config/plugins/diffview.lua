@@ -1,6 +1,5 @@
 return {
 	"sindrets/diffview.nvim",
-	cmd = { "DiffviewToggle", "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
-    lazy = true,
+	cmd = { "DiffViewToggle", "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
 	config = true,
 }

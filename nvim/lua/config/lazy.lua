@@ -15,12 +15,15 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup("config.plugins", {
-    install = {
-        colorscheme = { "nightfox" }
-    },
-    checker = {
-        enabled = true
-    }
+	defaults = {
+		lazy = true,
+	},
+	install = {
+		colorscheme = { "nightfox" },
+	},
+	checker = {
+		enabled = true,
+	},
 })
 
 vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>")

@@ -2,7 +2,6 @@ return {
 	-- Eyecandy
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		lazy = true,
 		event = "BufReadPre",
 		config = function()
 			require("indent_blankline").setup({
@@ -13,7 +12,7 @@ return {
 		end,
 	},
 	"kyazdani42/nvim-web-devicons",
-	"nvim-lua/popup.nvim",
+	"MunifTanjim/nui.nvim",
 
 	-- A collection of nvim APIs
 	"nvim-lua/plenary.nvim",
@@ -25,51 +24,56 @@ return {
 	-- Project management
 	{
 		"ahmedkhalf/project.nvim",
+		lazy = false,
 		config = function()
 			require("project_nvim").setup()
 		end,
 	},
 
 	-- Sensible defaults
-	"tpope/vim-sensible",
+	{ "tpope/vim-sensible", event = "BufReadPre" },
 
 	-- Provides mappings to easily delete, change targets.
-	"wellle/targets.vim",
+	{ "wellle/targets.vim", event = "BufReadPre" },
 
 	-- Comment stuff out. Use gcc to comment out a line.
 	{
 		"numToStr/Comment.nvim",
+		event = "BufReadPre",
 		config = function()
 			require("Comment").setup()
 		end,
 	},
 
 	-- Make '.' work with plugin motions
-	"tpope/vim-repeat",
+	{ "tpope/vim-repeat", event = "BufReadPre" },
 
 	-- Read .editorconfig rules.
-	"editorconfig/editorconfig-vim",
+	{ "editorconfig/editorconfig-vim", event = "BufReadPre" },
 
 	-- Handle buffer deletion
 	{
 		"famiu/bufdelete.nvim",
+		event = "BufAdd",
 		config = function()
 			vim.keymap.set("n", "<leader>bd", require("bufdelete").bufdelete, { desc = "Deletes the current buffer" })
 		end,
 	},
 
 	-- Version Control
-	{ "tpope/vim-fugitive", cmd = { "Git" }, lazy = true },
-	"tpope/vim-rhubarb",
+	{ "tpope/vim-fugitive", cmd = { "Git" } },
+	{ "tpope/vim-rhubarb", enabled = false },
 
 	-- Auto pair characters
 	{
 		"windwp/nvim-autopairs",
+		event = "BufReadPre",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,
 	},
+	{ "windwp/nvim-ts-autotag", event = "BufReadPre" },
 
 	-- A pretty list for showing diagnostics, references, etc.
-	{ "folke/trouble.nvim", lazy = true },
+	{ "folke/trouble.nvim", cmd = { "Trouble" } },
 }

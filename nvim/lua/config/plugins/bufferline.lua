@@ -1,9 +1,11 @@
 return {
 	"akinsho/bufferline.nvim",
 	version = "v3.*",
-    dependencies = {
-	    "EdenEast/nightfox.nvim",
-    },
+	dependencies = {
+		"EdenEast/nightfox.nvim",
+	},
+
+    event = "BufAdd",
 
 	config = function()
 		local bufferline = require("bufferline")
@@ -13,10 +15,9 @@ return {
 				mode = "buffers",
 				offsets = {
 					{
-						filetype = "NvimTree",
-						text = "Explorer",
-						highlight = "PanelHeading",
-						padding = 1,
+						filetype = "neo-tree",
+						highlight = "Directory",
+						text_align = "left",
 					},
 					{
 						filetype = "DiffviewFiles",
@@ -41,6 +42,12 @@ return {
 				separator_style = "thick",
 				diagnostics = "nvim_lsp",
 				show_close_icon = false,
+				highlights = {
+					buffer_selected = {
+						bold = true,
+						italic = false,
+					},
+				},
 			},
 		})
 	end,

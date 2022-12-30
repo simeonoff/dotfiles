@@ -1,10 +1,11 @@
+---@diagnostic disable: different-requires
 require("config.set")
-require("config.mappings")
 require("config.lazy")
-require("config.globals")
 
--- disable netrw at the very start
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.g.vim_svelte_plugin_load_full_syntax = 1
-vim.g.vim_svelte_plugin_use_typescript = 1
+vim.api.nvim_create_autocmd("User", {
+	pattern = "VeryLazy",
+	callback = function()
+		require("config.globals")
+		require("config.mappings")
+	end,
+})
