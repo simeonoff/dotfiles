@@ -127,7 +127,7 @@ local plugins = {
 
 return {
 	"nvim-lualine/lualine.nvim",
-    lazy = false,
+	lazy = false,
 
 	config = function()
 		local lualine = require("lualine")

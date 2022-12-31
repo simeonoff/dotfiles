@@ -61,3 +61,9 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.vim_svelte_plugin_load_full_syntax = 1
 vim.g.vim_svelte_plugin_use_typescript = 1
+
+-- set commandline behavior
+vim.opt.showmode = false
+
+-- set global statusline
+vim.opt.laststatus = 3
