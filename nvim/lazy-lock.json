@@ -13,7 +13,7 @@
   "editorconfig-vim": { "branch": "master", "commit": "30ddc057f71287c3ac2beca876e7ae6d5abe26a0" },
   "flit.nvim": { "branch": "main", "commit": "be110f9814a45788d10537fd59b3c76d956bb7ad" },
   "friendly-snippets": { "branch": "main", "commit": "1a6a02350568d6830bcfa167c72f9b6e75e454ae" },
-  "fzf": { "branch": "master", "commit": "e97176b1d77823bb4efb36bf230319375b6ad2ad" },
+  "fzf": { "branch": "master", "commit": "924ffb5a35d163de8324376b24e765062c2c0f86" },
   "fzf.vim": { "branch": "master", "commit": "fd7fab77b20fdf09180cabdd660d8c3b7fe7ca1a" },
   "gitsigns.nvim": { "branch": "main", "commit": "2ab3bdf0a40bab53033048c6be75bda86316b55d" },
   "indent-blankline.nvim": { "branch": "master", "commit": "c4c203c3e8a595bc333abaf168fcb10c13ed5fb7" },
