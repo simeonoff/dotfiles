@@ -9,7 +9,7 @@ M.config = function()
 	local dashboard = require("alpha.themes.dashboard")
 
 	-- Set header
-	dashboard.section.header.val = require("banners").hydra
+	dashboard.section.header.val = require("banners").diablo
 
 	-- Set menu
 	dashboard.section.buttons.val = {
