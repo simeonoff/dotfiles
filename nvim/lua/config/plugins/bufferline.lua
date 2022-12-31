@@ -1,11 +1,10 @@
 return {
 	"akinsho/bufferline.nvim",
 	version = "v3.*",
+	lazy = false,
 	dependencies = {
 		"EdenEast/nightfox.nvim",
 	},
-
-    event = "BufAdd",
 
 	config = function()
 		local bufferline = require("bufferline")
@@ -44,10 +43,7 @@ return {
 				diagnostics = "nvim_lsp",
 				show_close_icon = false,
 				highlights = {
-					buffer_selected = {
-						bold = true,
-						italic = false,
-					},
+					buffer_selected = { italic = false },
 				},
 			},
 		})

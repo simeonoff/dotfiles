@@ -20,10 +20,8 @@ return {
 		source_selector = {
 			winbar = true,
 			content_layout = "center",
+			separator = { left = " ", right = " " },
 		},
 		use_popups_for_input = true,
-	},
-	indent = {
-		padding = 2,
 	},
 }
