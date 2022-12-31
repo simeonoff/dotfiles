@@ -16,8 +16,9 @@ return {
 				offsets = {
 					{
 						filetype = "neo-tree",
+						text = "Explorer",
 						highlight = "Directory",
-						text_align = "left",
+						padding = 1,
 					},
 					{
 						filetype = "DiffviewFiles",

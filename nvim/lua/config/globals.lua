@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd("User", {
+vim.api.nvim_create_autocmd("BufWinEnter", {
 	callback = function()
         vim.opt.laststatus = 3
 	end,
