@@ -24,7 +24,10 @@ return {
 	-- Project management
 	{
 		"ahmedkhalf/project.nvim",
-		lazy = false,
+        lazy = false,
+		keys = {
+			{ "<C-L>", "<cmd>Telescope projects<cr>", desc = "Recent Projects" },
+		},
 		config = function()
 			require("project_nvim").setup()
 		end,

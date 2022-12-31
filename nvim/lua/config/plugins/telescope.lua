@@ -101,8 +101,5 @@ return {
 		vim.keymap.set("n", "<C-F>", builtin.live_grep, { desc = "Search for files on the computer" })
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "Search existing buffers" })
 		vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Search git branches in current project" })
-		vim.keymap.set("n", "<C-L>", function()
-			telescope.extensions.projects.projects()
-		end, { desc = "Search for projects" })
 	end,
 }
