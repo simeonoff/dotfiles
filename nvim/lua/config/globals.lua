@@ -21,6 +21,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 vim.api.nvim_create_autocmd("User", {
 	callback = function()
-		vim.cmd("set laststatus=3")
+        vim.opt.laststatus = 3
 	end,
 })
