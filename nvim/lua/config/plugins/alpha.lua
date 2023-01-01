@@ -3,13 +3,12 @@ local M = {
 	lazy = false,
 }
 
--- vim:ft=lua
 M.config = function()
 	local alpha = require("alpha")
 	local dashboard = require("alpha.themes.dashboard")
 
 	-- Set header
-	dashboard.section.header.val = require("banners").diablo
+	dashboard.section.header.val = require("banners").hydra
 
 	-- Set menu
 	dashboard.section.buttons.val = {

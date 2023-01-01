@@ -33,6 +33,7 @@ end
 local M = {
 	"VonHeikemen/lsp-zero.nvim",
 	event = "BufReadPre",
+	cmd = { "Mason" },
 }
 
 M.dependencies = {

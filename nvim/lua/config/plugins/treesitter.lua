@@ -26,6 +26,7 @@ return {
 				},
 			},
 			ensure_installed = {
+				"bash",
 				"help",
 				"javascript",
 				"typescript",
@@ -34,18 +35,22 @@ return {
 				"css",
 				"scss",
 				"json",
+                "jsonc",
+                "jsdoc",
+                "regex",
 				"lua",
 				"svelte",
 				"yaml",
 				"markdown",
+				"markdown_inline",
 				"vim",
 			},
 			indent = {
 				enable = true,
 			},
-            autotag = {
-                enable = true
-            }
+			autotag = {
+				enable = true,
+			},
 		})
 	end,
 }
