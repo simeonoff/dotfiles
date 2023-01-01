@@ -24,7 +24,7 @@ return {
 	-- Project management
 	{
 		"ahmedkhalf/project.nvim",
-        lazy = false,
+		lazy = false,
 		keys = {
 			{ "<C-L>", "<cmd>Telescope projects<cr>", desc = "Recent Projects" },
 		},
@@ -79,4 +79,10 @@ return {
 
 	-- A pretty list for showing diagnostics, references, etc.
 	{ "folke/trouble.nvim", cmd = { "Trouble" } },
+
+	{
+		"shortcuts/no-neck-pain.nvim",
+        lazy = false,
+		version = "*",
+	},
 }
