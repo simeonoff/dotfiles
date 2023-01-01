@@ -1,4 +1,3 @@
----@diagnostic disable: different-requires
 require("config.set")
 require("config.lazy")
 

@@ -17,7 +17,7 @@ M.config = function()
 		dashboard.button("f", "  > Find file", ":cd $HOME/Projects | Telescope find_files<CR>"),
 		dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
 		dashboard.button("p", "  > Projects", ":Telescope projects<CR>"),
-		dashboard.button("l", "  > Update Plugins", ":Lazy sync<CR>"),
+		dashboard.button("l", "  > Plugins", ":Lazy<CR>"),
 		dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
 	}
 
@@ -36,6 +36,7 @@ M.config = function()
 		buffer = 0,
 		desc = "enable status and tabline after alpha",
 		callback = function()
+			vim.go.laststatus = 3
 			vim.opt.showtabline = 2
 		end,
 	})

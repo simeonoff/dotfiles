@@ -64,4 +64,4 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.showmode = false
 
 -- set global statusline
-vim.opt.laststatus = 3
+vim.go.laststatus = 3

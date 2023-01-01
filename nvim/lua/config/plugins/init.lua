@@ -33,9 +33,6 @@ return {
 		end,
 	},
 
-	-- Sensible defaults
-	{ "tpope/vim-sensible", event = "BufReadPre" },
-
 	-- Provides mappings to easily delete, change targets.
 	{ "wellle/targets.vim", event = "BufReadPre" },
 
@@ -82,7 +79,7 @@ return {
 
 	{
 		"shortcuts/no-neck-pain.nvim",
-        lazy = false,
+		cmd = { "NoNeckPain" },
 		version = "*",
 	},
 }
