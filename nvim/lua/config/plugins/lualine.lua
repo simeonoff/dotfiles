@@ -119,6 +119,31 @@ local encoding = {
 
 local filetype = { "filetype", cond = nil, padding = { left = 1, right = 1 } }
 
+local lsp = {
+	function(msg)
+		msg = msg or "  LSP Inactive"
+		local buf_clients = vim.lsp.buf_get_clients()
+		if next(buf_clients) == nil then
+			-- TODO: clean up this if statement
+			if type(msg) == "boolean" or #msg == 0 then
+				return "  LSP Inactive"
+			end
+			return msg
+		end
+
+		if rawget(vim, "lsp") then
+			for _, client in ipairs(vim.lsp.get_active_clients()) do
+				if client.attached_buffers[vim.api.nvim_get_current_buf()] then
+					if client.name ~= "null-ls" then
+						return (vim.o.columns > 100 and "%#St_LspStatus#" .. "   LSP ~ " .. client.name .. " ")
+							or "   LSP "
+					end
+				end
+			end
+		end
+	end,
+}
+
 local plugins = {
 	require("lazy.status").updates,
 	cond = require("lazy.status").has_updates,
@@ -153,8 +178,9 @@ return {
 				lualine_x = {
 					diagnostics,
 					encoding,
-					treesitter,
 					spaces,
+					treesitter,
+					lsp,
 					filetype,
 					plugins,
 				},
