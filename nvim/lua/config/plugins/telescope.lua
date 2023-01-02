@@ -44,11 +44,11 @@ return {
 				initial_mode = "insert",
 				selection_strategy = "reset",
 				sorting_strategy = "descending",
-				layout_strategy = "horizontal",
+				layout_strategy = "flex",
 				layout_config = {
 					width = 0.75,
 					prompt_position = "bottom",
-					preview_cutoff = 120,
+					preview_cutoff = 999,
 					horizontal = {
 						mirror = false,
 					},
