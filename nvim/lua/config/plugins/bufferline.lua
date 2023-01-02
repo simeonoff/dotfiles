@@ -16,7 +16,7 @@ return {
 					{
 						filetype = "neo-tree",
 						text = "Explorer",
-						highlight = "Directory",
+						highlight = "NeoTreeNormal",
 						padding = 1,
 					},
 					{
@@ -25,25 +25,22 @@ return {
 						highlight = "PanelHeading",
 						padding = 1,
 					},
-					{
-						filetype = "packer",
-						text = "Packer",
-						highlight = "PanelHeading",
-						padding = 1,
-					},
 				},
 				indicator = {
 					icon = "▎",
-					style = "icon",
+					style = "none",
 				},
 				buffer_close_icon = "",
 				left_trunc_marker = "",
 				right_trunc_marker = "",
-				separator_style = "thick",
+				separator_style = { " ", " " },
 				diagnostics = "nvim_lsp",
 				show_close_icon = false,
-				highlights = {
-					buffer_selected = { italic = false },
+			},
+			highlights = {
+				buffer_selected = { italic = false, bold = true },
+				fill = {
+					bg = { attribute = "bg", highlight = "NeoTreeNormal" },
 				},
 			},
 		})

@@ -1,8 +1,15 @@
-return {
+local M = {
 	"EdenEast/nightfox.nvim",
 	lazy = false,
-	config = function()
-		require("nightfox").setup()
-		vim.cmd.colorscheme("carbonfox")
-	end,
+	priority = 999,
+	enable = true,
 }
+
+M.colorscheme = "nordfox"
+
+M.config = function()
+	require("nightfox").setup()
+	vim.cmd.colorscheme(M.colorscheme)
+end
+
+return M
