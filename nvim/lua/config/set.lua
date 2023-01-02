@@ -6,6 +6,7 @@ vim.opt.hidden = true
 
 -- always show signcolumns
 vim.opt.signcolumn = "yes"
+vim.opt.ruler = false
 
 -- show the relative numbers
 vim.opt.relativenumber = true
@@ -43,7 +44,7 @@ vim.opt.scrolloff = 8
 vim.opt.conceallevel = 3
 
 -- configure completion menu
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.o.completeopt = "menu,menuone,noselect"
 
 -- configure clipboard
 vim.opt.clipboard = "unnamedplus"
@@ -52,7 +53,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.wildignore = "*/node_modules/**/*"
 
 -- Smaller updatetime for CursorHold & CursorHoldI
-vim.opt.updatetime = 50
+vim.opt.updatetime = 250
 
 -- enable gui colors
 vim.opt.termguicolors = true

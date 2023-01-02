@@ -16,11 +16,72 @@ M.dependencies = {
 	"rafamadriz/friendly-snippets",
 }
 
+M.icons = {
+	Namespace = "",
+	Text = " ",
+	Method = " ",
+	Function = " ",
+	Constructor = " ",
+	Field = "ﰠ ",
+	Variable = " ",
+	Class = "ﴯ ",
+	Interface = " ",
+	Module = " ",
+	Property = "ﰠ ",
+	Unit = "塞 ",
+	Value = " ",
+	Enum = " ",
+	Keyword = " ",
+	Snippet = " ",
+	Color = " ",
+	File = " ",
+	Reference = " ",
+	Folder = " ",
+	EnumMember = " ",
+	Constant = " ",
+	Struct = "פּ ",
+	Event = " ",
+	Operator = " ",
+	TypeParameter = " ",
+	Table = "",
+	Object = " ",
+	Tag = "",
+	Array = "[]",
+	Boolean = " ",
+	Number = " ",
+	Null = "ﳠ",
+	String = " ",
+	Calendar = "",
+	Watch = " ",
+	Package = "",
+	Copilot = " ",
+}
+
 M.config = function()
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")
 	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+	local cmp_window = require("cmp.utils.window")
 	local select_opts = { behavior = cmp.SelectBehavior.Select }
+	local border = function(hl_name)
+		return {
+			{ "╭", hl_name },
+			{ "─", hl_name },
+			{ "╮", hl_name },
+			{ "│", hl_name },
+			{ "╯", hl_name },
+			{ "─", hl_name },
+			{ "╰", hl_name },
+			{ "│", hl_name },
+		}
+	end
+
+	cmp_window.info_ = cmp_window.info
+	cmp_window.info = function(self)
+		local info = self:info_()
+		info.scrollable = false
+		return info
+	end
 
 	cmp.setup({
 		snippet = {
@@ -29,26 +90,24 @@ M.config = function()
 			end,
 		},
 		sources = {
-			{ name = "nvim_lsp", keyword_length = 3 },
-			{ name = "luasnip", keyword_length = 2 },
-			{ name = "buffer", keyword_length = 3 },
+			{ name = "luasnip" },
+			{ name = "nvim_lsp" },
+			{ name = "buffer" },
 			{ name = "path" },
 		},
 		window = {
-			documentation = cmp.config.window.bordered(),
+			completion = {
+				border = border("CmpBorder"),
+				winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+			},
+			documentation = {
+				border = border("CmpDocBorder"),
+			},
 		},
 		formatting = {
-			fields = { "menu", "abbr", "kind" },
-			format = function(entry, item)
-				local menu_icon = {
-					nvim_lsp = "λ",
-					luasnip = "⋗",
-					buffer = "Ω",
-					path = "🖫",
-				}
-
-				item.menu = menu_icon[entry.source.name]
-				return item
+			format = function(_, vim_item)
+				vim_item.kind = string.format("%s %s", M.icons[vim_item.kind], vim_item.kind)
+				return vim_item
 			end,
 		},
 		mapping = {
