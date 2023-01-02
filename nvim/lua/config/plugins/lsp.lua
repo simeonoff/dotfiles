@@ -42,6 +42,25 @@ M.dependencies = {
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 
+	-- Autocompletion
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+
+		dependencies = {
+
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+
+			-- Snippets
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
+		},
+	},
+
 	-- Diagnostics and Formatting
 	"jose-elias-alvarez/null-ls.nvim",
 }
@@ -49,6 +68,7 @@ M.dependencies = {
 M.config = function()
 	local lsp = require("lsp-zero")
 	local null_ls = require("null-ls")
+	local luasnip = require("luasnip")
 
 	lsp.preset("recommended")
 
@@ -84,6 +104,10 @@ M.config = function()
 
 	lsp.on_attach(function(_, bufnr)
 		local opts = { buffer = bufnr, remap = false }
+		local cmp = require("cmp")
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 		vim.keymap.set("n", "<leader>i", function()
 			format_buffer(bufnr, true)
@@ -121,6 +145,11 @@ M.config = function()
 	end)
 
 	lsp.setup_nvim_cmp({
+		snippet = {
+			expand = function(args)
+				luasnip.lsp_expand(args.body)
+			end,
+		},
 		sources = {
 			{ name = "luasnip" },
 			{ name = "nvim_lsp" },
