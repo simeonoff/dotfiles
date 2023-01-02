@@ -16,47 +16,6 @@ M.dependencies = {
 	"rafamadriz/friendly-snippets",
 }
 
-local icons = {
-	Namespace = "",
-	Text = " ",
-	Method = " ",
-	Function = " ",
-	Constructor = " ",
-	Field = "ﰠ ",
-	Variable = " ",
-	Class = "ﴯ ",
-	Interface = " ",
-	Module = " ",
-	Property = "ﰠ ",
-	Unit = "塞 ",
-	Value = " ",
-	Enum = " ",
-	Keyword = " ",
-	Snippet = " ",
-	Color = " ",
-	File = " ",
-	Reference = " ",
-	Folder = " ",
-	EnumMember = " ",
-	Constant = " ",
-	Struct = "פּ ",
-	Event = " ",
-	Operator = " ",
-	TypeParameter = " ",
-	Table = "",
-	Object = " ",
-	Tag = "",
-	Array = "[]",
-	Boolean = " ",
-	Number = " ",
-	Null = "ﳠ",
-	String = " ",
-	Calendar = "",
-	Watch = " ",
-	Package = "",
-	Copilot = " ",
-}
-
 M.config = function()
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")
@@ -76,23 +35,10 @@ M.config = function()
 				luasnip.lsp_expand(args.body)
 			end,
 		},
-		sources = {
-			{ name = "luasnip" },
-			{ name = "nvim_lsp" },
-			{ name = "buffer" },
-			{ name = "path" },
-		},
 		window = {
 			documentation = cmp.config.window.bordered({
 				winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
 			}),
-		},
-		formatting = {
-			fields = { "abbr", "kind", "menu" },
-			format = function(_, vim_item)
-				vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
-				return vim_item
-			end,
 		},
 	}
 

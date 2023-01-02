@@ -4,7 +4,7 @@ local M = {
 	priority = 999,
 }
 
-M.colorscheme = "nordfox"
+M.colorscheme = "carbonfox"
 
 M.config = function()
 	local palette = require("nightfox.palette").load(M.colorscheme)
@@ -43,16 +43,19 @@ M.config = function()
 					bg = palette.bg0,
 					fg = palette.bg0,
 				},
+				NeoTreeTitleBar = {
+					fg = palette.orange.base,
+				},
 				FloatBorder = {
-					fg = palette.bg0,
-					bg = palette.bg0,
+					fg = palette.bg2,
+					bg = palette.bg2,
 				},
 				FloatTitle = {
 					fg = palette.orange.base,
-					bg = palette.bg0,
+					bg = palette.bg2,
 				},
 				NormalFloat = {
-					bg = palette.bg0,
+					bg = palette.bg2,
 				},
 			},
 		},

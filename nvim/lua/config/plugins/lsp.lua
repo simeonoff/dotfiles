@@ -120,7 +120,21 @@ M.config = function()
 		end, opts)
 	end)
 
+	lsp.setup_nvim_cmp({
+		sources = {
+			{ name = "luasnip" },
+			{ name = "nvim_lsp" },
+			{ name = "buffer" },
+			{ name = "path" },
+		},
+		formatting = {
+			fields = { "kind", "abbr", "menu" },
+			format = require("kind").format(),
+		},
+	})
+
 	null_ls.setup({
+
 		on_attach = null_opts.on_attach,
 		sources = {
 			null_ls.builtins.formatting.stylelint,
