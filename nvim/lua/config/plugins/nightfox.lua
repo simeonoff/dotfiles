@@ -2,7 +2,6 @@ local M = {
 	"EdenEast/nightfox.nvim",
 	lazy = false,
 	priority = 999,
-	enable = true,
 }
 
 M.colorscheme = "nordfox"
@@ -43,6 +42,17 @@ M.config = function()
 				NeoTreeWinSeparator = {
 					bg = palette.bg0,
 					fg = palette.bg0,
+				},
+				FloatBorder = {
+					fg = palette.bg0,
+					bg = palette.bg0,
+				},
+				FloatTitle = {
+					fg = palette.orange.base,
+					bg = palette.bg0,
+				},
+				NormalFloat = {
+					bg = palette.bg0,
 				},
 			},
 		},
