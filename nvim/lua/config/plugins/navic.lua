@@ -7,5 +7,10 @@ return {
 			require("nvim-navic").attach(client, buffer)
 		end)
 	end,
-	config = { separator = " > ", highlight = true, depth_limit = 5 },
+	config = {
+		separator = " > ",
+		highlight = true,
+		depth_limit = 5,
+		icons = require("kind").icons,
+	},
 }
