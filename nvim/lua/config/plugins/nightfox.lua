@@ -57,6 +57,14 @@ M.config = function()
 				NormalFloat = {
 					bg = palette.bg2,
 				},
+				CmpDocsMenu = {
+					fg = palette.fg0,
+					bg = palette.bg2,
+				},
+				CmpDocsBorder = {
+					fg = palette.bg2,
+					bg = palette.bg2,
+				},
 			},
 		},
 	})
