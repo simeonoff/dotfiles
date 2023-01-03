@@ -15,11 +15,15 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup("config.plugins", {
+	dev = {
+		path = "~/Projects",
+		patterns = {},
+	},
 	defaults = {
 		lazy = true,
 	},
 	install = {
-		colorscheme = { "nightfox" },
+		colorscheme = { "carbonfox" },
 	},
 	checker = {
 		enabled = true,

@@ -144,6 +144,20 @@ local lsp = {
 	end,
 }
 
+local navic = {
+	function()
+		local navic = require("nvim-navic")
+		local ret = navic.get_location()
+		return ret:len() > 2000 and "navic error" or ret
+	end,
+	cond = function()
+		if package.loaded["nvim-navic"] then
+			local navic = require("nvim-navic")
+			return navic.is_available()
+		end
+	end,
+}
+
 local plugins = {
 	require("lazy.status").updates,
 	cond = require("lazy.status").has_updates,
@@ -174,13 +188,14 @@ return {
 				},
 				lualine_c = {
 					diff,
+					navic,
 				},
 				lualine_x = {
 					diagnostics,
 					encoding,
 					spaces,
 					treesitter,
-                    lsp,
+					lsp,
 					plugins,
 				},
 				lualine_y = { location },

@@ -16,19 +16,20 @@ M.icons = {
 	Value = "  ",
 	Enum = "  ",
 	Keyword = "  ",
+    Key = ' ',
 	Snippet = "  ",
 	Color = "  ",
 	File = "  ",
 	Reference = "  ",
 	Folder = "  ",
-	EnumMember = "  ",
+    EnumMember = ' ',
 	Constant = "  ",
 	Struct = "  ",
 	Event = "  ",
 	Operator = "  ",
 	TypeParameter = "  ",
 	Table = "",
-	Object = " ",
+    Object = ' ',
 	Tag = "",
 	Array = "[]",
 	Boolean = " ",
@@ -37,11 +38,11 @@ M.icons = {
 	String = " ",
 	Calendar = "",
 	Watch = " ",
-	Package = "",
+	Package = " ",
 	Copilot = " ",
 }
 
-M.format = function()
+M.cmp_format = function()
 	return function(entry, vim_item)
 		-- vim_item.kind = string.format("%s %s", M.icons[vim_item.kind], vim_item.kind)
 		vim_item.kind = M.icons[vim_item.kind]
