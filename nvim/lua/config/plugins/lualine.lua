@@ -188,7 +188,7 @@ return {
 				},
 				lualine_c = {
 					diff,
-					navic,
+					-- navic,
 				},
 				lualine_x = {
 					diagnostics,
