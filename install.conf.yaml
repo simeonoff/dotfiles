@@ -6,6 +6,7 @@
 - clean: ["~"]
 
 - link:
+    ~/.alacritty.yml:
     ~/.bashrc:
     ~/.config/neofetch:
     ~/.config/nvim:

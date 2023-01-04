@@ -121,12 +121,12 @@ local filetype = { "filetype", cond = nil, padding = { left = 1, right = 1 } }
 
 local lsp = {
 	function(msg)
-		msg = msg or "  LSP Inactive"
+		msg = msg or "   LSP Inactive "
 		local buf_clients = vim.lsp.buf_get_clients()
 		if next(buf_clients) == nil then
 			-- TODO: clean up this if statement
 			if type(msg) == "boolean" or #msg == 0 then
-				return "  LSP Inactive"
+				return "   LSP Inactive "
 			end
 			return msg
 		end
