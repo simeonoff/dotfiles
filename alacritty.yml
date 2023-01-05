@@ -2,6 +2,8 @@ window:
   dimensions:
     columns: 160
     lines: 40
+  decorations: buttonless
+
 font:
   normal:
     family: Iosevka Nerd Font
