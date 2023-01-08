@@ -47,7 +47,7 @@ M.get_root = function()
 				or {}
 			for _, p in ipairs(paths) do
 				local r = vim.loop.fs_realpath(p)
-				if path:find(r, 1, true) then
+				if path ~= nil and path:find(r, 1, true) then
 					roots[#roots + 1] = r
 				end
 			end
@@ -70,6 +70,20 @@ M.on_attach = function(on_attach)
 			on_attach(client, buffer)
 		end,
 	})
+end
+
+M.telescope_project_files = function()
+	local opts = {}
+	if vim.loop.fs_stat(".git") then
+		opts.show_untracked = true
+		require("telescope.builtin").git_files(opts)
+	else
+		local client = vim.lsp.get_active_clients()[1]
+		if client then
+			opts.cwd = client.config.root_dir
+		end
+		require("telescope.builtin").find_files(opts)
+	end
 end
 
 return M

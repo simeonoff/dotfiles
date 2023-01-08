@@ -21,18 +21,6 @@ return {
 	"junegunn/fzf.vim",
 	{ "junegunn/fzf", build = ":call fzf#install()" },
 
-	-- Project management
-	{
-		"ahmedkhalf/project.nvim",
-		lazy = false,
-		keys = {
-			{ "<C-L>", "<cmd>Telescope projects<cr>", desc = "Recent Projects" },
-		},
-		config = function()
-			require("project_nvim").setup()
-		end,
-	},
-
 	-- Provides mappings to easily delete, change targets.
 	{ "wellle/targets.vim", event = "BufReadPre" },
 
@@ -62,7 +50,6 @@ return {
 
 	-- Version Control
 	{ "tpope/vim-fugitive", cmd = { "Git" } },
-	{ "tpope/vim-rhubarb", enabled = false },
 
 	-- Auto pair characters
 	{

@@ -5,7 +5,7 @@ local M = {
 		{
 			"<leader>f",
 			function()
-				require("neo-tree.command").execute({ toggle = true, dir = require("utils").get_root() })
+				require("neo-tree.command").execute({ toggle = true })
 			end,
 			desc = "NeoTree",
 		},

@@ -1,16 +1,4 @@
-local function project_files()
-	local opts = {}
-	if vim.loop.fs_stat(".git") then
-		opts.show_untracked = true
-		require("telescope.builtin").git_files(opts)
-	else
-		local client = vim.lsp.get_active_clients()[1]
-		if client then
-			opts.cwd = client.config.root_dir
-		end
-		require("telescope.builtin").find_files(opts)
-	end
-end
+local project_files = require("utils").telescope_project_files
 
 return {
 	"nvim-telescope/telescope.nvim",
@@ -95,7 +83,7 @@ return {
 			},
 		})
 
-		telescope.load_extension("projects")
+		telescope.load_extension("workspaces")
 
 		-- Mappings
 		vim.keymap.set("n", "<C-F>", builtin.live_grep, { desc = "Search for files on the computer" })
