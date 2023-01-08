@@ -4,7 +4,7 @@ local M = {
 	priority = 999,
 }
 
-M.colorscheme = "carbonfox"
+M.colorscheme = "duskfox"
 
 M.config = function()
 	local palette = require("nightfox.palette").load(M.colorscheme)
