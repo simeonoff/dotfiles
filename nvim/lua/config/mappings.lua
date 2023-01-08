@@ -40,9 +40,15 @@ vim.keymap.set("n", "<leader>bo", function()
 end, { desc = "Deletes all buffers except the current one" })
 
 vim.keymap.set("n", "[b", function()
-	vim.cmd("bprevious")
+	local ft = vim.bo.filetype
+	if ft ~= "neo-tree" then
+		vim.cmd("bprevious")
+	end
 end, { desc = "Navigates to the previous buffer" })
 
 vim.keymap.set("n", "]b", function()
-	vim.cmd("bnext")
+	local ft = vim.bo.filetype
+	if ft ~= "neo-tree" then
+		vim.cmd("bnext")
+	end
 end, { desc = "Navigates to the next buffer" })

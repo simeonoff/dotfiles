@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 
--- Change current work directory to root of the file
+-- Change current work directory to root of the buffer
 vim.api.nvim_create_autocmd("BufRead", {
 	group = group_id,
 	callback = function()
@@ -57,19 +57,23 @@ vim.api.nvim_create_autocmd("BufRead", {
 	end,
 })
 
--- Change the current working directory to the root dir of the file
+-- Change the current working directory to the root dir of the buffer
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = group_id,
 	nested = true,
 	callback = function()
-		local root = vim.fn.exists("b:root_dir") == 1 and vim.api.nvim_buf_get_var(0, "root_dir") or nil
-		if root == nil then
-			root = require("utils").get_root()
-			vim.api.nvim_buf_set_var(0, "root_dir", root)
-		end
+		local ft = vim.bo.filetype
 
-		if root ~= nil then
-			vim.api.nvim_set_current_dir(root)
+		if ft ~= "neo-tree" then
+			local root = vim.fn.exists("b:root_dir") == 1 and vim.api.nvim_buf_get_var(0, "root_dir") or nil
+			if root == nil then
+				root = require("utils").get_root()
+				vim.api.nvim_buf_set_var(0, "root_dir", root)
+			end
+
+			if root ~= nil then
+				vim.api.nvim_set_current_dir(root)
+			end
 		end
 	end,
 })
