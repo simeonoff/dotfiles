@@ -54,15 +54,16 @@ M.config = function()
 
 	lsp.ensure_installed({
 		"angularls",
-		"tsserver",
-		"stylelint_lsp",
 		"cssls",
-		"html",
 		"emmet_ls",
 		"eslint",
-		"sumneko_lua",
-		"svelte",
+		"html",
 		"jsonls",
+		"sumneko_lua",
+        "marksman",
+		"stylelint_lsp",
+		"svelte",
+		"tsserver",
 	})
 
 	local null_opts = lsp.build_options("null-ls", {
