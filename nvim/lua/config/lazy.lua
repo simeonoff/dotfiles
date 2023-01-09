@@ -23,7 +23,7 @@ require("lazy").setup("config.plugins", {
 		lazy = true,
 	},
 	install = {
-		colorscheme = { "carbonfox" },
+		colorscheme = { "duskfox" },
 	},
 	checker = {
 		enabled = true,

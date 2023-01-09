@@ -31,17 +31,18 @@ return {
 				entry_prefix = "  ",
 				initial_mode = "insert",
 				selection_strategy = "reset",
-				sorting_strategy = "descending",
-				layout_strategy = "flex",
+				sorting_strategy = "ascending",
+				layout_strategy = "vertical",
 				layout_config = {
-					width = 0.75,
+					width = 0.55,
 					prompt_position = "bottom",
-					preview_cutoff = 999,
+					preview_cutoff = 90,
 					horizontal = {
 						mirror = false,
 					},
 					vertical = {
-						mirror = false,
+						mirror = true,
+                        prompt_position = "top"
 					},
 				},
 				file_sorter = require("telescope.sorters").get_fuzzy_file,

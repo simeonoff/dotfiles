@@ -1,6 +1,6 @@
 return {
 	"folke/zen-mode.nvim",
-    event = "BufAdd",
+	event = "BufAdd",
 
 	config = function()
 		require("zen-mode").setup({
@@ -12,13 +12,22 @@ return {
 				},
 			},
 			plugins = {
-				gitsigns = true,
+				gitsigns = {
+					enabled = true,
+				},
 			},
+			on_open = function()
+				vim.go.laststatus = 0
+				vim.wo.wrap = false
+			end,
+			on_close = function()
+				vim.go.laststatus = 0
+				vim.wo.wrap = true
+			end,
 		})
 
 		vim.keymap.set("n", "<leader>zz", function()
 			require("zen-mode").toggle()
-			vim.wo.wrap = false
 		end, { desc = "Toggle Zen mode" })
 	end,
 }
