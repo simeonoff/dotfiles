@@ -10,8 +10,10 @@
     ~/.bashrc:
     ~/.config/neofetch:
     ~/.config/nvim:
+    ~/.config/skhd:
     ~/.config/iterm2-prefs:
     ~/.config/ranger:
+    ~/.config/yabai:
     ~/.dotfiles: ""
     ~/.gitconfig:
     ~/.ssh/config: ssh/config
