@@ -20,14 +20,6 @@ yabai -m config \
   right_padding 16 \
   window_gap 16 \
   window_shadow float \
-  focus_follows_mouse autoraise \
-  insert_feedback_color 0x00d75f5f \
-  active_window_border_color 0xff7aa2f7 \
-  normal_window_border_color 0x80565f89 \
-  window_border_width 3 \
-  window_border_radius 0 \
-  window_border_blur on \
-  window_border_hidpi on \
   # external_bar all:35:0
 
 yabai -m rule --add app="^System Settings$" sticky=on manage=off
