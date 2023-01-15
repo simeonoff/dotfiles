@@ -35,15 +35,13 @@ local function diff_source()
 	end
 end
 
-local branch_icon = ""
+local branch_icon = ""
 
 local mode = {
-	function()
-		return " " .. "" .. " "
+	"mode",
+	fmt = function(mode)
+		return mode:sub(1, 1)
 	end,
-	padding = { left = 0, right = 0 },
-	color = {},
-	cond = nil,
 }
 
 local branch = {
@@ -56,9 +54,9 @@ local diff = {
 	"diff",
 	source = diff_source,
 	symbols = {
-		added = "" .. " ",
-		modified = "" .. " ",
-		removed = "" .. " ",
+		added = "[+]" .. " ",
+		modified = "[~]" .. " ",
+		removed = "[-]" .. " ",
 	},
 	padding = { left = 2, right = 1 },
 	diff_color = {
@@ -73,16 +71,16 @@ local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
 	symbols = {
-		error = "" .. " ",
-		warn = "" .. " ",
-		info = "" .. " ",
-		hint = "" .. " ",
+		error = "E:" .. " ",
+		warn = "W:" .. " ",
+		info = "I:" .. " ",
+		hint = "H:" .. " ",
 	},
 }
 
 local treesitter = {
 	function()
-		return ""
+		return "TS "
 	end,
 	color = function()
 		local buf = vim.api.nvim_get_current_buf()
@@ -105,7 +103,7 @@ local progress = {
 local spaces = {
 	function()
 		local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
-		return "" .. " " .. shiftwidth
+		return "Tab Size:" .. " " .. shiftwidth
 	end,
 	padding = 1,
 }
@@ -121,12 +119,12 @@ local filetype = { "filetype", cond = nil, padding = { left = 1, right = 1 } }
 
 local lsp = {
 	function(msg)
-		msg = msg or "   LSP Inactive "
+		msg = msg or "LSP Inactive"
 		local buf_clients = vim.lsp.buf_get_clients()
 		if next(buf_clients) == nil then
 			-- TODO: clean up this if statement
 			if type(msg) == "boolean" or #msg == 0 then
-				return "   LSP Inactive "
+				return "LSP Inactive"
 			end
 			return msg
 		end
@@ -135,8 +133,7 @@ local lsp = {
 			for _, client in ipairs(vim.lsp.get_active_clients()) do
 				if client.attached_buffers[vim.api.nvim_get_current_buf()] then
 					if client.name ~= "null-ls" then
-						return (vim.o.columns > 100 and "%#St_LspStatus#" .. "   " .. client.name .. " ")
-							or "   LSP "
+						return (vim.o.columns > 100 and "%#St_LspStatus#" .. "LSP: " .. client.name) or "LSP"
 					end
 				end
 			end
@@ -194,9 +191,9 @@ return {
 					diagnostics,
 					encoding,
 					spaces,
-					treesitter,
 					lsp,
 					plugins,
+					treesitter,
 				},
 				lualine_y = { location },
 				lualine_z = {

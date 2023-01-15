@@ -11,7 +11,10 @@ return {
 			})
 		end,
 	},
-	"kyazdani42/nvim-web-devicons",
+	{
+		"kyazdani42/nvim-web-devicons",
+		enabled = false,
+	},
 	"MunifTanjim/nui.nvim",
 
 	-- A collection of nvim APIs

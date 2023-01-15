@@ -34,7 +34,7 @@ return {
 				sorting_strategy = "ascending",
 				layout_strategy = "vertical",
 				layout_config = {
-					width = 0.55,
+					width = 0.75,
 					prompt_position = "bottom",
 					preview_cutoff = 90,
 					horizontal = {
@@ -42,7 +42,7 @@ return {
 					},
 					vertical = {
 						mirror = true,
-                        prompt_position = "top"
+						prompt_position = "top",
 					},
 				},
 				file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -64,8 +64,8 @@ return {
 				mappings = {
 					i = {
 						["<C-q>"] = actions.send_to_qflist,
-						["<C-n>"] = false,
-						["<C-p>"] = false,
+						["<C-n>"] = true,
+						["<C-p>"] = true,
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
 					},
@@ -87,8 +87,9 @@ return {
 		telescope.load_extension("workspaces")
 
 		-- Mappings
-		vim.keymap.set("n", "<C-F>", builtin.live_grep, { desc = "Search for files on the computer" })
+		vim.keymap.set("n", "<C-f>", builtin.live_grep, { desc = "Search for files on the computer" })
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "Search existing buffers" })
 		vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Search git branches in current project" })
+		vim.keymap.set("n", "<leader>'", builtin.resume, { desc = "Resume the last opened telescope prompt" })
 	end,
 }
