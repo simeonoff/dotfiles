@@ -82,9 +82,6 @@ vim.opt.fillchars = {
 	foldclose = "",
 }
 
--- Show some invisible characters (tabs...
-vim.opt.list = true
-
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.pumheight = 10 -- Maximum number of entries in a popup
 vim.opt.splitbelow = true -- Put new windows below current

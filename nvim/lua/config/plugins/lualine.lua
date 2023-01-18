@@ -1,19 +1,7 @@
-local colors = {
-	bg = "#202328",
-	fg = "#bbc2cf",
-	yellow = "#ECBE7B",
-	cyan = "#008080",
-	darkblue = "#081633",
-	green = "#98be65",
-	orange = "#FF8800",
-	violet = "#a9a1e1",
-	magenta = "#c678dd",
-	purple = "#c678dd",
-	blue = "#51afef",
-	red = "#ec5f67",
-}
-
+local colorscheme = require("config.ui").colorscheme
+local colors = require("nightfox.palette").load(colorscheme)
 local window_width_limit = 100
+local branch_icon = ""
 
 local conditions = {
 	buffer_not_empty = function()
@@ -35,34 +23,36 @@ local function diff_source()
 	end
 end
 
-local branch_icon = ""
-
 local mode = {
 	"mode",
-	fmt = function(mode)
-		return mode:sub(1, 1)
-	end,
+	color = {
+		bg = colors.bg3,
+		fg = colors.orange.base,
+	},
 }
 
 local branch = {
 	"b:gitsigns_head",
 	icon = branch_icon,
-	color = { gui = "bold" },
+	color = {
+		bg = colors.bg3,
+		fg = colors.magenta.bright,
+	},
 }
 
 local diff = {
 	"diff",
 	source = diff_source,
 	symbols = {
-		added = "[+]" .. " ",
-		modified = "[~]" .. " ",
-		removed = "[-]" .. " ",
+		added = "+" .. " ",
+		modified = "~" .. " ",
+		removed = "-" .. " ",
 	},
 	padding = { left = 2, right = 1 },
 	diff_color = {
-		added = { fg = colors.green },
-		modified = { fg = colors.yellow },
-		removed = { fg = colors.red },
+		added = { fg = colors.green.base },
+		modified = { fg = colors.yellow.base },
+		removed = { fg = colors.red.base },
 	},
 	cond = nil,
 }
@@ -71,26 +61,31 @@ local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
 	symbols = {
-		error = "E:" .. " ",
-		warn = "W:" .. " ",
-		info = "I:" .. " ",
-		hint = "H:" .. " ",
+		error = "●" .. " ",
+		warn = "●" .. " ",
+		info = "●" .. " ",
+		hint = "●" .. " ",
 	},
 }
 
 local treesitter = {
 	function()
-		return "TS "
+		return "TS"
 	end,
 	color = function()
 		local buf = vim.api.nvim_get_current_buf()
 		local ts = vim.treesitter.highlighter.active[buf]
-		return { fg = ts and not vim.tbl_isempty(ts) and colors.green or colors.red }
+		return { fg = ts and not vim.tbl_isempty(ts) and colors.green.base or colors.red.base }
 	end,
 	cond = conditions.hide_in_width,
 }
 
-local location = { "location" }
+local location = {
+	"location",
+	color = {
+		fg = colors.fg3,
+	},
+}
 
 local progress = {
 	"progress",
@@ -103,15 +98,19 @@ local progress = {
 local spaces = {
 	function()
 		local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
-		return "Tab Size:" .. " " .. shiftwidth
+		return "Spaces: " .. shiftwidth
 	end,
-	padding = 1,
+	color = {
+		fg = colors.fg3,
+	},
 }
 
 local encoding = {
 	"o:encoding",
 	fmt = string.upper,
-	color = {},
+	color = {
+		fg = colors.fg3,
+	},
 	cond = conditions.hide_in_width,
 }
 
@@ -133,7 +132,7 @@ local lsp = {
 			for _, client in ipairs(vim.lsp.get_active_clients()) do
 				if client.attached_buffers[vim.api.nvim_get_current_buf()] then
 					if client.name ~= "null-ls" then
-						return (vim.o.columns > 100 and "%#St_LspStatus#" .. "LSP: " .. client.name) or "LSP"
+						return (vim.o.columns > 100 and "%#St_LspStatus#" .. client.name) or "LSP"
 					end
 				end
 			end
@@ -141,24 +140,30 @@ local lsp = {
 	end,
 }
 
-local navic = {
-	function()
-		local navic = require("nvim-navic")
-		local ret = navic.get_location()
-		return ret:len() > 2000 and "navic error" or ret
-	end,
-	cond = function()
-		if package.loaded["nvim-navic"] then
-			local navic = require("nvim-navic")
-			return navic.is_available()
-		end
-	end,
-}
+-- local navic = {
+-- 	function()
+-- 		local navic = require("nvim-navic")
+-- 		local ret = navic.get_location()
+-- 		return ret:len() > 2000 and "navic error" or ret
+-- 	end,
+-- 	cond = function()
+-- 		if package.loaded["nvim-navic"] then
+-- 			local navic = require("nvim-navic")
+-- 			return navic.is_available()
+-- 		end
+-- 	end,
+-- 	color = {
+-- 		bg = colors.bg0,
+-- 	},
+-- }
 
 local plugins = {
 	require("lazy.status").updates,
 	cond = require("lazy.status").has_updates,
-	color = { fg = "#ff9e64" },
+	color = {
+		fg = colors.orange.base,
+		bg = colors.bg0,
+	},
 }
 
 return {
@@ -172,8 +177,8 @@ return {
 			options = {
 				theme = "auto",
 				icons_enabled = true,
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
+				component_separators = "",
+				section_separators = "",
 				disabled_filetypes = {},
 			},
 			sections = {
@@ -181,7 +186,7 @@ return {
 					mode,
 				},
 				lualine_b = {
-					branch,
+					plugins,
 				},
 				lualine_c = {
 					diff,
@@ -189,15 +194,16 @@ return {
 				},
 				lualine_x = {
 					diagnostics,
+					treesitter,
+					lsp,
 					encoding,
 					spaces,
-					lsp,
-					plugins,
-					treesitter,
+					location,
 				},
-				lualine_y = { location },
+				lualine_y = {},
 				lualine_z = {
-					progress,
+					-- progress,
+					branch,
 				},
 			},
 			inactive_sections = {

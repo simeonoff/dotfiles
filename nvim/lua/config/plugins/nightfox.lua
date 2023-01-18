@@ -4,10 +4,10 @@ local M = {
 	priority = 999,
 }
 
-M.colorscheme = "duskfox"
+local colorscheme = require('config.ui').colorscheme
 
 M.config = function()
-	local palette = require("nightfox.palette").load(M.colorscheme)
+	local palette = require("nightfox.palette").load(colorscheme)
 
 	require("nightfox").setup({
 		groups = {
@@ -68,7 +68,7 @@ M.config = function()
 			},
 		},
 	})
-	vim.cmd.colorscheme(M.colorscheme)
+	vim.cmd.colorscheme(colorscheme)
 end
 
 return M

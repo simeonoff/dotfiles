@@ -1,5 +1,6 @@
 -- bootstrap lazy.nvim from github
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local colorscheme = require('config.ui').colorscheme
 
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -23,7 +24,7 @@ require("lazy").setup("config.plugins", {
 		lazy = true,
 	},
 	install = {
-		colorscheme = { "duskfox" },
+		colorscheme = { colorscheme },
 	},
 	checker = {
 		enabled = true,
