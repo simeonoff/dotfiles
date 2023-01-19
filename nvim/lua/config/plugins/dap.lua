@@ -45,7 +45,7 @@ end
 function M.config()
 	local dap = require("dap")
 
-	vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+	vim.fn.sign_define("DapBreakpoint", { text = "■", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
 	local dapui = require("dapui")
 	dap.listeners.after.event_initialized["dapui_config"] = function()

@@ -50,7 +50,21 @@ M.config = function()
 	local lsp = require("lsp-zero")
 	local null_ls = require("null-ls")
 
-	lsp.preset("lsp-compe")
+	lsp.set_preferences({
+		suggest_lsp_servers = true,
+		setup_servers_on_start = true,
+		set_lsp_keymaps = true,
+		configure_diagnostics = true,
+		cmp_capabilities = true,
+		manage_nvim_cmp = false,
+		call_servers = "local",
+		sign_icons = {
+			error = "●",
+			warn = "●",
+			hint = "●",
+			info = "●",
+		},
+	})
 
 	lsp.ensure_installed({
 		"angularls",
@@ -60,7 +74,7 @@ M.config = function()
 		"html",
 		"jsonls",
 		"sumneko_lua",
-        "marksman",
+		"marksman",
 		"stylelint_lsp",
 		"svelte",
 		"tsserver",
@@ -99,13 +113,13 @@ M.config = function()
 			vim.lsp.buf.signature_help()
 		end, opts)
 		vim.keymap.set("n", "<leader>ws", function()
-            vim.cmd("Telescope lsp_dynamic_workspace_symbols")
+			vim.cmd("Telescope lsp_dynamic_workspace_symbols")
 		end, opts)
 		vim.keymap.set("n", "gr", function()
-            vim.cmd("Telescope lsp_references")
+			vim.cmd("Telescope lsp_references")
 		end, opts)
 		vim.keymap.set("n", "<leader>ds", function()
-            vim.cmd("Telescope lsp_document_symbols")
+			vim.cmd("Telescope lsp_document_symbols")
 		end, opts)
 		vim.keymap.set("n", "<leader>vd", function()
 			vim.diagnostic.open_float()
