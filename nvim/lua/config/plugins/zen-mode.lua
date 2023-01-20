@@ -9,19 +9,23 @@ return {
 				options = {
 					number = true,
 					relativenumber = true,
+					signcolumn = "yes",
 				},
 			},
 			plugins = {
+        options = {
+          enabled = true,
+        },
 				gitsigns = {
 					enabled = true,
 				},
 			},
 			on_open = function()
-				vim.go.laststatus = 0
+				vim.o.laststatus = 0
 				vim.wo.wrap = false
 			end,
 			on_close = function()
-				vim.go.laststatus = 0
+				vim.o.laststatus = 3
 				vim.wo.wrap = true
 			end,
 		})

@@ -3,7 +3,7 @@ local M = {
 	cmd = "Neotree",
 	keys = {
 		{
-			"<leader>f",
+			"<C-e>",
 			function()
 				require("neo-tree.command").execute({ toggle = true })
 			end,

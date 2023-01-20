@@ -8,7 +8,7 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	keys = {
-		{ "<C-p>", project_files, desc = "Find File" },
+		{ "<leader>f", project_files, desc = "Find File" },
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -64,8 +64,8 @@ return {
 				mappings = {
 					i = {
 						["<C-q>"] = actions.send_to_qflist,
-						["<C-n>"] = true,
-						["<C-p>"] = true,
+						["<C-n>"] = false,
+						["<C-p>"] = false,
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
 					},
@@ -87,9 +87,9 @@ return {
 		telescope.load_extension("workspaces")
 
 		-- Mappings
-		vim.keymap.set("n", "<C-f>", builtin.live_grep, { desc = "Search for files on the computer" })
-		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "Search existing buffers" })
-		vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Search git branches in current project" })
+		vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Global search" })
+		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "Browse existing buffers" })
+		vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Broser git branches in current project" })
 		vim.keymap.set("n", "<leader>'", builtin.resume, { desc = "Resume the last opened telescope prompt" })
 	end,
 }
