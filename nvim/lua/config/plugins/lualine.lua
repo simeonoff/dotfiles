@@ -2,6 +2,7 @@ local colorscheme = require("config.ui").colorscheme
 local colors = require("nightfox.palette").load(colorscheme)
 local window_width_limit = 100
 local branch_icon = ""
+local plugin_checker = require("lazy.manage.checker")
 
 local conditions = {
 	buffer_not_empty = function()
@@ -158,11 +159,15 @@ local lsp = {
 -- }
 
 local plugins = {
-	require("lazy.status").updates,
-	cond = require("lazy.status").has_updates,
+	function()
+		return "○ Pending Updates ○"
+	end,
+	cond = function()
+		return #plugin_checker.updated > 0
+	end,
 	color = {
-		fg = colors.orange.base,
-		bg = colors.bg0,
+		fg = colors.magenta.bright,
+		bg = colors.bg2,
 	},
 }
 
