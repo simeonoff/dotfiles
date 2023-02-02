@@ -1,5 +1,6 @@
 local utils = require("utils")
 local group_id = vim.api.nvim_create_augroup("rooter", { clear = true })
+local personal_augroup = vim.api.nvim_create_augroup("personal_augroup", { clear = true })
 
 vim.api.nvim_create_user_command("BufOnly", utils.delete_buffers, {})
 
@@ -16,13 +17,20 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
--- Fix conceallevel for json & help files
+-- Change conceallevel for specific filetypes
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "json", "jsonc" },
+	pattern = { "json", "jsonc", "md", "markdown" },
 	callback = function()
-		vim.wo.spell = false
 		vim.wo.conceallevel = 0
 	end,
+  group = personal_augroup
+})
+
+-- Enable spellchecking for specific filetypes
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "md", "markdown", "gitcommit" },
+	command = "setlocal spell",
+  group = personal_augroup
 })
 
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -33,6 +41,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
 		end
 	end,
+  group = personal_augroup
 })
 
 -- Add keyboard navigation for terminals
@@ -47,6 +56,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
 		vim.keymap.set("t", "<C-t>", [[<Cmd>ToggleTerm<CR>]])
 	end,
+  group = personal_augroup
 })
 
 -- Change current work directory to root of the buffer

@@ -40,11 +40,29 @@ if [ -e $HOME/.local/bin/flutter/bin/flutter ]; then export PATH="${PATH}:${HOME
 export PATH=~/.dotfiles/bin:${PATH}
 
 # nvm use default
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
 
 # Load the starship theme
 eval "$(starship init zsh)"
+
+# Add Pomodoro functions
+work () {
+  duration=$1
+  timer "$duration" && terminal-notifier -message "Pomodoro"\
+    -title "Work Timer is up! Take a Break 😊"\
+    -appIcon "~/Pictures/tomato.png"\
+    -sound Crystal
+}
+
+rest () {
+  duration=$1
+  timer "$duration" && terminal-notifier -message "Pomodoro"\
+    -title "Break is over! Get back to work 😬"\
+    -appIcon "~/Pictures/tomato.png"\
+    -sound Crystal
+}

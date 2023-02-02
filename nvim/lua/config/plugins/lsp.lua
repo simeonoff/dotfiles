@@ -44,6 +44,9 @@ M.dependencies = {
 
 	-- Diagnostics and Formatting
 	"jose-elias-alvarez/null-ls.nvim",
+
+	-- JSON schemas
+	"b0o/SchemaStore.nvim",
 }
 
 M.config = function()
@@ -166,6 +169,15 @@ M.config = function()
 				diagnostics = {
 					globals = { "vim" },
 				},
+			},
+		},
+	})
+
+	lsp.configure("jsonls", {
+		settings = {
+			json = {
+				schemas = require("schemastore").json.schemas(),
+				validate = { enable = true },
 			},
 		},
 	})
