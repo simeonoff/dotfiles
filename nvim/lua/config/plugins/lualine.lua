@@ -3,6 +3,34 @@ local colors = require("nightfox.palette").load(colorscheme)
 local window_width_limit = 100
 local branch_icon = ""
 local plugin_checker = require("lazy.manage.checker")
+local gstatus = { ahead = 0, behind = 0 }
+
+local function update_gstatus()
+	local Job = require("plenary.job")
+	Job:new({
+		command = "git",
+		args = { "rev-list", "--left-right", "--count", "HEAD...@{upstream}" },
+		on_exit = function(job, _)
+			local res = job:result()[1]
+			if type(res) ~= "string" then
+				gstatus = { ahead = 0, behind = 0 }
+				return
+			end
+			local ok, ahead, behind = pcall(string.match, res, "(%d+)%s*(%d+)")
+			if not ok then
+				ahead, behind = 0, 0
+			end
+			gstatus = { ahead = ahead, behind = behind }
+		end,
+	}):start()
+end
+
+if _G.Gstatus_timer == nil then
+	_G.Gstatus_timer = vim.loop.new_timer()
+else
+	_G.Gstatus_timer:stop()
+end
+_G.Gstatus_timer:start(0, 2000, vim.schedule_wrap(update_gstatus))
 
 local conditions = {
 	buffer_not_empty = function()
@@ -37,6 +65,21 @@ local branch = {
 	icon = branch_icon,
 	color = {
 		bg = colors.bg3,
+		fg = colors.magenta.bright,
+	},
+}
+
+local status = {
+	function()
+		return "↓ " .. gstatus.behind .. " ↑ " .. gstatus.ahead
+	end,
+	cond = function()
+		local gitsigns = vim.b.gitsigns_status_dict
+		local shouldShow = gitsigns and (tonumber(gstatus.behind) > 0 or tonumber(gstatus.ahead) > 0)
+		return shouldShow
+	end,
+	color = {
+		bg = colors.bg2,
 		fg = colors.magenta.bright,
 	},
 }
@@ -209,6 +252,7 @@ return {
 				lualine_z = {
 					-- progress,
 					branch,
+					status,
 				},
 			},
 			inactive_sections = {
