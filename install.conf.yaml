@@ -14,6 +14,7 @@
     ~/.config/skhd:
     ~/.config/iterm2-prefs:
     ~/.config/ranger:
+    ~/.config/starship.toml:
     ~/.config/yabai:
     ~/.dotfiles: ""
     ~/.gitconfig:

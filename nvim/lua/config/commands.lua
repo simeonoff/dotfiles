@@ -1,8 +1,11 @@
 local utils = require("utils")
 local group_id = vim.api.nvim_create_augroup("rooter", { clear = true })
 local personal_augroup = vim.api.nvim_create_augroup("personal_augroup", { clear = true })
+local bufonly = require("bufonly")
 
-vim.api.nvim_create_user_command("BufOnly", utils.delete_buffers, {})
+vim.api.nvim_create_user_command("BufOnly", function()
+	bufonly.BufOnly()
+end, {})
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = {
@@ -23,14 +26,14 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	callback = function()
 		vim.wo.conceallevel = 0
 	end,
-  group = personal_augroup
+	group = personal_augroup,
 })
 
 -- Enable spellchecking for specific filetypes
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "md", "markdown", "gitcommit" },
 	command = "setlocal spell",
-  group = personal_augroup
+	group = personal_augroup,
 })
 
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -41,7 +44,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
 		end
 	end,
-  group = personal_augroup
+	group = personal_augroup,
 })
 
 -- Add keyboard navigation for terminals
@@ -56,7 +59,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
 		vim.keymap.set("t", "<C-t>", [[<Cmd>ToggleTerm<CR>]])
 	end,
-  group = personal_augroup
+	group = personal_augroup,
 })
 
 -- Change current work directory to root of the buffer
@@ -77,7 +80,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		if ft ~= "neo-tree" then
 			local root = vim.fn.exists("b:root_dir") == 1 and vim.api.nvim_buf_get_var(0, "root_dir") or nil
 			if root == nil then
-				root = require("utils").get_root()
+				root = utils.get_root()
 				vim.api.nvim_buf_set_var(0, "root_dir", root)
 			end
 

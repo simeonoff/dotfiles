@@ -16,20 +16,20 @@ M.icons = {
 	Value = "  ",
 	Enum = "  ",
 	Keyword = "  ",
-    Key = ' ',
+	Key = " ",
 	Snippet = "  ",
 	Color = "  ",
 	File = "  ",
 	Reference = "  ",
 	Folder = "  ",
-    EnumMember = ' ',
+	EnumMember = " ",
 	Constant = "  ",
 	Struct = "  ",
 	Event = "  ",
 	Operator = "  ",
 	TypeParameter = "  ",
 	Table = "",
-    Object = ' ',
+	Object = " ",
 	Tag = "",
 	Array = "[]",
 	Boolean = " ",
@@ -40,6 +40,7 @@ M.icons = {
 	Watch = " ",
 	Package = " ",
 	Copilot = " ",
+	Suggestion = " ",
 }
 
 M.cmp_format = function()
@@ -53,6 +54,7 @@ M.cmp_format = function()
 			luasnip = "[Snippet]",
 			nvim_lua = "[Lua]",
 			latex_symbols = "[LaTeX]",
+			codeium = "[Codeium]",
 		})[entry.source.name]
 
 		return vim_item

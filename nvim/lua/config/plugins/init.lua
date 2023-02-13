@@ -52,7 +52,7 @@ return {
 	},
 
 	-- Version Control
-	{ "tpope/vim-fugitive", cmd = { "Git" } },
+	{ "tpope/vim-fugitive", event = "BufEnter" },
 
 	-- Auto pair characters
 	{

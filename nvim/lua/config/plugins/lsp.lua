@@ -76,7 +76,7 @@ M.config = function()
 		"eslint",
 		"html",
 		"jsonls",
-		"sumneko_lua",
+    "lua_ls",
 		"marksman",
 		"stylelint_lsp",
 		"svelte",
@@ -163,7 +163,7 @@ M.config = function()
 		filetypes = { "html", "typescriptreact", "javascriptreact", "svelte" },
 	})
 
-	lsp.configure("sumneko_lua", {
+	lsp.configure("lua_ls", {
 		settings = {
 			Lua = {
 				diagnostics = {
