@@ -71,5 +71,13 @@ return {
 		"shortcuts/no-neck-pain.nvim",
 		cmd = { "NoNeckPain" },
 		version = "*",
+        enabled = false
+	},
+
+	-- Track file changes in the undo tree
+	{
+		"mbbill/undotree",
+		event = "BufReadPre",
+        enabled = true
 	},
 }

@@ -1,7 +1,7 @@
 local M = {
 	"jcdickinson/codeium.nvim",
 	event = "InsertEnter",
-	enabled = true,
+	enabled = false,
 
 	dependencies = {
 		"hrsh7th/nvim-cmp",

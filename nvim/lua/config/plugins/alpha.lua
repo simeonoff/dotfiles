@@ -8,7 +8,7 @@ M.config = function()
 	local dashboard = require("alpha.themes.dashboard")
 
 	-- Set header
-	dashboard.section.header.val = require("banners").hydra
+	dashboard.section.header.val = require("banners").threeskulls_v1
 
 	-- Set menu
 	dashboard.section.buttons.val = {
