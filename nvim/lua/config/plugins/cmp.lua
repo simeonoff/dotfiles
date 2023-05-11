@@ -28,6 +28,9 @@ M.config = function()
 				luasnip.lsp_expand(args.body)
 			end,
 		},
+		mapping = {
+			["<CR>"] = cmp.mapping.confirm({ select = false }),
+		},
 		sources = {
 			{ name = "luasnip" },
 			{ name = "nvim_lsp" },
@@ -35,6 +38,7 @@ M.config = function()
 			{ name = "path" },
 			{ name = "codeium" },
 		},
+		preselect = "item",
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
 			format = require("kind").cmp_format(),

@@ -8,7 +8,6 @@ local prettier_filetypes = {
 	"typescript",
 	"typescriptreact",
 	"vue",
-	"less",
 	"html",
 	"json",
 	"jsonc",
@@ -32,41 +31,47 @@ end
 
 local M = {
 	"VonHeikemen/lsp-zero.nvim",
+	branch = "v2.x",
 	event = "BufReadPre",
 	cmd = { "Mason" },
 }
 
 M.dependencies = {
 	-- LSP Support
-	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
+	{ "neovim/nvim-lspconfig" },
+	{
+		"williamboman/mason.nvim",
+		build = function()
+			pcall(vim.cmd, "MasonUpdate")
+		end,
+	},
+	{ "williamboman/mason-lspconfig.nvim" },
 
 	-- Diagnostics and Formatting
-	"jose-elias-alvarez/null-ls.nvim",
+	{ "jose-elias-alvarez/null-ls.nvim" },
 
 	-- JSON schemas
-	"b0o/SchemaStore.nvim",
+	{ "b0o/SchemaStore.nvim" },
 }
 
 M.config = function()
 	local lsp = require("lsp-zero")
 	local null_ls = require("null-ls")
+	pcall(vim.cmd, "MasonUpdate")
 
-	lsp.set_preferences({
-		suggest_lsp_servers = true,
+    lsp.preset({
 		setup_servers_on_start = true,
 		set_lsp_keymaps = true,
 		configure_diagnostics = true,
-		cmp_capabilities = true,
 		manage_nvim_cmp = false,
 		call_servers = "local",
-		sign_icons = {
-			error = "●",
-			warn = "●",
-			hint = "●",
-			info = "●",
-		},
+    })
+
+	lsp.set_sign_icons({
+		error = "●",
+		warn = "●",
+		hint = "●",
+		info = "●",
 	})
 
 	lsp.ensure_installed({
@@ -76,7 +81,7 @@ M.config = function()
 		"eslint",
 		"html",
 		"jsonls",
-    "lua_ls",
+		"lua_ls",
 		"marksman",
 		"stylelint_lsp",
 		"svelte",

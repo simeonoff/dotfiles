@@ -32,3 +32,4 @@ yabai -m rule --add app="^Console$" manage=off
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on manage=off
 yabai -m rule --add app="^Pomotroid$" manage=off
 yabai -m rule --add app="^Font Book$" manage=off
+yabai -m rule --add app="Microsoft Teams" title="Microsoft Teams Notification" sticky=on manage=off

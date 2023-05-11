@@ -26,6 +26,9 @@ shift + alt - 9 : yabai -m window --space  9; yabai -m space --focus 9
 # toggle window zoom
 alt - f : yabai -m window --toggle zoom-fullscreen
 
+# toggle window float
+shift + alt - f : yabai -m window --toggle float
+
 # apps
 alt - b : open -a "Google Chrome" -n
 alt - return : open -a "Alacritty" -n
