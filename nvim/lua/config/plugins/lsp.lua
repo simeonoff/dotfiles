@@ -1,34 +1,3 @@
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-local format_on_save = false
-
-local prettier_filetypes = {
-	"javascript",
-	"javascriptreact",
-	"typescript",
-	"typescriptreact",
-	"vue",
-	"html",
-	"json",
-	"jsonc",
-	"yaml",
-	"markdown",
-	"markdown.mdx",
-	"graphql",
-	"handlebars",
-	"svelte",
-}
-
-local format_buffer = function(bufnr, async)
-	vim.lsp.buf.format({
-		bufnr = bufnr,
-		async = async,
-		filter = function(client)
-			return client.name == "null-ls"
-		end,
-	})
-end
-
 local M = {
 	"VonHeikemen/lsp-zero.nvim",
 	branch = "v2.x",
@@ -56,16 +25,15 @@ M.dependencies = {
 
 M.config = function()
 	local lsp = require("lsp-zero")
-	local null_ls = require("null-ls")
 	pcall(vim.cmd, "MasonUpdate")
 
-    lsp.preset({
+	lsp.preset({
 		setup_servers_on_start = true,
 		set_lsp_keymaps = true,
 		configure_diagnostics = true,
 		manage_nvim_cmp = false,
 		call_servers = "local",
-    })
+	})
 
 	lsp.set_sign_icons({
 		error = "●",
@@ -88,29 +56,9 @@ M.config = function()
 		"tsserver",
 	})
 
-	local null_opts = lsp.build_options("null-ls", {
-		on_attach = function(client, bufnr)
-			if client.supports_method("textDocument/formatting") then
-				vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					group = augroup,
-					buffer = bufnr,
-					callback = function()
-						if format_on_save then
-							format_buffer(bufnr, false)
-						end
-					end,
-				})
-			end
-		end,
-	})
-
 	lsp.on_attach(function(_, bufnr)
 		local opts = { buffer = bufnr, remap = false }
 
-		vim.keymap.set("n", "<leader>i", function()
-			format_buffer(bufnr, true)
-		end, opts)
 		vim.keymap.set("n", "gd", function()
 			vim.lsp.buf.definition()
 		end, opts)
@@ -145,16 +93,6 @@ M.config = function()
 			vim.lsp.buf.rename()
 		end, opts)
 	end)
-
-	null_ls.setup({
-		on_attach = null_opts.on_attach,
-		sources = {
-			null_ls.builtins.formatting.stylelint,
-			null_ls.builtins.formatting.eslint,
-			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.formatting.prettier.with({ filetypes = prettier_filetypes }),
-		},
-	})
 
 	lsp.configure("stylelint_lsp", {
 		filetypes = { "css", "scss", "sass", "less", "typescriptreact", "javascriptreact" },

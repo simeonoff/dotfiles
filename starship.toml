@@ -7,3 +7,7 @@ add_newline = true
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
+
+# Disable the battery module, hiding it from the prompt completely
+[battery]
+disabled = true

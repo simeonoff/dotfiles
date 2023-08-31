@@ -38,6 +38,7 @@ export PATH="${PATH}:${HOME}/.local/bin/"
 if [ -e $HOME/.local/bin/flutter/bin/flutter ]; then export PATH="${PATH}:${HOME}/.local/bin/flutter/bin/"; fi
 
 export PATH=~/.dotfiles/bin:${PATH}
+export PATH=/usr/local/bin/docfx:${PATH}
 
 # nvm use default
 export NVM_DIR="$HOME/.nvm"

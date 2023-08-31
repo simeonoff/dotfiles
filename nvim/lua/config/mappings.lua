@@ -52,3 +52,7 @@ vim.keymap.set("n", "]b", function()
 		vim.cmd("bnext")
 	end
 end, { desc = "Navigates to the next buffer" })
+
+vim.keymap.set("n", "<leader>i", function()
+    vim.cmd("Format")
+end, { desc = "Format buffer" })
