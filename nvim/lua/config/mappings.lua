@@ -54,5 +54,11 @@ vim.keymap.set("n", "]b", function()
 end, { desc = "Navigates to the next buffer" })
 
 vim.keymap.set("n", "<leader>i", function()
-    vim.cmd("Format")
+	vim.cmd("Format")
 end, { desc = "Format buffer" })
+
+vim.keymap.set("n", "<C-e>", function()
+	vim.cmd("Oil --float")
+end, { desc = "Pull up file browser" })
+
+vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })

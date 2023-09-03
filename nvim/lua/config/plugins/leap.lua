@@ -3,7 +3,7 @@ local M = {
 	event = "VeryLazy",
 
 	dependencies = {
-		{ "ggandor/flit.nvim", config = {
+		{ "ggandor/flit.nvim", opts = {
 			labeled_modes = "nv",
 			multiline = true,
 		} },

@@ -12,6 +12,7 @@ return {
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = false,
+				disable = { "typescript" },
 			},
 			textobjects = {
 				select = {
@@ -35,9 +36,9 @@ return {
 				"css",
 				"scss",
 				"json",
-                "jsonc",
-                "jsdoc",
-                "regex",
+				"jsonc",
+				"jsdoc",
+				"regex",
 				"lua",
 				"svelte",
 				"yaml",

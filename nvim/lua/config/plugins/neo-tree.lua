@@ -1,15 +1,16 @@
 local M = {
 	"nvim-neo-tree/neo-tree.nvim",
+    enabled = false,
 	cmd = "Neotree",
-	keys = {
-		{
-			"<C-e>",
-			function()
-				require("neo-tree.command").execute({ toggle = true })
-			end,
-			desc = "NeoTree",
-		},
-	},
+	-- keys = {
+	-- 	{
+	-- 		"<C-e>",
+	-- 		function()
+	-- 			require("neo-tree.command").execute({ toggle = true })
+	-- 		end,
+	-- 		desc = "NeoTree",
+	-- 	},
+	-- },
 }
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 

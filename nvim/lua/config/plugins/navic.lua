@@ -7,7 +7,7 @@ return {
 			require("nvim-navic").attach(client, buffer)
 		end)
 	end,
-	config = {
+	opts = {
 		separator = " > ",
 		highlight = true,
 		depth_limit = 5,

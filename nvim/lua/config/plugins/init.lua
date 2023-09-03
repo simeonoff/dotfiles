@@ -13,7 +13,7 @@ return {
 	},
 	{
 		"kyazdani42/nvim-web-devicons",
-		enabled = false,
+		enabled = true,
 	},
 	"MunifTanjim/nui.nvim",
 
@@ -62,6 +62,8 @@ return {
 			require("nvim-autopairs").setup({})
 		end,
 	},
+
+    --Auto close HTML tags in Svelte, Astro, Lit, etc.
 	{ "windwp/nvim-ts-autotag", event = "BufReadPre" },
 
 	-- A pretty list for showing diagnostics, references, etc.

@@ -125,6 +125,10 @@ M.config = function()
 		},
 	})
 
+	vim.diagnostic.config({
+		virtual_text = false,
+	})
+
 	lsp.setup()
 end
 
