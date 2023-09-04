@@ -63,7 +63,7 @@ return {
 		end,
 	},
 
-    --Auto close HTML tags in Svelte, Astro, Lit, etc.
+	--Auto close HTML tags in Svelte, Astro, Lit, etc.
 	{ "windwp/nvim-ts-autotag", event = "BufReadPre" },
 
 	-- A pretty list for showing diagnostics, references, etc.
@@ -73,13 +73,19 @@ return {
 		"shortcuts/no-neck-pain.nvim",
 		cmd = { "NoNeckPain" },
 		version = "*",
-        enabled = false
+		enabled = false,
 	},
 
 	-- Track file changes in the undo tree
 	{
 		"mbbill/undotree",
 		event = "BufReadPre",
-        enabled = true
+		enabled = true,
+	},
+
+	-- Tmux naviation plugin
+	{
+		"christoomey/vim-tmux-navigator",
+        lazy = false
 	},
 }
