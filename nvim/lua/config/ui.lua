@@ -1,5 +1,5 @@
 local M = {}
 
-M.colorscheme = "duskfox"
+M.colorscheme = "carbonfox"
 
 return M
