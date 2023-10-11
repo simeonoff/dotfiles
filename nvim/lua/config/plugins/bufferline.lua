@@ -2,6 +2,7 @@ return {
 	"akinsho/bufferline.nvim",
 	version = "v3.*",
 	lazy = false,
+    enabled = false,
 	dependencies = {
 		"EdenEast/nightfox.nvim",
 	},
