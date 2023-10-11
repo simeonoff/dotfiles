@@ -1,2 +1,2 @@
-Host *
-  UseKeychain yes
+# Host *
+#   UseKeychain yes
