@@ -36,7 +36,6 @@ M.config = function()
 			{ name = "nvim_lsp" },
 			{ name = "buffer" },
 			{ name = "path" },
-			{ name = "codeium" },
 		},
 		preselect = "item",
 		formatting = {

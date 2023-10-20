@@ -13,6 +13,7 @@ M.config = function()
 			},
 			typescript = {
 				require("formatter.filetypes.typescript").prettierd,
+				require("formatter.filetypes.typescript").eslint_d,
 			},
 			typescriptreact = {
 				require("formatter.filetypes.typescript").prettierd,
