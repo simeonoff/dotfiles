@@ -55,6 +55,7 @@ M.cmp_format = function()
 			nvim_lua = "[Lua]",
 			latex_symbols = "[LaTeX]",
 			codeium = "[Codeium]",
+			copilot = "[Copilot]",
 		})[entry.source.name]
 
 		return vim_item
