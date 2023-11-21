@@ -6,14 +6,21 @@ local M = {
 
 M.config = function()
 	require("oil").setup({
-		columns = {'icon'},
+		columns = { "icon" },
+		win_options = {
+			signcolumn = "no",
+            conceallevel = 3,
+		},
 		float = {
-            max_width = 120,
+			max_width = 120,
 			padding = 2,
 			border = "rounded",
 			win_options = {
 				winblend = 0,
 			},
+		},
+		view_options = {
+			show_hidden = true,
 		},
 	})
 end

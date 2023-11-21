@@ -8,7 +8,7 @@ M.config = function()
 	local dashboard = require("alpha.themes.dashboard")
 
 	-- Set header
-	dashboard.section.header.val = require("banners").threeskulls_v1
+	dashboard.section.header.val = require("banners").pacman
 
 	-- Set menu
 	dashboard.section.buttons.val = {
@@ -16,7 +16,7 @@ M.config = function()
 		dashboard.button("f", "  > Find file", ":cd $HOME/Projects | Telescope find_files<CR>"),
 		dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
 		dashboard.button("w", "  > Workspaces", ":Telescope workspaces<CR>"),
-		dashboard.button("p", "  > Plugins", ":Lazy<CR>"),
+		dashboard.button("l", "  > Plugins", ":Lazy<CR>"),
 		dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
 	}
 

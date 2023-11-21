@@ -4,12 +4,19 @@ local M = {
 	priority = 999,
 }
 
-local colorscheme = require('config.ui').colorscheme
+local colorscheme = require("config.ui").colorscheme
 
 M.config = function()
 	local palette = require("nightfox.palette").load(colorscheme)
 
 	require("nightfox").setup({
+		options = {
+			styles = {
+				comments = "italic",
+				keywords = "bold",
+				types = "italic,bold",
+			},
+		},
 		groups = {
 			all = {
 				TelescopeNormal = {

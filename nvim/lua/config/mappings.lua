@@ -24,7 +24,7 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>gs", function()
-	utils.toggle_diffview()
+	vim.cmd("LazyGit")
 end, { desc = "Toggle Diffview" })
 
 vim.keymap.set("n", "<leader>gc", function()
