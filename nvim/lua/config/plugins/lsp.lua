@@ -1,6 +1,6 @@
 local M = {
 	"VonHeikemen/lsp-zero.nvim",
-	branch = "v2.x",
+	branch = "v3.x",
 	event = "BufReadPre",
 	cmd = { "Mason" },
 }
@@ -8,16 +8,8 @@ local M = {
 M.dependencies = {
 	-- LSP Support
 	{ "neovim/nvim-lspconfig" },
-	{
-		"williamboman/mason.nvim",
-		build = function()
-			pcall(vim.cmd, "MasonUpdate")
-		end,
-	},
+	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
-
-	-- Diagnostics and Formatting
-	{ "jose-elias-alvarez/null-ls.nvim" },
 
 	-- JSON schemas
 	{ "b0o/SchemaStore.nvim" },
@@ -25,7 +17,71 @@ M.dependencies = {
 
 M.config = function()
 	local lsp = require("lsp-zero")
-	pcall(vim.cmd, "MasonUpdate")
+
+	require("mason").setup({
+		ui = {
+			icons = {
+				package_installed = "✓",
+				package_pending = "➜",
+				package_uninstalled = "✗",
+			},
+		},
+	})
+
+	require("mason-lspconfig").setup({
+		ensure_installed = {
+			"angularls",
+			"cssls",
+			"emmet_ls",
+			"eslint",
+			"html",
+			"jsonls",
+			"lua_ls",
+			"marksman",
+			"stylelint_lsp",
+			"svelte",
+			"tsserver",
+		},
+		handlers = {
+			lsp.default_setup,
+			lua_ls = function()
+				require("lspconfig").lua_ls.setup({
+					settings = {
+						Lua = {
+							diagnostics = {
+								globals = { "vim" },
+							},
+						},
+					},
+				})
+			end,
+			jsonls = function()
+				require("lspconfig").jsonls.setup({
+					settings = {
+						json = {
+							schemas = require("schemastore").json.schemas(),
+							validate = { enable = true },
+						},
+					},
+				})
+			end,
+			stylelint_lsp = function()
+				require("lspconfig").stylelint_lsp.setup({
+					filetypes = { "css", "scss", "sass", "less", "typescriptreact", "javascriptreact" },
+				})
+			end,
+			html = function()
+				require("lspconfig").html.setup({
+					filetypes = { "typescriptreact", "javascriptreact" },
+				})
+			end,
+			emmet_ls = function()
+				require("lspconfig").emmet_ls.setup({
+					filetypes = { "html", "typescriptreact", "javascriptreact", "svelte" },
+				})
+			end,
+		},
+	})
 
 	lsp.preset({
 		setup_servers_on_start = true,
@@ -40,20 +96,6 @@ M.config = function()
 		warn = "●",
 		hint = "●",
 		info = "●",
-	})
-
-	lsp.ensure_installed({
-		"angularls",
-		"cssls",
-		"emmet_ls",
-		"eslint",
-		"html",
-		"jsonls",
-		"lua_ls",
-		"marksman",
-		"stylelint_lsp",
-		"svelte",
-		"tsserver",
 	})
 
 	lsp.on_attach(function(_, bufnr)
@@ -93,37 +135,6 @@ M.config = function()
 			vim.lsp.buf.rename()
 		end, opts)
 	end)
-
-	lsp.configure("stylelint_lsp", {
-		filetypes = { "css", "scss", "sass", "less", "typescriptreact", "javascriptreact" },
-	})
-
-	lsp.configure("html", {
-		filetypes = { "typescriptreact", "javascriptreact" },
-	})
-
-	lsp.configure("emmet_ls", {
-		filetypes = { "html", "typescriptreact", "javascriptreact", "svelte" },
-	})
-
-	lsp.configure("lua_ls", {
-		settings = {
-			Lua = {
-				diagnostics = {
-					globals = { "vim" },
-				},
-			},
-		},
-	})
-
-	lsp.configure("jsonls", {
-		settings = {
-			json = {
-				schemas = require("schemastore").json.schemas(),
-				validate = { enable = true },
-			},
-		},
-	})
 
 	vim.diagnostic.config({
 		virtual_text = false,
