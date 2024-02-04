@@ -18,6 +18,7 @@ M.dependencies = {
 
 M.config = function()
 	local lsp = require("lsp-zero")
+    local pickers = require("telescopePickers")
 
 	require("mason").setup({
 		ui = {
@@ -112,13 +113,13 @@ M.config = function()
 			vim.lsp.buf.signature_help()
 		end, opts)
 		vim.keymap.set("n", "<leader>ws", function()
-			require("telescopePickers").prettyWorkspaceSymbols()
+			pickers.prettyWorkspaceSymbols()
 		end, opts)
 		vim.keymap.set("n", "gr", function()
-			vim.cmd("Telescope lsp_references")
+			pickers.prettyLspReferences()
 		end, opts)
 		vim.keymap.set("n", "<leader>ds", function()
-			require("telescopePickers").prettyDocumentSymbols()
+			pickers.prettyDocumentSymbols()
 		end, opts)
 		vim.keymap.set("n", "<leader>vd", function()
 			vim.diagnostic.open_float()
