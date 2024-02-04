@@ -1,4 +1,5 @@
 local M = {}
+local telescopePickers = require("telescopePickers")
 
 M.open_location = function()
 	local loc = vim.fn.expand("<cfile>")
@@ -76,13 +77,13 @@ M.telescope_project_files = function()
 	local opts = {}
 	if vim.loop.fs_stat(".git") then
 		opts.show_untracked = true
-		require("telescope.builtin").git_files(opts)
+        telescopePickers.prettyFilesPicker({ picker = 'git_files', options = opts })
 	else
 		local client = vim.lsp.get_active_clients()[1]
 		if client then
 			opts.cwd = client.config.root_dir
 		end
-		require("telescope.builtin").find_files(opts)
+        telescopePickers.prettyFilesPicker({ picker = 'find_files', options = opts })
 	end
 end
 

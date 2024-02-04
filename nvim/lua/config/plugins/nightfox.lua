@@ -42,6 +42,9 @@ M.config = function()
 					bg = palette.bg2,
 					fg = palette.bg2,
 				},
+				TelescopePreviewNormal = {
+					bg = palette.bg1,
+				},
 				TelescopeResultsTitle = {
 					bg = palette.bg2,
 					fg = palette.bg2,

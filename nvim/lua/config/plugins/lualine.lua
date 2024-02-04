@@ -1,7 +1,7 @@
 local colorscheme = require("config.ui").colorscheme
 local colors = require("nightfox.palette").load(colorscheme)
 local window_width_limit = 100
-local branch_icon = ""
+local branch_icon = "󰘬 "
 local plugin_checker = require("lazy.manage.checker")
 local gstatus = { ahead = 0, behind = 0 }
 
@@ -58,6 +58,7 @@ local mode = {
 		bg = colors.bg3,
 		fg = colors.orange.base,
 	},
+	separator = { right = "", left = "" },
 }
 
 local branch = {
@@ -67,11 +68,12 @@ local branch = {
 		bg = colors.bg3,
 		fg = colors.magenta.bright,
 	},
+	separator = { right = "", left = "" },
 }
 
 local status = {
 	function()
-		return "↓ " .. gstatus.behind .. " ↑ " .. gstatus.ahead
+		return "󰞒 " .. gstatus.behind .. " 󰞕  " .. gstatus.ahead
 	end,
 	cond = function()
 		local gitsigns = vim.b.gitsigns_status_dict
@@ -88,9 +90,9 @@ local diff = {
 	"diff",
 	source = diff_source,
 	symbols = {
-		added = "+" .. " ",
-		modified = "~" .. " ",
-		removed = "-" .. " ",
+		added = " " .. " ",
+		modified = " " .. " ",
+		removed = " " .. " ",
 	},
 	padding = { left = 2, right = 1 },
 	diff_color = {
@@ -175,7 +177,7 @@ local lsp = {
 		if rawget(vim, "lsp") then
 			for _, client in ipairs(vim.lsp.get_active_clients()) do
 				if client.attached_buffers[vim.api.nvim_get_current_buf()] then
-					if client.name ~= "null-ls" then
+					if client.name ~= "null-ls" or client.name ~= "copilot" then
 						return (vim.o.columns > 100 and "%#St_LspStatus#" .. client.name) or "LSP"
 					end
 				end
@@ -212,6 +214,7 @@ local plugins = {
 		fg = colors.magenta.bright,
 		bg = colors.bg2,
 	},
+	separator = { right = "", left = " " },
 }
 
 local tasks = {
@@ -258,7 +261,7 @@ return {
 					encoding,
 					spaces,
 					location,
-                    tasks
+					tasks,
 				},
 				lualine_y = {},
 				lualine_z = {

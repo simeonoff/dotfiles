@@ -20,6 +20,7 @@ M.config = function()
 	local cmp = require("cmp")
 	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 	local luasnip = require("luasnip")
+	require("luasnip.loaders.from_vscode").lazy_load()
 
 	local cmp_config = {
 		snippet = {
@@ -56,16 +57,19 @@ M.config = function()
 			end, { "i", "s" }),
 		}),
 		sources = cmp.config.sources({
-			{ name = "copilot", group_index = 2 },
-			{ name = "luasnip", group_index = 2 },
-			{ name = "nvim_lsp", group_index = 2 },
-			{ name = "buffer", group_index = 2 },
-			{ name = "path", group_index = 2 },
+			{ name = "copilot" },
+			{ name = "nvim_lsp" },
+			{ name = "buffer" },
+			{ name = "luasnip" },
+			{ name = "path" },
 		}),
 		preselect = "item",
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
 			format = require("kind").cmp_format(),
+		},
+		experimental = {
+			ghost_text = true,
 		},
 	}
 

@@ -3,7 +3,7 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPre",
-        main = "ibl",
+		main = "ibl",
 		config = function()
 			require("ibl").setup()
 		end,
@@ -63,9 +63,6 @@ return {
 	--Auto close HTML tags in Svelte, Astro, Lit, etc.
 	{ "windwp/nvim-ts-autotag", event = "BufReadPre" },
 
-	-- A pretty list for showing diagnostics, references, etc.
-	{ "folke/trouble.nvim", cmd = { "Trouble" } },
-
 	{
 		"shortcuts/no-neck-pain.nvim",
 		cmd = { "NoNeckPain" },
@@ -73,16 +70,14 @@ return {
 		enabled = false,
 	},
 
-	-- Track file changes in the undo tree
-	{
-		"mbbill/undotree",
-		event = "BufReadPre",
-		enabled = true,
-	},
-
 	-- Tmux naviation plugin
 	{
 		"christoomey/vim-tmux-navigator",
-        lazy = false
+		lazy = false,
+	},
+
+	{
+		"kikito/inspect.lua",
+		lazy = false,
 	},
 }

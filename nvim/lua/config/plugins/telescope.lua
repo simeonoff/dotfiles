@@ -1,4 +1,5 @@
 local project_files = require("utils").telescope_project_files
+local telescopePickers = require("telescopePickers")
 
 return {
 	"nvim-telescope/telescope.nvim",
@@ -26,21 +27,22 @@ return {
 					"--column",
 					"--smart-case",
 				},
-				prompt_prefix = "> ",
-				selection_caret = "> ",
+				prompt_prefix = "  ",
+				selection_caret = "  ",
 				entry_prefix = "  ",
 				initial_mode = "insert",
 				selection_strategy = "reset",
 				sorting_strategy = "ascending",
 				layout_strategy = "vertical",
 				layout_config = {
-					width = 0.75,
-					prompt_position = "bottom",
-					preview_cutoff = 90,
+					-- width = 0.75,
+					-- prompt_position  "bottom",
+					-- preview_cutoff = 90,
 					horizontal = {
 						mirror = false,
 					},
 					vertical = {
+						-- width = 0.5,
 						mirror = true,
 						prompt_position = "top",
 					},
@@ -87,8 +89,10 @@ return {
 		telescope.load_extension("workspaces")
 
 		-- Mappings
-		vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Global search" })
-		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "Browse existing buffers" })
+		vim.keymap.set("n", "<leader>/", function()
+			telescopePickers.prettyGrepPicker({ picker = "live_grep" })
+		end, { desc = "Global search" })
+
 		vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Broser git branches in current project" })
 		vim.keymap.set("n", "<leader>'", builtin.resume, { desc = "Resume the last opened telescope prompt" })
 	end,

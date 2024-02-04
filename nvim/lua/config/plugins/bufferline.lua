@@ -3,6 +3,7 @@ return {
 	version = "v3.*",
 	lazy = false,
 	dependencies = {
+		"nvim-tree/nvim-web-devicons",
 		"EdenEast/nightfox.nvim",
 	},
 
@@ -26,8 +27,8 @@ return {
 						padding = 1,
 					},
 				},
-        color_icons = false,
-        show_buffer_icons = false,
+				color_icons = false,
+				show_buffer_icons = false,
 				indicator = {
 					icon = "▎",
 					style = "none",
@@ -35,6 +36,7 @@ return {
 				separator_style = { " ", " " },
 				diagnostics = "nvim_lsp",
 				show_close_icon = false,
+                buffer_close_icon = ' ',
 			},
 			highlights = {
 				buffer_selected = { italic = false, bold = true },

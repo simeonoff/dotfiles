@@ -6,18 +6,21 @@ local M = {
 M.config = function()
 	local alpha = require("alpha")
 	local dashboard = require("alpha.themes.dashboard")
+    local pickers = require("telescopePickers")
 
 	-- Set header
-	dashboard.section.header.val = require("banners").pacman
+	dashboard.section.header.val = require("banners").delta_corps_priest
 
 	-- Set menu
 	dashboard.section.buttons.val = {
-		dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-		dashboard.button("f", "  > Find file", ":cd $HOME/Projects | Telescope find_files<CR>"),
-		dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
+		dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
+		dashboard.button("f", "  > Find file", ":cd $HOME/Projects | lua require('telescopePickers').prettyFilesPicker({ picker = 'find_files' })<CR>"),
+		dashboard.button("r", "  > Recent", function()
+			pickers.prettyFilesPicker({ picker = "oldfiles" })
+		end),
 		dashboard.button("w", "  > Workspaces", ":Telescope workspaces<CR>"),
 		dashboard.button("l", "  > Plugins", ":Lazy<CR>"),
-		dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
+		dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
 	}
 
 	-- Send config to alpha

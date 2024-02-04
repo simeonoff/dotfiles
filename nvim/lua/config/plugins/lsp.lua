@@ -10,6 +10,7 @@ M.dependencies = {
 	{ "neovim/nvim-lspconfig" },
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
+	{ "mattn/emmet-vim" },
 
 	-- JSON schemas
 	{ "b0o/SchemaStore.nvim" },
@@ -111,13 +112,13 @@ M.config = function()
 			vim.lsp.buf.signature_help()
 		end, opts)
 		vim.keymap.set("n", "<leader>ws", function()
-			vim.cmd("Telescope lsp_dynamic_workspace_symbols")
+			require("telescopePickers").prettyWorkspaceSymbols()
 		end, opts)
 		vim.keymap.set("n", "gr", function()
 			vim.cmd("Telescope lsp_references")
 		end, opts)
 		vim.keymap.set("n", "<leader>ds", function()
-			vim.cmd("Telescope lsp_document_symbols")
+			require("telescopePickers").prettyDocumentSymbols()
 		end, opts)
 		vim.keymap.set("n", "<leader>vd", function()
 			vim.diagnostic.open_float()

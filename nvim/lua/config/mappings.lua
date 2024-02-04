@@ -5,11 +5,17 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center the view when navigatio
 vim.keymap.set("n", "n", "nzzzv", { desc = "Center the view when going over next match" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Center the view when going over previous match" })
 
+-- from Primeagen
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move visual selection up" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move visual selection down" })
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
+vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
+
+-- greatest remap
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Replace highlighted text from what's in the void registry" })
 
 vim.keymap.set(
-	"n",
+	{ "n", "v" },
 	"<leader>s",
 	":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
 	{ desc = "Rename the word under the cursor" }

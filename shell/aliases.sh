@@ -12,7 +12,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # Aliases to help from accidentally deleting files/folders
-alias rm='trashy'
+alias rm='trash'
 
 # git related aliases
 alias gag='git exec ag'
