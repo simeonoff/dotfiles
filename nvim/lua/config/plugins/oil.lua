@@ -9,7 +9,7 @@ M.config = function()
 		columns = { "icon" },
 		win_options = {
 			signcolumn = "no",
-            conceallevel = 3,
+			conceallevel = 3,
 		},
 		float = {
 			max_width = 120,

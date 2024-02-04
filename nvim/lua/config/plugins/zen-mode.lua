@@ -13,9 +13,9 @@ return {
 				},
 			},
 			plugins = {
-        options = {
-          enabled = true,
-        },
+				options = {
+					enabled = true,
+				},
 				gitsigns = {
 					enabled = true,
 				},

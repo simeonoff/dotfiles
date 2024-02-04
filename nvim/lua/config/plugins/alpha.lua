@@ -6,7 +6,7 @@ local M = {
 M.config = function()
 	local alpha = require("alpha")
 	local dashboard = require("alpha.themes.dashboard")
-    local pickers = require("telescopePickers")
+	local pickers = require("telescopePickers")
 
 	-- Set header
 	dashboard.section.header.val = require("banners").delta_corps_priest
@@ -14,7 +14,11 @@ M.config = function()
 	-- Set menu
 	dashboard.section.buttons.val = {
 		dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-		dashboard.button("f", "  > Find file", ":cd $HOME/Projects | lua require('telescopePickers').prettyFilesPicker({ picker = 'find_files' })<CR>"),
+		dashboard.button(
+			"f",
+			"  > Find file",
+			":cd $HOME/Projects | lua require('telescopePickers').prettyFilesPicker({ picker = 'find_files' })<CR>"
+		),
 		dashboard.button("r", "  > Recent", function()
 			pickers.prettyFilesPicker({ picker = "oldfiles" })
 		end),

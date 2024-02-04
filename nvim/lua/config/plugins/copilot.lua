@@ -7,11 +7,11 @@ local M = {
 M.config = function()
 	require("copilot").setup({
 		panel = {
-            enabled = false,
+			enabled = false,
 			auto_refresh = true,
 		},
 		suggestions = {
-            enabled = false,
+			enabled = false,
 			auto_trigger = true,
 		},
 	})

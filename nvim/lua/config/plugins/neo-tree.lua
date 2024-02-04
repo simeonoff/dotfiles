@@ -1,6 +1,6 @@
 local M = {
 	"nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
+	enabled = false,
 	cmd = "Neotree",
 	-- keys = {
 	-- 	{

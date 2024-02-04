@@ -11,7 +11,7 @@ return {
 
 		treesitter.setup({
 			ignore_install = {
-				"help"
+				"help",
 			},
 			highlight = {
 				enable = true,
@@ -46,7 +46,7 @@ return {
 				"lua",
 				"svelte",
 				"yaml",
-                "help",
+				"help",
 				"markdown",
 				"markdown_inline",
 				"vim",

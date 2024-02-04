@@ -15,7 +15,7 @@ M.config = function()
 	harpoon:setup({
 		default = {
 			sync_on_ui_close = true,
-		}
+		},
 	})
 
 	vim.keymap.set("n", "<leader>a", function()

@@ -2,7 +2,7 @@ local M = {
 	"folke/flash.nvim",
 	event = "VeryLazy",
 	opts = {},
-    enabled = true,
+	enabled = true,
 	keys = {
 		{
 			"s",
@@ -30,6 +30,5 @@ local M = {
 		},
 	},
 }
-
 
 return M

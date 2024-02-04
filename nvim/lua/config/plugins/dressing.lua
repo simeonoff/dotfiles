@@ -19,8 +19,8 @@ end
 M.config = function()
 	require("dressing").setup({
 		input = {
-            border = "solid",
-            prompt_align = "center",
+			border = "solid",
+			prompt_align = "center",
 			win_options = {
 				winblend = 0,
 			},
