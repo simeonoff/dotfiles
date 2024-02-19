@@ -1,7 +1,7 @@
 local M = {
 	"VonHeikemen/lsp-zero.nvim",
 	branch = "v3.x",
-	event = "BufReadPre",
+	event = { "BufReadPre", "BufNewFile" },
 	cmd = { "Mason" },
 }
 
@@ -18,7 +18,7 @@ M.dependencies = {
 
 M.config = function()
 	local lsp = require("lsp-zero")
-    local pickers = require("telescopePickers")
+	local pickers = require("telescopePickers")
 
 	require("mason").setup({
 		ui = {
@@ -70,6 +70,9 @@ M.config = function()
 			stylelint_lsp = function()
 				require("lspconfig").stylelint_lsp.setup({
 					filetypes = { "css", "scss", "sass", "less", "typescriptreact", "javascriptreact" },
+					settings = {
+						autoFixOnFormat = true,
+					},
 				})
 			end,
 			html = function()

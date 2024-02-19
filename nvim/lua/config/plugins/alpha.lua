@@ -13,17 +13,17 @@ M.config = function()
 
 	-- Set menu
 	dashboard.section.buttons.val = {
-		dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
+		dashboard.button("<leader>e", "  > New file", ":ene <BAR> startinsert <CR>"),
 		dashboard.button(
-			"f",
+			"<leader>f",
 			"  > Find file",
 			":cd $HOME/Projects | lua require('telescopePickers').prettyFilesPicker({ picker = 'find_files' })<CR>"
 		),
-		dashboard.button("r", "  > Recent", function()
+		dashboard.button("<leader>r", "  > Recent", function()
 			pickers.prettyFilesPicker({ picker = "oldfiles" })
 		end),
-		dashboard.button("w", "  > Workspaces", ":Telescope workspaces<CR>"),
-		dashboard.button("l", "  > Plugins", ":Lazy<CR>"),
+		dashboard.button("<leader>P", "  > Workspaces", ":Telescope workspaces<CR>"),
+		dashboard.button("<leader>l", "  > Plugins", ":Lazy<CR>"),
 		dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
 	}
 

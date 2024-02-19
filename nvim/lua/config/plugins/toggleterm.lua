@@ -1,14 +1,15 @@
 local M = {
 	"akinsho/toggleterm.nvim",
-	keys = {
-		{
-			"<C-t>",
-			function()
-				vim.cmd("ToggleTerm")
-			end,
-			desc = "Toggles a terminal window",
-		},
-	},
+    enabled = false,
+	-- keys = {
+	-- 	{
+	-- 		"<C-t>",
+	-- 		function()
+	-- 			vim.cmd("ToggleTerm")
+	-- 		end,
+	-- 		desc = "Toggles a terminal window",
+	-- 	},
+	-- },
 	version = "*",
 }
 

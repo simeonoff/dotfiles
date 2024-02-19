@@ -1,7 +1,7 @@
 local M = {
 	"stevearc/overseer.nvim",
 	event = "BufReadPre",
-	enabled = true,
+	enabled = false,
 }
 
 M.config = function()

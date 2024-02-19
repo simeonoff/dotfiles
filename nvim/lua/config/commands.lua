@@ -2,6 +2,7 @@ local utils = require("utils")
 local group_id = vim.api.nvim_create_augroup("rooter", { clear = true })
 local personal_augroup = vim.api.nvim_create_augroup("personal_augroup", { clear = true })
 local bufonly = require("bufonly")
+local lualine = require("lualine")
 
 vim.api.nvim_create_user_command("BufOnly", function()
 	bufonly.BufOnly()
@@ -14,6 +15,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		"help",
 		"man",
 		"notify",
+		"oil",
 	},
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
@@ -29,26 +31,8 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 	group = personal_augroup,
 })
---
--- -- Enable spellchecking for specific filetypes
--- vim.api.nvim_create_autocmd("FileType", {
--- 	pattern = { "md", "markdown", "gitcommit" },
--- 	command = "setlocal spell",
--- 	group = personal_augroup,
--- })
---
--- vim.api.nvim_create_autocmd("BufReadPost", {
--- 	callback = function()
--- 		local mark = vim.api.nvim_buf_get_mark(0, '"')
--- 		local lcount = vim.api.nvim_buf_line_count(0)
--- 		if mark[1] > 0 and mark[1] <= lcount then
--- 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
--- 		end
--- 	end,
--- 	group = personal_augroup,
--- })
---
--- -- Add keyboard navigation for terminals
+
+-- Add keyboard navigation for terminals
 -- vim.api.nvim_create_autocmd("TermOpen", {
 -- 	pattern = {
 -- 		"term://*",
@@ -63,7 +47,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- 	group = personal_augroup,
 -- })
 
--- Change current work directory to root of the buffer
+-- Clears 'root_dir' variable for buffers on open/reload
 vim.api.nvim_create_autocmd("BufRead", {
 	group = group_id,
 	callback = function()
@@ -76,18 +60,49 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	group = group_id,
 	nested = true,
 	callback = function()
+        local excluded_filetypes = {
+            ["neo-tree"] = true,
+            ["NvimTree"] = true, -- Example of adding another filetype
+        }
 		local ft = vim.bo.filetype
 
-		if ft ~= "neo-tree" then
-			local root = vim.fn.exists("b:root_dir") == 1 and vim.api.nvim_buf_get_var(0, "root_dir") or nil
-			if root == nil then
-				root = utils.get_root()
-				vim.api.nvim_buf_set_var(0, "root_dir", root)
-			end
+		if not excluded_filetypes[ft] then
+            -- Proceed with setting root_dir and changing directory
+            local root = vim.b.root_dir or utils.get_root()
 
-			if root ~= nil then
-				vim.api.nvim_set_current_dir(root)
-			end
+            if not vim.b.root_dir then
+                vim.b.root_dir = root
+                vim.api.nvim_buf_set_var(0, "root_dir", root)
+            end
 		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("RecordingEnter", {
+	callback = function()
+		lualine.refresh({
+			place = { "statusline" },
+		})
+	end,
+})
+
+vim.api.nvim_create_autocmd("RecordingLeave", {
+	callback = function()
+		-- This is going to seem really weird!
+		-- Instead of just calling refresh we need to wait a moment because of the nature of
+		-- `vim.fn.reg_recording`. If we tell lualine to refresh right now it actually will
+		-- still show a recording occuring because `vim.fn.reg_recording` hasn't emptied yet.
+		-- So what we need to do is wait a tiny amount of time (in this instance 50 ms) to
+		-- ensure `vim.fn.reg_recording` is purged before asking lualine to refresh.
+		local timer = vim.loop.new_timer()
+		timer:start(
+			50,
+			0,
+			vim.schedule_wrap(function()
+				lualine.refresh({
+					place = { "statusline" },
+				})
+			end)
+		)
 	end,
 })

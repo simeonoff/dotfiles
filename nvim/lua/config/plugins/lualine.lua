@@ -25,6 +25,16 @@ local function update_gstatus()
 	}):start()
 end
 
+local function show_macro_recording()
+    local base = ""
+    local recording_register = vim.fn.reg_recording()
+    if recording_register == base then
+        return base
+    else
+        return "Recording @" .. recording_register
+    end
+end
+
 if _G.Gstatus_timer == nil then
 	_G.Gstatus_timer = vim.loop.new_timer()
 else
@@ -90,9 +100,9 @@ local diff = {
 	"diff",
 	source = diff_source,
 	symbols = {
-		added = " " .. " ",
-		modified = " " .. " ",
-		removed = " " .. " ",
+		added = "+" .. " ",
+		modified = "~" .. " ",
+		removed = "-" .. " ",
 	},
 	padding = { left = 2, right = 1 },
 	diff_color = {
@@ -162,6 +172,13 @@ local encoding = {
 
 local filetype = { "filetype", cond = nil, padding = { left = 1, right = 1 } }
 
+local filename = {
+	"filename",
+	padding = { left = 2, right = 0 },
+	file_status = true, -- displays file status (readonly status, modified status)
+	path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+}
+
 local lsp = {
 	function(msg)
 		msg = msg or "LSP Inactive"
@@ -228,6 +245,16 @@ local tasks = {
 	status_not = false, -- When true, invert the status search
 }
 
+local macros = {
+    "macro-recording",
+    fmt = show_macro_recording,
+	color = {
+		fg = colors.white.bright,
+		bg = colors.red.dim,
+	},
+	separator = { right = "", left = "" },
+}
+
 return {
 	"nvim-lualine/lualine.nvim",
 	lazy = false,
@@ -251,10 +278,12 @@ return {
 					plugins,
 				},
 				lualine_c = {
+					-- filename,
 					diff,
 					-- navic,
 				},
 				lualine_x = {
+                    macros,
 					diagnostics,
 					treesitter,
 					lsp,

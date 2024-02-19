@@ -2,6 +2,7 @@ local M = {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
 	event = "BufReadPre",
+    enabled = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope.nvim",

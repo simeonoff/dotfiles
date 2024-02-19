@@ -8,6 +8,14 @@ M.config = function()
 
 	notify.setup({
 		stages = "static",
+        fps = 120,
+		icons = {
+			DEBUG = " ",
+			ERROR = " ",
+			INFO = " ",
+			TRACE = " ",
+			WARN = " ",
+		},
 		timeout = 3000,
 		level = vim.log.levels.INFO,
 		max_height = function()

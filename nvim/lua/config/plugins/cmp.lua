@@ -18,7 +18,6 @@ local M = {
 
 M.config = function()
 	local cmp = require("cmp")
-	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 	local luasnip = require("luasnip")
 	require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -57,11 +56,11 @@ M.config = function()
 			end, { "i", "s" }),
 		}),
 		sources = cmp.config.sources({
-			{ name = "copilot" },
 			{ name = "nvim_lsp" },
+			{ name = "copilot" },
+			{ name = "path" },
 			{ name = "buffer" },
 			{ name = "luasnip" },
-			{ name = "path" },
 		}),
 		preselect = "item",
 		formatting = {
@@ -69,12 +68,11 @@ M.config = function()
 			format = require("kind").cmp_format(),
 		},
 		experimental = {
-			ghost_text = true,
+			ghost_text = false,
 		},
 	}
 
 	cmp.setup(cmp_config)
-	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 return M

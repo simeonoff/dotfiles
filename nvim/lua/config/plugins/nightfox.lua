@@ -75,6 +75,64 @@ M.config = function()
 					fg = palette.bg2,
 					bg = palette.bg2,
 				},
+				NotifyINFOBorder = {
+					fg = palette.bg2,
+					bg = palette.bg2,
+				},
+				NotifyINFOBody = {
+					bg = palette.bg2,
+				},
+				NotifyINFOTitle = {
+					fg = palette.green.base,
+					bg = palette.bg2,
+				},
+				NotifyWARNBorder = {
+					fg = palette.bg2,
+					bg = palette.bg2,
+				},
+				NotifyWARNBody = {
+					bg = palette.bg2,
+				},
+				NotifyWARNTitle = {
+					fg = palette.orange.base,
+					bg = palette.bg2,
+				},
+				NotifyERRORBorder = {
+					fg = palette.bg2,
+					bg = palette.bg2,
+				},
+				NotifyERRORBody = {
+					bg = palette.bg2,
+				},
+				NotifyERRORTitle = {
+					fg = palette.red.base,
+					bg = palette.bg2,
+				},
+				NotifyTRACEBorder = {
+					fg = palette.bg2,
+					bg = palette.bg2,
+				},
+				NotifyTRACEBody = {
+					bg = palette.bg2,
+				},
+				NotifyTRACETitle = {
+					fg = palette.magenta.base,
+					bg = palette.bg2,
+				},
+				NotifyDEBUGBorder = {
+					fg = palette.bg2,
+					bg = palette.bg2,
+				},
+				NotifyDEBUGBody = {
+					bg = palette.bg2,
+				},
+				NotifyDEBUGTitle = {
+					fg = palette.black.base,
+					bg = palette.bg2,
+				},
+                IndentBlankLineScope = {
+                    bg = palette.bg2
+                }
 			},
 		},
 	})

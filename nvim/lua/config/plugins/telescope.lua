@@ -10,6 +10,7 @@ return {
 	},
 	keys = {
 		{ "<leader>f", project_files, desc = "Find File" },
+		{ "<leader>r", project_files, desc = "Recent Files" },
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -92,6 +93,14 @@ return {
 		vim.keymap.set("n", "<leader>/", function()
 			telescopePickers.prettyGrepPicker({ picker = "live_grep" })
 		end, { desc = "Global search" })
+
+		vim.keymap.set("n", "<leader>r", function()
+			telescopePickers.prettyFilesPicker({ picker = "oldfiles" })
+		end, { desc = "Recent files" })
+
+		vim.keymap.set("n", "<leader><leader>", function()
+			telescopePickers.prettyBuffersPicker()
+		end, { desc = "Pick from open buffeers" })
 
 		vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Broser git branches in current project" })
 		vim.keymap.set("n", "<leader>'", builtin.resume, { desc = "Resume the last opened telescope prompt" })

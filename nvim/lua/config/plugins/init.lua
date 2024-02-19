@@ -6,6 +6,8 @@ return {
 		main = "ibl",
 		config = function()
 			require("ibl").setup()
+            vim.cmd.highlight('clear @ibl.scope.underline.1')
+            vim.cmd.highlight('link @ibl.scope.underline.1 IndentBlankLineScope')
 		end,
 	},
 	{
@@ -55,6 +57,7 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		event = "BufReadPre",
+        enabled = false,
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,

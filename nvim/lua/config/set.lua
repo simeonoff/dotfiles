@@ -99,3 +99,9 @@ if vim.fn.has("nvim-0.8") == 1 then
 	vim.opt.cmdheight = 0
 	vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
 end
+
+-- Disable tmux navigator when zooming the vim pane
+vim.g.tmux_navigator_disable_when_zoomed = 1
+
+-- If the tmux window is zoomed, keep it zoomed when moving from vim to another pane
+vim.g.tmux_navigator_preserve_zoom = 1
