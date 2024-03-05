@@ -36,7 +36,7 @@ return {
 	},
 
 	-- Make '.' work with plugin motions
-	{ "tpope/vim-repeat", event = "BufReadPre" },
+	-- { "tpope/vim-repeat", event = "BufReadPre" },
 
 	-- Read .editorconfig rules.
 	{ "editorconfig/editorconfig-vim", event = "BufReadPre" },

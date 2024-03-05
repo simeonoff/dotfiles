@@ -61,4 +61,17 @@ M.cmp_format = function()
 	end
 end
 
+M.diagnostic_signs = {
+	error = "󰅚 ",
+	warn = "󰗖 ",
+	hint = "󱇮 ",
+	info = "󰰅 ",
+}
+
+M.diff_icons = {
+	added = "󰐙 ",
+	modified = "󰻃 ",
+	removed = "󰍷 ",
+}
+
 return M

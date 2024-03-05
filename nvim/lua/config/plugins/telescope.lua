@@ -87,8 +87,6 @@ return {
 			},
 		})
 
-		telescope.load_extension("workspaces")
-
 		-- Mappings
 		vim.keymap.set("n", "<leader>/", function()
 			telescopePickers.prettyGrepPicker({ picker = "live_grep" })

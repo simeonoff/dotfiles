@@ -27,6 +27,9 @@ vim.opt.smartcase = true
 -- enable smartindent
 vim.opt.smartindent = true
 
+-- copy indent from current line when starting a new line
+vim.opt.autoindent = true
+
 -- enable mouse support
 vim.opt.mouse = "a"
 
@@ -34,8 +37,14 @@ vim.opt.mouse = "a"
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+-- ignore case when searching
+vim.opt.ignorecase = true
+
+-- Configure backspace behavior in insert mode to allow deleting over line starts, end-of-line characters, and indentation.
+vim.opt.backspace = { "start", "eol", "indent" }
+
 -- colors and column width
-vim.opt.colorcolumn = "120"
+-- vim.opt.colorcolumn = "120"
 
 -- row offset number before scrolling
 vim.opt.scrolloff = 8

@@ -1,5 +1,6 @@
 local M = {
 	"natecraddock/workspaces.nvim",
+    enabled = false,
 	cmd = { "WorkspacesList", "Telescope workspaces" },
 	keys = {
 		{ "<leader>P", "<cmd>Telescope workspaces<cr>", desc = "List workspaces" },

@@ -9,7 +9,12 @@ M.config = function()
 
 	trouble.setup({
 		auto_open = false,
-		use_diagnostic_sign = true,
+		indent_lines = false,
+		use_diagnostic_signs = true,
+		padding = false,
+		icons = false,
+		fold_open = " - ", -- icon used for open folds
+		fold_closed = " + ", -- icon used for closed folds
 	})
 
 	vim.keymap.set("n", "<leader>tt", function()

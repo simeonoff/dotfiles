@@ -1,6 +1,7 @@
 return {
 	"SmiteshP/nvim-navic",
 	event = "BufReadPre",
+    enabled = false,
 	init = function()
 		vim.g.navic_silence = true
 		require("utils").on_attach(function(client, buffer)

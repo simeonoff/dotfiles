@@ -35,7 +35,6 @@ M.config = function()
 		desc = "disable status and tabline for alpha",
 		callback = function()
 			vim.go.laststatus = 0
-			vim.opt.showtabline = 0
 		end,
 	})
 	vim.api.nvim_create_autocmd("BufUnload", {
@@ -43,7 +42,6 @@ M.config = function()
 		desc = "enable status and tabline after alpha",
 		callback = function()
 			vim.go.laststatus = 3
-			vim.opt.showtabline = 2
 		end,
 	})
 end

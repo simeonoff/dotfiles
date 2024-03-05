@@ -18,21 +18,61 @@ M.dependencies = {
 
 M.config = function()
 	local lsp = require("lsp-zero")
+	local lspconfig = require("lspconfig.configs")
 	local pickers = require("telescopePickers")
+	local signs = require("kind").diagnostic_signs
+	local goto_definition = require("utils").goto_definition
+
+	--Enable (broadcasting) snippet capability for completion
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 	require("mason").setup({
 		ui = {
 			icons = {
-				package_installed = "✓",
-				package_pending = "➜",
-				package_uninstalled = "✗",
+				package_installed = "󰦕 ",
+				package_pending = "󰦘 ",
+				package_uninstalled = "󰦗 ",
 			},
 		},
+	})
+
+	if not lspconfig.somesass_ls then
+		lspconfig.somesass_ls = {
+			default_config = {
+				name = "somesass_ls",
+				cmd = {
+					"some-sass-language-server",
+					"--stdio",
+				},
+				filetypes = { "scss", "sass" },
+				root_dir = function()
+					local root_patterns = { ".git", "node_modules" }
+					return vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
+				end,
+				settings = {
+					somesass = {
+						scanImportedFiles = true,
+						scannerDepth = 30,
+						scanneerExclude = { "**/.git/**", "**/bower_components/**" },
+						suggestAllFromOpenDocument = true,
+						suggestFromUseOnly = false,
+						suggestFunctionsInStringContextAfterSymbols = " (+-*%",
+						suggestionStyle = "all",
+					},
+				},
+			},
+		}
+	end
+
+	require("lspconfig").somesass_ls.setup({
+		capabilities = lsp.get_capabilities(),
 	})
 
 	require("mason-lspconfig").setup({
 		ensure_installed = {
 			"angularls",
+			"bashls",
 			"cssls",
 			"emmet_ls",
 			"eslint",
@@ -50,8 +90,8 @@ M.config = function()
 				require("lspconfig").lua_ls.setup({
 					settings = {
 						Lua = {
-							diagnostics = {
-								globals = { "vim" },
+							completion = {
+								callSnippet = "Replace",
 							},
 						},
 					},
@@ -65,6 +105,12 @@ M.config = function()
 							validate = { enable = true },
 						},
 					},
+				})
+			end,
+			cssls = function()
+				require("lspconfig").cssls.setup({
+					filetypes = { "css", "scss", "sass", "less", "typescriptreact", "javascriptreact" },
+					capabilities = capabilities,
 				})
 			end,
 			stylelint_lsp = function()
@@ -85,6 +131,35 @@ M.config = function()
 					filetypes = { "html", "typescriptreact", "javascriptreact", "svelte" },
 				})
 			end,
+			eslint = function()
+				require("lspconfig").eslint.setup({
+					root_dir = function()
+						local root_patterns = { ".git", "node_modules", ".eslintrc.json", ".eslintrc.js" }
+						local root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
+						return root_dir
+					end,
+				})
+			end,
+			angularls = function()
+				local languageServerPath =
+					vim.fn.expand("$HOME/.local/share/nvim/mason/packages/angular-language-server/node_modules")
+				local cmd = {
+					"ngserver",
+					"--stdio",
+					"--tsProbeLocations",
+					languageServerPath,
+					"--ngProbeLocations",
+					languageServerPath .. "/@angular/language-server/node_modules",
+				}
+
+				require("lspconfig").angularls.setup({
+					filetypes = { "typescript", "html" },
+					cmd = cmd,
+					on_new_config = function(new_config)
+						new_config.cmd = cmd
+					end,
+				})
+			end,
 		},
 	})
 
@@ -96,18 +171,13 @@ M.config = function()
 		call_servers = "local",
 	})
 
-	lsp.set_sign_icons({
-		error = "●",
-		warn = "●",
-		hint = "●",
-		info = "●",
-	})
+	lsp.set_sign_icons(signs)
 
 	lsp.on_attach(function(_, bufnr)
 		local opts = { buffer = bufnr, remap = false }
 
 		vim.keymap.set("n", "gd", function()
-			vim.lsp.buf.definition()
+			goto_definition()
 		end, opts)
 		vim.keymap.set("n", "K", function()
 			vim.lsp.buf.hover()

@@ -60,20 +60,20 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	group = group_id,
 	nested = true,
 	callback = function()
-        local excluded_filetypes = {
-            ["neo-tree"] = true,
-            ["NvimTree"] = true, -- Example of adding another filetype
-        }
+		local excluded_filetypes = {
+			["neo-tree"] = true,
+			["NvimTree"] = true, -- Example of adding another filetype
+		}
 		local ft = vim.bo.filetype
 
 		if not excluded_filetypes[ft] then
-            -- Proceed with setting root_dir and changing directory
-            local root = vim.b.root_dir or utils.get_root()
+			-- Proceed with setting root_dir and changing directory
+			local root = vim.b.root_dir or utils.get_root()
 
-            if not vim.b.root_dir then
-                vim.b.root_dir = root
-                vim.api.nvim_buf_set_var(0, "root_dir", root)
-            end
+			if not vim.b.root_dir then
+				vim.b.root_dir = root
+				vim.api.nvim_buf_set_var(0, "root_dir", root)
+			end
 		end
 	end,
 })
@@ -104,5 +104,26 @@ vim.api.nvim_create_autocmd("RecordingLeave", {
 				})
 			end)
 		)
+	end,
+})
+
+-- Automatically jump to the last known cursor position
+vim.api.nvim_create_autocmd("BufRead", {
+	callback = function(opts)
+		vim.api.nvim_create_autocmd("BufWinEnter", {
+			once = true,
+			buffer = opts.buf,
+			callback = function()
+				local ft = vim.bo[opts.buf].filetype
+				local last_known_line = vim.api.nvim_buf_get_mark(opts.buf, '"')[1]
+				if
+					not (ft:match("commit") and ft:match("rebase"))
+					and last_known_line > 1
+					and last_known_line <= vim.api.nvim_buf_line_count(opts.buf)
+				then
+					vim.api.nvim_feedkeys([[g`"]], "nx", false)
+				end
+			end,
+		})
 	end,
 })

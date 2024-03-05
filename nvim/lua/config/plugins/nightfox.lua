@@ -2,6 +2,7 @@ local M = {
 	"EdenEast/nightfox.nvim",
 	lazy = false,
 	priority = 999,
+    enabled = true
 }
 
 local colorscheme = require("config.ui").colorscheme
@@ -132,6 +133,9 @@ M.config = function()
 				},
                 IndentBlankLineScope = {
                     bg = palette.bg2
+                },
+                FlashPromptIcon = {
+                    fg = palette.orange.base
                 }
 			},
 		},

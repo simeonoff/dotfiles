@@ -10,6 +10,11 @@ return {
 	config = function()
 		local treesitter = require("nvim-treesitter.configs")
 
+        -- Use a fork of the tree-sitter-scss parser for better highlighting
+		local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+		parser_configs.scss.install_info.url = "https://github.com/savetheclocktower/tree-sitter-scss"
+		parser_configs.scss.install_info.revision = "97a48700a2cd8bf851c4b8edc29a8a8631c419a0"
+
 		treesitter.setup({
 			ignore_install = {
 				"help",
@@ -21,7 +26,7 @@ return {
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = false,
-				-- disable = { "typescript" },
+				-- disable = { "scss" },
 			},
 			textobjects = {
 				select = {
@@ -61,7 +66,7 @@ return {
 				"vim",
 			},
 			indent = {
-				enable = true,
+				enable = false,
 			},
 			autotag = {
 				enable = true,
