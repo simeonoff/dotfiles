@@ -10,7 +10,7 @@ return {
 	config = function()
 		local treesitter = require("nvim-treesitter.configs")
 
-        -- Use a fork of the tree-sitter-scss parser for better highlighting
+		-- Use a fork of the tree-sitter-scss parser for better highlighting
 		local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 		parser_configs.scss.install_info.url = "https://github.com/savetheclocktower/tree-sitter-scss"
 		parser_configs.scss.install_info.revision = "97a48700a2cd8bf851c4b8edc29a8a8631c419a0"
@@ -39,8 +39,8 @@ return {
 						["ic"] = { query = "@class.inner", desc = "Select the inner part of a class" },
 						["a="] = { query = "@assignment.outer", desc = "Select the outer part of an assignment" },
 						["i="] = { query = "@assignment.inner", desc = "Select the inner part of an assignment" },
-						["l="] = { query = "@assignment.lhs", desc = "Select the lhs of an assignment" },
-						["r="] = { query = "@assignment.rhs", desc = "Select the lhs of an assignment" },
+						-- ["l="] = { query = "@assignment.lhs", desc = "Select the lhs of an assignment" },
+						-- ["r="] = { query = "@assignment.rhs", desc = "Select the lhs of an assignment" },
 					},
 				},
 			},

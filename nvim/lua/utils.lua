@@ -110,24 +110,4 @@ M.rename_cword = function()
 	end)
 end
 
-M.goto_definition = function()
-    local autocmd_id
-    -- Define a function to center the view and remove the autocmd
-    local function centerOnce()
-        vim.cmd("normal! zz")
-        -- Remove the autocmd after centering once
-        vim.api.nvim_del_autocmd(autocmd_id)
-    end
-
-    -- Create an autocmd that calls centerOnce() on CursorMoved
-    local group = vim.api.nvim_create_augroup("LspDefinitionCentering", { clear = true })
-    autocmd_id = vim.api.nvim_create_autocmd("CursorMoved", {
-        group = group,
-        callback = centerOnce,
-    })
-
-    -- Jump to the definition
-    vim.lsp.buf.definition()
-end
-
 return M

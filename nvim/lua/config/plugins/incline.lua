@@ -30,19 +30,16 @@ M.config = function()
 					removed = diff_signs.removed,
 				}
 				local signs = vim.b[props.buf].gitsigns_status_dict
-				local labels = {}
+				local label = {}
 				if signs == nil then
-					return labels
+					return label
 				end
 				for name, icon in pairs(icons) do
 					if tonumber(signs[name]) and signs[name] > 0 then
-						table.insert(labels, { icon .. signs[name] .. " ", group = "Diff" .. name })
+						table.insert(label, { icon .. " " .. signs[name] .. " ", group = "Diff" .. name })
 					end
 				end
-				if #labels > 0 then
-					table.insert(labels, { "┊ " })
-				end
-				return labels
+				return label
 			end
 
 			local function get_diagnostic_label()
@@ -52,27 +49,36 @@ M.config = function()
 					local n =
 						#vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
 					if n > 0 then
-						table.insert(label, { icon .. n .. " ", group = "DiagnosticSign" .. severity })
+						table.insert(label, { icon .. " " .. n .. " ", group = "DiagnosticSign" .. severity })
 					end
-				end
-				if #label > 0 then
-					table.insert(label, { "┊ " })
 				end
 				return label
 			end
 
 			return {
-				{ get_git_diff(), guibg = colors.bg1 },
-				{ get_diagnostic_label(), guibg = colors.bg1 },
-				{ "", guifg = bg, guibg = colors.bg1 },
+				#get_diagnostic_label() > 0 and {
+					{ "", guifg = bg, guibg = colors.bg1 },
+					{ " ", guibg = bg },
+					{ get_diagnostic_label(), guibg = bg },
+					{ "", guifg = bg, guibg = colors.bg1 },
+					{ " ", guibg = colors.bg1 },
+				} or "",
+				#get_git_diff() > 0 and {
+					{ "", guifg = bg, guibg = colors.bg1 },
+					{ " ", guibg = bg },
+					{ get_git_diff(), guibg = bg },
+					{ "", guifg = bg, guibg = colors.bg1 },
+					{ " ", guibg = colors.bg1 },
+				} or "",
 				{
+					{ "", guifg = bg, guibg = colors.bg1 },
 					ft_icon and { " ", ft_icon, " ", guifg = ft_color },
 					{ " " .. fname .. " ", gui = modified and "italic" or "none" },
 					modified and "○" or "",
 					guibg = bg,
 					guifg = fg,
+					{ "", guifg = bg, guibg = colors.bg1 },
 				},
-				{ "", guifg = bg, guibg = colors.bg1 },
 			}
 		end,
 	})

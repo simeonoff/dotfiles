@@ -10,7 +10,6 @@ M.dependencies = {
 	{ "neovim/nvim-lspconfig" },
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
-	{ "mattn/emmet-vim" },
 
 	-- JSON schemas
 	{ "b0o/SchemaStore.nvim" },
@@ -18,10 +17,8 @@ M.dependencies = {
 
 M.config = function()
 	local lsp = require("lsp-zero")
-	local lspconfig = require("lspconfig.configs")
 	local pickers = require("telescopePickers")
 	local signs = require("kind").diagnostic_signs
-	local goto_definition = require("utils").goto_definition
 
 	--Enable (broadcasting) snippet capability for completion
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -37,37 +34,10 @@ M.config = function()
 		},
 	})
 
-	if not lspconfig.somesass_ls then
-		lspconfig.somesass_ls = {
-			default_config = {
-				name = "somesass_ls",
-				cmd = {
-					"some-sass-language-server",
-					"--stdio",
-				},
-				filetypes = { "scss", "sass" },
-				root_dir = function()
-					local root_patterns = { ".git", "node_modules" }
-					return vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
-				end,
-				settings = {
-					somesass = {
-						scanImportedFiles = true,
-						scannerDepth = 30,
-						scanneerExclude = { "**/.git/**", "**/bower_components/**" },
-						suggestAllFromOpenDocument = true,
-						suggestFromUseOnly = false,
-						suggestFunctionsInStringContextAfterSymbols = " (+-*%",
-						suggestionStyle = "all",
-					},
-				},
-			},
-		}
-	end
-
-	require("lspconfig").somesass_ls.setup({
-		capabilities = lsp.get_capabilities(),
-	})
+	-- Only temporary until the following PRs are merged:
+	-- mason-registry - https://github.com/mason-org/mason-registry/pull/4746
+	-- mason-lspconfig - https://github.com/williamboman/mason-lspconfig.nvim/pull/372
+	require("lspconfig").somesass_ls.setup({})
 
 	require("mason-lspconfig").setup({
 		ensure_installed = {
@@ -163,21 +133,13 @@ M.config = function()
 		},
 	})
 
-	lsp.preset({
-		setup_servers_on_start = true,
-		set_lsp_keymaps = true,
-		configure_diagnostics = true,
-		manage_nvim_cmp = false,
-		call_servers = "local",
-	})
-
 	lsp.set_sign_icons(signs)
 
 	lsp.on_attach(function(_, bufnr)
 		local opts = { buffer = bufnr, remap = false }
 
 		vim.keymap.set("n", "gd", function()
-			goto_definition()
+			vim.lsp.buf.definition()
 		end, opts)
 		vim.keymap.set("n", "K", function()
 			vim.lsp.buf.hover()
@@ -214,8 +176,6 @@ M.config = function()
 	vim.diagnostic.config({
 		virtual_text = false,
 	})
-
-	lsp.setup()
 end
 
 return M
