@@ -34,7 +34,7 @@ M.config = function()
 		},
 	})
 
-	-- Only temporary until the following PRs are merged:
+	-- Only temporary until the following PRs get merged:
 	-- mason-registry - https://github.com/mason-org/mason-registry/pull/4746
 	-- mason-lspconfig - https://github.com/williamboman/mason-lspconfig.nvim/pull/372
 	require("lspconfig").somesass_ls.setup({})
@@ -103,11 +103,12 @@ M.config = function()
 			end,
 			eslint = function()
 				require("lspconfig").eslint.setup({
-					root_dir = function()
-						local root_patterns = { ".git", "node_modules", ".eslintrc.json", ".eslintrc.js" }
-						local root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
-						return root_dir
-					end,
+					root_dir = require("lspconfig").util.root_pattern(
+						".git",
+						"node_modules",
+						".eslintrc.json",
+						".eslintrc.js"
+					),
 				})
 			end,
 			angularls = function()
