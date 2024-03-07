@@ -5,6 +5,7 @@ return {
 	enabled = true,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
+        "windwp/nvim-ts-autotag",
 	},
 
 	config = function()
@@ -15,6 +16,7 @@ return {
 		parser_configs.scss.install_info.url = "https://github.com/savetheclocktower/tree-sitter-scss"
 		parser_configs.scss.install_info.revision = "97a48700a2cd8bf851c4b8edc29a8a8631c419a0"
 
+        ---@diagnostic disable-next-line: missing-fields
 		treesitter.setup({
 			ignore_install = {
 				"help",

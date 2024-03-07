@@ -6,14 +6,16 @@ return {
 		main = "ibl",
 		config = function()
 			require("ibl").setup()
-            vim.cmd.highlight('clear @ibl.scope.underline.1')
-            vim.cmd.highlight('link @ibl.scope.underline.1 IndentBlankLineScope')
+			vim.cmd.highlight("clear @ibl.scope.underline.1")
+			vim.cmd.highlight("link @ibl.scope.underline.1 IndentBlankLineScope")
 		end,
 	},
 	{
 		"nvim-tree/nvim-web-devicons",
 		enabled = true,
 	},
+
+	"EdenEast/nightfox.nvim",
 	"MunifTanjim/nui.nvim",
 
 	-- A collection of nvim APIs
@@ -35,9 +37,6 @@ return {
 		end,
 	},
 
-	-- Make '.' work with plugin motions
-	-- { "tpope/vim-repeat", event = "BufReadPre" },
-
 	-- Read .editorconfig rules.
 	{ "editorconfig/editorconfig-vim", event = "BufReadPre" },
 
@@ -51,27 +50,7 @@ return {
 	},
 
 	-- Version Control
-	{ "tpope/vim-fugitive", event = "BufEnter" },
-
-	-- Auto pair characters
-	{
-		"windwp/nvim-autopairs",
-		event = "BufReadPre",
-        enabled = false,
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	},
-
-	--Auto close HTML tags in Svelte, Astro, Lit, etc.
-	{ "windwp/nvim-ts-autotag", event = "BufReadPre" },
-
-	{
-		"shortcuts/no-neck-pain.nvim",
-		cmd = { "NoNeckPain" },
-		version = "*",
-		enabled = false,
-	},
+	{ "tpope/vim-fugitive", event = "BufEnter", enabled = false },
 
 	-- Tmux naviation plugin
 	{

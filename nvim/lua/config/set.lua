@@ -77,20 +77,6 @@ vim.opt.showmode = false
 -- set global statusline
 vim.go.laststatus = 3
 
-vim.opt.fillchars = {
-	--   horiz = "━",
-	--   horizup = "┻",
-	--   horizdown = "┳",
-	--   vert = "┃",
-	--   vertleft = "┫",
-	--   vertright = "┣",
-	--   verthoriz = "╋",im.o.fillchars = [[eob: ,
-	-- fold = " ",
-	foldopen = "",
-	-- foldsep = " ",
-	foldclose = "",
-}
-
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.pumheight = 10 -- Maximum number of entries in a popup
 vim.opt.splitbelow = true -- Put new windows below current
@@ -114,3 +100,6 @@ vim.g.tmux_navigator_disable_when_zoomed = 1
 
 -- If the tmux window is zoomed, keep it zoomed when moving from vim to another pane
 vim.g.tmux_navigator_preserve_zoom = 1
+
+-- Disable intro screen
+vim.opt.shortmess:append({ I = true })
