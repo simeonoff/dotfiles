@@ -53,7 +53,7 @@ vim.opt.scrolloff = 8
 vim.opt.conceallevel = 3
 
 -- configure completion menu
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.completeopt = { "menu", "menuone" }
 
 -- configure clipboard
 vim.opt.clipboard = "unnamedplus"

@@ -1,7 +1,7 @@
 local utils = require("utils")
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center the view when navigating down" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center the view when navigation up" })
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center the view when navigating down" })
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center the view when navigation up" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "Center the view when going over next match" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Center the view when going over previous match" })
 
@@ -22,16 +22,12 @@ vim.keymap.set({ "n", "x" }, "<leader>s", utils.rename_cword, { desc = "Rename t
 vim.keymap.set("n", "<leader>gx", utils.open_location, { silent = true, desc = "Open the file/url under the cursor" })
 
 vim.keymap.set("n", "<leader>gs", function()
-	vim.cmd("LazyGit")
-end, { desc = "Toggle Lazygit" })
+	vim.cmd("Git status")
+end, { desc = "Toggle git status view" })
 
 vim.keymap.set("n", "<leader>gc", function()
-	vim.cmd("tab Git commit")
-end, { silent = true, desc = "Open git commit" })
-
-vim.keymap.set("n", "<leader>gp", function()
-	vim.cmd("Git push")
-end, { silent = true, desc = "Git push" })
+	vim.cmd("tab Git commits")
+end, { silent = true, desc = "Open git commits" })
 
 vim.keymap.set("n", "<leader>bo", function()
 	vim.cmd("BufOnly")

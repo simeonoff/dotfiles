@@ -127,3 +127,12 @@ vim.api.nvim_create_autocmd("BufRead", {
 		})
 	end,
 })
+
+-- Changes the colorscheme at runtime to the given argument
+-- executed when the paint program is run via paint-nvim
+vim.api.nvim_create_user_command("PaintTheme", function(opts)
+	local ui = require("config.ui")
+	local colorscheme = opts.args
+
+	ui.colorscheme.value = colorscheme
+end, { nargs = 1 })

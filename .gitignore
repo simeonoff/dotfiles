@@ -1,1 +1,5 @@
 packer_compiled.lua
+*.bak
+node_modules
+.DS_Store
+tmux/plugins

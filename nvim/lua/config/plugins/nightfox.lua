@@ -5,9 +5,8 @@ local M = {
 	enabled = true,
 }
 
-local colorscheme = require("config.ui").colorscheme
-
 M.config = function()
+	local colorscheme = require("config.ui").colorscheme.value
 	local palette = require("nightfox.palette").load(colorscheme)
 
 	require("nightfox").setup({
@@ -137,9 +136,13 @@ M.config = function()
 				FlashPromptIcon = {
 					fg = palette.orange.base,
 				},
+				GitSignsCurrentLineBlame = {
+					fg = palette.fg3,
+				},
 			},
 		},
 	})
+
 	vim.cmd.colorscheme(colorscheme)
 end
 

@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+import { attach } from "neovim";
+import fs from "fs";
+import path from "path";
+
+const socketDir = "/tmp";
+const socketPrefix = "nvim_instance_";
+
+// Retrieve the colorscheme name from command-line arguments
+const colorscheme = process.argv[2];
+
+if (!colorscheme) {
+  console.error("Please specify a colorscheme name.");
+  process.exit(1);
+}
+
+// Find `nvim` on the system and open a channel to it.
+(async function () {
+  // Discover socket files
+  const files = fs.readdirSync(socketDir);
+  const nvimSockets = files.filter((file) => file.startsWith(socketPrefix));
+
+  for (const socket of nvimSockets) {
+    const socketPath = path.join(socketDir, socket);
+    try {
+      const nvim = attach({ socket: socketPath });
+      await nvim.command(`PaintTheme ${colorscheme}`);
+    } catch (error) {
+      console.error("Failed to execute Neovim command:", error);
+    }
+  }
+
+  process.exit(0);
+})();

@@ -15,6 +15,56 @@ end
 
 vim.opt.runtimepath:prepend(lazypath)
 
+local icons = {
+	cmd = "󰝶 ",
+	config = "󰮎 ",
+	event = "󰲼 ",
+	ft = "󱨧 ",
+	init = "󰮍 ",
+	import = "󰳞 ",
+	keys = "󱞇 ",
+	lazy = "",
+	loaded = "󰦕 ",
+	not_loaded = "󰦖 ",
+	plugin = "󰗐 ",
+	runtime = "󰪞 ",
+	require = "󰗐 ",
+	source = "󰮍 ",
+	start = "󰣿 ",
+	task = "󰾩 ",
+	list = {
+		"●",
+		"➜",
+		"★",
+		"‒",
+	},
+}
+
+local no_icons = {
+	cmd = "",
+	config = "",
+	event = "",
+	ft = "",
+	init = "",
+	import = "",
+	keys = "",
+	lazy = "",
+	loaded = "",
+	not_loaded = "",
+	plugin = "",
+	runtime = "",
+	require = "",
+	source = "",
+	start = "",
+	task = "",
+	list = {
+		"●",
+		"➜",
+		"★",
+		"‒",
+	},
+}
+
 require("lazy").setup("config.plugins", {
 	dev = {
 		path = "~/Projects",
@@ -24,36 +74,13 @@ require("lazy").setup("config.plugins", {
 		lazy = true,
 	},
 	install = {
-		colorscheme = { colorscheme },
+		colorscheme = { colorscheme.value },
 	},
 	checker = {
 		enabled = true,
 	},
 	ui = {
-		icons = {
-			cmd = "󰝶 ",
-			config = "󰮎 ",
-			event = "󰲼 ",
-			ft = "󱨧 ",
-			init = "󰮍 ",
-			import = "󰳞 ",
-			keys = "󱞇 ",
-			lazy = "󰒲 ",
-			loaded = "󰦕 ",
-			not_loaded = "󰦖 ",
-			plugin = "󰗐 ",
-			runtime = "󰪞 ",
-			require = "󰗐 ",
-			source = "󰮍 ",
-			start = "󰣿 ",
-			task = "󰾩 ",
-			list = {
-				"●",
-				"➜",
-				"★",
-				"‒",
-			},
-		},
+		icons = no_icons,
 	},
 })
 

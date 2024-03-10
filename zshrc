@@ -4,8 +4,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 autoload -Uz compinit
 
-# export TERM=xterm-256color
-
 # Set name of the theme to load --- if set to "random", it will load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -27,10 +25,11 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-alias vim=nvim
 
 # Aliases
 source ~/.shell/aliases.sh
+alias vim="env TERM=wezterm nvim --listen /tmp/nvim_instance_$(echo $$).sock"
+alias cd="z"
 
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
@@ -50,20 +49,3 @@ eval "$(starship init zsh)"
 
 # Load zoxide
 eval "$(zoxide init zsh)"
-
-# Add Pomodoro functions
-work () {
-  duration=$1
-  timer "$duration" && terminal-notifier -message "Pomodoro"\
-    -title "Work Timer is up! Take a Break 😊"\
-    -appIcon "~/Pictures/tomato.png"\
-    -sound Crystal
-}
-
-rest () {
-  duration=$1
-  timer "$duration" && terminal-notifier -message "Pomodoro"\
-    -title "Break is over! Get back to work 😬"\
-    -appIcon "~/Pictures/tomato.png"\
-    -sound Crystal
-}

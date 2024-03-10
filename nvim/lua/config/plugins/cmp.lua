@@ -70,6 +70,9 @@ M.config = function()
 		experimental = {
 			ghost_text = false,
 		},
+        completion = {
+            completeopt = "menu,menuone",
+        },
 	}
 
 	cmp.setup(cmp_config)

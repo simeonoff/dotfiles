@@ -5,7 +5,7 @@ local M = {
 
 M.config = function()
 	-- local helpers = require("incline.helpers")
-	local colorscheme = require("config.ui").colorscheme
+	local colorscheme = require("config.ui").colorscheme.value
 	local colors = require("nightfox.palette").load(colorscheme)
 	local devicons = require("nvim-web-devicons")
 

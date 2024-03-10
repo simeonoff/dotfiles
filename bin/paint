@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Assumes `yq` is installed and available in the PATH
+
+parse_and_execute() {
+    local program=$1
+    local color_scheme=$2
+    local config_file="$HOME/.config/paint.conf"
+
+    local path=$(yq e ".$program.path" "$config_file")
+    local command_template=$(yq e ".$program.command" "$config_file")
+
+    if [[ -n "$path" && -n "$command_template" ]]; then
+        local command=${command_template//"{{path}}"/$path}
+        command=${command//"{{color_scheme}}"/$color_scheme}
+        eval "$command"
+    else
+        echo "$program configuration not found."
+    fi
+}
+
+main() {
+    local config_file="$HOME/.config/paint.conf"
+    # Extract keys (program names) from the YAML configuration
+    IFS=$'\n' read -r -d '' -a programs < <(yq e 'keys | .[]' "$config_file" && printf '\0')
+    
+    for program in "${programs[@]}"; do
+        parse_and_execute "$program" "$1"
+    done
+}
+
+main "$@"

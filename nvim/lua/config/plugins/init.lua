@@ -1,5 +1,20 @@
 return {
-	-- Eyecandy
+	-- Theme
+	"EdenEast/nightfox.nvim",
+
+	-- A UI library for Neovim
+	"MunifTanjim/nui.nvim",
+
+	-- A collection of nvim APIs
+	"nvim-lua/plenary.nvim",
+
+	-- A collection of icons
+	"nvim-tree/nvim-web-devicons",
+
+    -- Reload plugins lazily
+    "MaximilianLloyd/lazy-reload.nvim",
+
+	-- Show indent lines and highlight scope
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPre",
@@ -10,16 +25,6 @@ return {
 			vim.cmd.highlight("link @ibl.scope.underline.1 IndentBlankLineScope")
 		end,
 	},
-	{
-		"nvim-tree/nvim-web-devicons",
-		enabled = true,
-	},
-
-	"EdenEast/nightfox.nvim",
-	"MunifTanjim/nui.nvim",
-
-	-- A collection of nvim APIs
-	"nvim-lua/plenary.nvim",
 
 	-- Fuzzy finding
 	"junegunn/fzf.vim",
@@ -37,9 +42,6 @@ return {
 		end,
 	},
 
-	-- Read .editorconfig rules.
-	{ "editorconfig/editorconfig-vim", event = "BufReadPre" },
-
 	-- Handle buffer deletion
 	{
 		"famiu/bufdelete.nvim",
@@ -49,15 +51,13 @@ return {
 		end,
 	},
 
-	-- Version Control
-	{ "tpope/vim-fugitive", event = "BufEnter", enabled = false },
-
 	-- Tmux naviation plugin
 	{
 		"christoomey/vim-tmux-navigator",
 		lazy = false,
 	},
 
+    -- A utility function that allows inspecing Lua tables
 	{
 		"kikito/inspect.lua",
 		lazy = false,

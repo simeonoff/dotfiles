@@ -1,0 +1,21 @@
+{
+  "name": "nvim-themr",
+  "version": "0.0.1",
+  "description": "A simple binary application that works with neovim to change the theme",
+  "keywords": [
+    "neovim",
+    "theme",
+    "colorscheme"
+  ],
+  "bin": {
+    "nvim-themr": "nvim-paint"
+  },
+  "author": "Simeon Simeonoff <hello@simeonoff.ninja> (https://simeonoff.ninja/)",
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "module",
+  "dependencies": {
+    "neovim": "^5.0.1"
+  }
+}

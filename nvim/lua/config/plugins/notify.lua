@@ -6,9 +6,10 @@ local M = {
 M.config = function()
 	local notify = require("notify")
 
+    ---@diagnostic disable: missing-fields
 	notify.setup({
 		stages = "static",
-        fps = 120,
+		fps = 120,
 		icons = {
 			DEBUG = " ",
 			ERROR = " ",

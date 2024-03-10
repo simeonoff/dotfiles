@@ -24,12 +24,6 @@
     ~/.zshrc:
 
 - shell:
-    - command: git submodule sync --recursive
-      description: Sync Submodules
-      quiet: true
-    - command: git submodule update --init --recursive
-      description: Update Submodules
-      quiet: true
     - command: nvim --headless "+Lazy! sync" +qa
       description: Prepare Neovim
       quiet: false
