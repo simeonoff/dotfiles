@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+# Define the list of packages you want to ensure are installed
+packages=("bash" "ca-certificates" "fd" "fontconfig" "fzf" "lazygit" "neovim" "nvm" "ripgrep" "sesh" "starship" "the_silver_searcher" "tmux" "trash" "tree-sitter" "wget" "yq" "zoxide")
+
+# Define the list of cask applications you want to ensure are installed
+casks=("1password-cli" "amethyst" "font-symbols-only-nerd-font" "kitty") # Add more casks as needed
+
+# Function to check if Homebrew is installed
+check_and_install_homebrew() {
+    if ! command -v brew &> /dev/null
+    then
+        echo "Homebrew not installed. Installing Homebrew."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    else
+        echo "Homebrew is already installed."
+    fi
+}
+
+# Function to check and install a package if it's not already installed
+install_package_if_missing() {
+    package_name=$1
+    if ! brew list $package_name &> /dev/null
+    then
+        echo "Package $package_name is not installed. Installing."
+        brew install $package_name
+    else
+        echo "Package $package_name is already installed."
+    fi
+}
+
+# Function to check and install a cask if it's not already installed
+install_cask_if_missing() {
+    cask_name=$1
+    if ! brew list --cask $cask_name &> /dev/null
+    then
+        echo "Cask $cask_name is not installed. Installing."
+        brew install --cask $cask_name
+    else
+        echo "Cask $cask_name is already installed."
+    fi
+}
+
+# Main script starts here
+
+# First, ensure Homebrew is installed
+check_and_install_homebrew
+
+# Ensure all desired regular packages are installed
+for package in "${packages[@]}"
+do
+    install_package_if_missing $package
+done
+
+# Ensure all desired casks are installed
+for cask in "${casks[@]}"
+do
+    install_cask_if_missing $cask
+done
+
+echo "🍺 Done brewing. All installed."
+

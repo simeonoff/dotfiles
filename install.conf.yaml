@@ -6,15 +6,14 @@
 - clean: ["~"]
 
 - link:
-    ~/.alacritty.yml:
     ~/.bashrc:
     ~/.config/kitty:
-    ~/.config/neofetch:
+    ~/.config/karabiner:
     ~/.config/nvim:
-    ~/.config/skhd:
-    ~/.config/iterm2-prefs:
-    ~/.config/ranger:
     ~/.config/starship.toml:
+    ~/.config/sesh:
+    ~/.config/paint.conf:
+    ~/.config/wezterm:
     ~/.dotfiles: ""
     ~/.gitconfig:
     ~/.shell:
@@ -24,6 +23,12 @@
     ~/.zshrc:
 
 - shell:
+    - command: ./bin/brewery
+      description: Get things brewing
+      quiet: false
+    - command: ./bin/noder && cd ./bin/paint-nvim && npm ci
+      description: Install node, npm and nvim-paint
+      quiet: false
     - command: nvim --headless "+Lazy! sync" +qa
       description: Prepare Neovim
       quiet: false

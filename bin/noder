@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Function to load NVM scripts
+load_nvm() {
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+
+# Function to install the latest LTS version of Node.js using NVM
+install_latest_lts_node() {
+    local latest_lts_version=$(nvm version-remote --lts)
+    local installed_version=$(nvm version $latest_lts_version)
+
+    if [ "$installed_version" == "N/A" ]; then
+        echo "Latest LTS version of Node.js ($latest_lts_version) is not installed. Installing..."
+        nvm install --lts
+    else
+        echo "Latest LTS version of Node.js ($latest_lts_version) is already installed."
+    fi
+}
+
+# Check if nvm is installed, install if it's not present
+load_nvm
+
+# Install the latest LTS version of Node.js
+install_latest_lts_node
+
+# Verify the installation
+node_version=$(node -v)
+npm_version=$(npm -v)
+
+echo "Installation of Node.js $node_version and npm $npm_version completed successfully."
