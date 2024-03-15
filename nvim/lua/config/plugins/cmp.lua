@@ -21,6 +21,14 @@ M.config = function()
 	local luasnip = require("luasnip")
 	require("luasnip.loaders.from_vscode").lazy_load()
 
+	local has_words_before = function()
+		if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+			return false
+		end
+		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+		return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+	end
+
 	local cmp_config = {
 		snippet = {
 			expand = function(args)
@@ -35,34 +43,44 @@ M.config = function()
 		mapping = cmp.mapping.preset.insert({
 			["<CR>"] = cmp.mapping.confirm({ select = false }),
 
-			["<Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_next_item()
-				elseif luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
+			["<Tab>"] = vim.schedule_wrap(function(fallback)
+				if cmp.visible() and has_words_before() then
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 				else
 					fallback()
 				end
-			end, { "i", "s" }),
+			end),
 
-			["<S-Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_prev_item()
-				elseif luasnip.jumpable(-1) then
-					luasnip.jump(-1)
+			["<S-Tab>"] = vim.schedule_wrap(function(fallback)
+				if cmp.visible() and has_words_before() then
+					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
 				else
 					fallback()
 				end
-			end, { "i", "s" }),
+			end),
 		}),
 		sources = cmp.config.sources({
-			{ name = "nvim_lsp" },
-			{ name = "copilot" },
-			{ name = "path" },
-			{ name = "buffer" },
-			{ name = "luasnip" },
+            -- Copilot cmp plugin always first
+			{ name = "copilot", group_index = 2 },
+			-- Other sources
+			{ name = "nvim_lsp", group_index = 2 },
+			{ name = "path", group_index = 2 },
+			{ name = "buffer", group_index = 2 },
+			{ name = "luasnip", group_index = 2 },
 		}),
-		preselect = "item",
+		-- sorting = {
+		-- 	comparators = {
+		-- 		cmp.config.compare.offset,
+		-- 		cmp.config.compare.exact,
+		-- 		cmp.config.compare.score,
+		-- 		cmp.config.compare.locality,
+		-- 		cmp.config.compare.sort_text,
+		-- 		cmp.config.compare.length,
+		-- 		cmp.config.compare.order,
+		-- 		-- cmp.config.compare.kind,
+		-- 	},
+		-- },
+		-- preselect = "item",
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
 			format = require("kind").cmp_format(),
@@ -70,9 +88,8 @@ M.config = function()
 		experimental = {
 			ghost_text = false,
 		},
-        completion = {
-            completeopt = "menu,menuone",
-        },
+		preselect = cmp.PreselectMode.None,
+		completion = { completeopt = "menu,menuone,noselect" },
 	}
 
 	cmp.setup(cmp_config)

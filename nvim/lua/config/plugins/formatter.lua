@@ -44,6 +44,9 @@ M.config = function()
 				require("formatter.filetypes.css").prettierd,
 				formatters.stylelint,
 			},
+            go = {
+                require("formatter.filetypes.go").goimports,
+            },
 			scss = {
 				require("formatter.filetypes.css").prettierd,
 				formatters.stylelint,

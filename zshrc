@@ -39,13 +39,21 @@ if [ -e $HOME/.local/bin/flutter/bin/flutter ]; then export PATH="${PATH}:${HOME
 export PATH=~/.dotfiles/bin:${PATH}
 export PATH=/usr/local/bin/docfx:${PATH}
 
+# Modifications for go lang with homebrew
+# INFO: remove if not using go via homebrew
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH=${PATH}:${GOPATH}/bin
+
 # nvm use default
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# Load the starship theme
-eval "$(starship init zsh)"
+# Change the config path for Lazygit
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Load zoxide
 eval "$(zoxide init zsh)"
+
+# Load the starship theme
+eval "$(starship init zsh)"

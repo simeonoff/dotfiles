@@ -37,8 +37,10 @@ return {
 					keymaps = {
 						["af"] = { query = "@function.outer", desc = "Select the outer part of a function/method" },
 						["if"] = { query = "@function.inner", desc = "Select the inner part of a function/method" },
-						["ac"] = { query = "@class.outer", desc = "Select the outer part of a class" },
-						["ic"] = { query = "@class.inner", desc = "Select the inner part of a class" },
+						["ab"] = { query = "@block.outer", desc = "Select the outer part of a code block" },
+						["ib"] = { query = "@block.inner", desc = "Select the inner part of a code block" },
+						["ac"] = { query = "@call.outer", desc = "Select the outer part of a cal" },
+						["ic"] = { query = "@call.inner", desc = "Select the inner part of a call" },
 						["a="] = { query = "@assignment.outer", desc = "Select the outer part of an assignment" },
 						["i="] = { query = "@assignment.inner", desc = "Select the inner part of an assignment" },
 						-- ["l="] = { query = "@assignment.lhs", desc = "Select the lhs of an assignment" },

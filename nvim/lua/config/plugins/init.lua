@@ -9,10 +9,55 @@ return {
 	"nvim-lua/plenary.nvim",
 
 	-- A collection of icons
-	"nvim-tree/nvim-web-devicons",
+	{
+		"nvim-tree/nvim-web-devicons",
+		config = function()
+			require("nvim-web-devicons").setup({
+				override = {
+					go = {
+						icon = "",
+						color = "#519aba",
+						cterm_color = "74",
+						name = "Go",
+					},
+				},
+				override_by_filename = {
+					[".editorconfig"] = {
+						icon = "",
+						guifg = "#fff2f2",
+						name = "EditorConfig",
+					},
+					[".eslintignore"] = {
+						icon = "󰱺",
+						guifg = "#a074c4",
+						ctermfg = "140",
+						name = "EslintIgnore",
+					},
+					[".eslintrc"] = {
+						icon = "󰱺",
+						guifg = "#a074c4",
+						ctermfg = "140",
+						name = "Eslintrc",
+					},
+					[".eslintrc.json"] = {
+						icon = "󰱺",
+						guifg = "#a074c4",
+						ctermfg = "140",
+						name = "Eslintrc",
+					},
+					["tsconfig.json"] = {
+						icon = "󰛦",
+						color = "#519aba",
+						cterm_color = "74",
+						name = "TSConfig",
+					},
+				},
+			})
+		end,
+	},
 
-    -- Reload plugins lazily
-    "MaximilianLloyd/lazy-reload.nvim",
+	-- Reload plugins lazily
+	"MaximilianLloyd/lazy-reload.nvim",
 
 	-- Show indent lines and highlight scope
 	{
@@ -57,7 +102,7 @@ return {
 		lazy = false,
 	},
 
-    -- A utility function that allows inspecing Lua tables
+	-- A utility function that allows inspecing Lua tables
 	{
 		"kikito/inspect.lua",
 		lazy = false,
