@@ -80,6 +80,9 @@ require("lazy").setup("config.plugins", {
 		enabled = true,
 	},
 	ui = {
+		border = "rounded",
+		title = "Plugins",
+		title_align = "center",
 		icons = no_icons,
 	},
 })

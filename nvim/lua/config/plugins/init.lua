@@ -120,4 +120,8 @@ return {
 		"kikito/inspect.lua",
 		lazy = false,
 	},
+
+	{
+		import = "config.plugins.local",
+	},
 }

@@ -3,3 +3,4 @@ packer_compiled.lua
 node_modules
 .DS_Store
 tmux/plugins
+nvim/lua/config/plugins/local
