@@ -110,7 +110,7 @@ M.config = function()
 	end, { desc = "Global search" })
 
 	vim.keymap.set("n", "<leader><leader>", function()
-		telescopePickers.prettyBuffersPicker()
+		telescopePickers.prettyGrapplePicker()
 	end, { desc = "Pick from open buffeers" })
 
 	vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Broser git branches in current project" })

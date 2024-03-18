@@ -22,6 +22,14 @@ M.config = function()
 		view_options = {
 			show_hidden = true,
 		},
+		keymaps = {
+			["<C-s>"] = false,
+			["<C-h>"] = false,
+			["<C-t>"] = "actions.select_tab",
+			["<C-p>"] = "actions.preview",
+			["<C-c>"] = "actions.close",
+			["<C-l>"] = false,
+		},
 	})
 end
 

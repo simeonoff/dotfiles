@@ -2,7 +2,7 @@ local M = {
 	"EdenEast/nightfox.nvim",
 	lazy = false,
 	priority = 1000,
-	enabled = true,
+	enabled = false,
 }
 
 M.config = function()
@@ -130,14 +130,31 @@ M.config = function()
 					fg = palette.black.base,
 					bg = palette.bg2,
 				},
-				IndentBlankLineScope = {
-					bg = palette.bg2,
-				},
 				FlashPromptIcon = {
 					fg = palette.orange.base,
 				},
 				GitSignsCurrentLineBlame = {
 					fg = palette.fg3,
+				},
+				WinBarIcon = {
+					bg = palette.bg3,
+					fg = palette.fg0,
+				},
+				WinBarPath = {
+					bg = palette.bg3,
+					fg = palette.fg0,
+				},
+				WinBarPathModified = {
+					bg = palette.bg3,
+					fg = palette.fg0,
+				},
+				WinBarModified = {
+					bg = palette.bg3,
+					fg = palette.orange.bright,
+				},
+				WinBarExtras = {
+					fg = palette.bg3,
+					bg = palette.bg1,
 				},
 			},
 		},

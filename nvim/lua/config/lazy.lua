@@ -67,7 +67,7 @@ local no_icons = {
 
 require("lazy").setup("config.plugins", {
 	dev = {
-		path = "~/Projects",
+		path = "~/Projects/nvim-plugins/",
 		patterns = {},
 	},
 	defaults = {

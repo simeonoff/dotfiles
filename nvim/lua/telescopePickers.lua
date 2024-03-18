@@ -536,45 +536,140 @@ function telescopePickers.prettyHarpoonPicker(marks, localOptions)
 end
 
 function telescopePickers.prettyBuffersPicker(localOptions)
-    if localOptions ~= nil and type(localOptions) ~= 'table' then
-        print("Options must be a table.")
-        return
-    end
+	if localOptions ~= nil and type(localOptions) ~= "table" then
+		print("Options must be a table.")
+		return
+	end
 
-    options = localOptions or {}
+	options = localOptions or {}
 
-    local originalEntryMaker = telescopeMakeEntryModule.gen_from_buffer(options)
+	local originalEntryMaker = telescopeMakeEntryModule.gen_from_buffer(options)
 
-    options.entry_maker = function(line)
-        local originalEntryTable = originalEntryMaker(line)
+	options.entry_maker = function(line)
+		local originalEntryTable = originalEntryMaker(line)
 
-        local displayer = telescopeEntryDisplayModule.create {
-            separator = " ",
-            items = {
-              { width = fileTypeIconWidth },
-              { width = nil },
-              { width = nil },
-              { remaining = true },
-            },
-          }
+		local displayer = telescopeEntryDisplayModule.create({
+			separator = " ",
+			items = {
+				{ width = fileTypeIconWidth },
+				{ width = nil },
+				{ width = nil },
+				{ remaining = true },
+			},
+		})
 
-        originalEntryTable.display = function(entry)
-            local tail, path = telescopePickers.getPathAndTail(entry.filename)
-            local tailForDisplay = tail .. ' '
-            local icon, iconHighlight = telescopeUtilities.get_devicons(tail)
+		originalEntryTable.display = function(entry)
+			local tail, path = telescopePickers.getPathAndTail(entry.filename)
+			local tailForDisplay = tail .. " "
+			local icon, iconHighlight = telescopeUtilities.get_devicons(tail)
 
-            return displayer {
-              { icon, iconHighlight },
-              tailForDisplay,
-              { '(' .. entry.bufnr .. ')', "TelescopeResultsNumber" },
-              { path, "TelescopeResultsComment" },
-            }
-        end
+			return displayer({
+				{ icon, iconHighlight },
+				tailForDisplay,
+				{ "(" .. entry.bufnr .. ")", "TelescopeResultsNumber" },
+				{ path, "TelescopeResultsComment" },
+			})
+		end
 
-        return originalEntryTable
-    end
+		return originalEntryTable
+	end
 
-    require('telescope.builtin').buffers(options)
+	require("telescope.builtin").buffers(options)
+end
+
+function telescopePickers.prettyGrapplePicker(localOptions)
+	local Grapple = require("grapple")
+
+	if localOptions ~= nil and type(localOptions) ~= "table" then
+		print("Options must be a table.")
+		return
+	end
+
+	local options = localOptions or {}
+
+	local generate_finder = function()
+		local tags, err = Grapple.tags()
+
+		if not tags then
+			---@diagnostic disable-next-line: param-type-mismatch
+			return vim.notify(err, vim.log.levels.ERROR)
+		end
+
+		local results = {}
+		for i, tag in ipairs(tags) do
+			---@class grapple.telescope.result
+			local result = {
+				i,
+				tag.path,
+				tag.cursor and tag.cursor[1],
+				tag.cursor and tag.cursor[2],
+			}
+
+			table.insert(results, result)
+		end
+
+		local displayer = telescopeEntryDisplayModule.create({
+			separator = " ",
+			items = {
+				{ width = fileTypeIconWidth },
+				{ width = nil },
+				{ remaining = true },
+			},
+		})
+
+		return finders.new_table({
+			results = results,
+
+			---@param result grapple.telescope.result
+			entry_maker = function(result)
+				local filename = result[2]
+				local lnum = result[3]
+
+				local entry = {
+					value = result,
+					ordinal = filename,
+					filename = filename,
+					lnum = lnum,
+					display = function(entry)
+						local tail, pathToDisplay = telescopePickers.getPathAndTail(entry.value[2])
+						local icon, iconHighlight = telescopeUtilities.get_devicons(tail)
+
+						return displayer({
+							{ icon, iconHighlight },
+							{ tail },
+							{ pathToDisplay, "TelescopeResultsComment" },
+						})
+					end,
+				}
+
+				return entry
+			end,
+		})
+	end
+
+	local function delete_tag(prompt_bufnr)
+		local selection = action_state.get_selected_entry()
+
+		Grapple.untag({ path = selection.filename })
+
+		local current_picker = action_state.get_current_picker(prompt_bufnr)
+		current_picker:refresh(generate_finder(), { reset_prompt = true })
+	end
+
+	pickers
+		.new(options, {
+			prompt_title = "Grapple",
+			finder = generate_finder(),
+			sorter = conf.generic_sorter({}),
+			previewer = conf.file_previewer({}),
+			results_title = "Grapple Tags",
+			attach_mappings = function(_, map)
+				map("i", "<C-X>", delete_tag)
+				map("n", "<C-X>", delete_tag)
+				return true
+			end,
+		})
+		:find()
 end
 
 -- Return the module for use

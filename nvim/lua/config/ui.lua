@@ -1,7 +1,7 @@
 local M = {}
 
 -- Variable to store the colorscheme
-local colorscheme = "nordfox"
+local colorscheme = "rose-pine"
 
 -- Function to be called when the colorscheme changes
 local function onColorSchemeChange(newScheme)
@@ -10,9 +10,8 @@ local function onColorSchemeChange(newScheme)
 
 	-- List of plugin names to reload
 	local pluginsToReload = {
-		"nightfox.nvim",
-		"lualine.nvim",
-		"incline.nvim",
+		"lualine.nvim",
+		"rose-pine",
 	}
 
 	-- Iterate over the list and reload each plugin

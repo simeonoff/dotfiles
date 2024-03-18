@@ -60,27 +60,14 @@ M.config = function()
 			end),
 		}),
 		sources = cmp.config.sources({
-            -- Copilot cmp plugin always first
-			{ name = "copilot", group_index = 2 },
+            -- AI CMP plugins always first
+			{ name = "codeium", group_index = 2 },
 			-- Other sources
 			{ name = "nvim_lsp", group_index = 2 },
 			{ name = "path", group_index = 2 },
 			{ name = "buffer", group_index = 2 },
 			{ name = "luasnip", group_index = 2 },
 		}),
-		-- sorting = {
-		-- 	comparators = {
-		-- 		cmp.config.compare.offset,
-		-- 		cmp.config.compare.exact,
-		-- 		cmp.config.compare.score,
-		-- 		cmp.config.compare.locality,
-		-- 		cmp.config.compare.sort_text,
-		-- 		cmp.config.compare.length,
-		-- 		cmp.config.compare.order,
-		-- 		-- cmp.config.compare.kind,
-		-- 	},
-		-- },
-		-- preselect = "item",
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
 			format = require("kind").cmp_format(),

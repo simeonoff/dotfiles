@@ -42,7 +42,7 @@ export PATH=/usr/local/bin/docfx:${PATH}
 # Modifications for go lang with homebrew
 # INFO: remove if not using go via homebrew
 export GOROOT="$(brew --prefix golang)/libexec"
-export PATH=${PATH}:${GOPATH}/bin
+export PATH=${PATH}:${HOME}/go/bin
 
 # nvm use default
 export NVM_DIR="$HOME/.nvm"
@@ -51,6 +51,14 @@ export NVM_DIR="$HOME/.nvm"
 
 # Change the config path for Lazygit
 export XDG_CONFIG_HOME="$HOME/.config"
+
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+ --pointer=" "
+ --prompt="   "
+ --color=fg:8,bg:-1,hl:2
+ --color=fg+:-1,bg+:-1,hl+:4
+ --color=info:8,prompt:2,pointer:2
+ --color=marker:#87ff00,spinner:#af5fff,header:8'
 
 # Load zoxide
 eval "$(zoxide init zsh)"

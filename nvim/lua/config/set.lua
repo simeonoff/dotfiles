@@ -103,3 +103,6 @@ vim.g.tmux_navigator_preserve_zoom = 1
 
 -- Disable intro screen
 vim.opt.shortmess:append({ I = true })
+
+-- Disable tilde for empty lines
+vim.opt.fillchars = {eob = " "}

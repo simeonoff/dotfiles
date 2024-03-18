@@ -39,8 +39,9 @@ M.icons = {
 	Calendar = " ",
 	Watch = "  ",
 	Package = " ",
-	Copilot = " ",
+	Copilot = " ",
 	Suggestion = " ",
+    Codeium = "󰘦 "
 }
 
 M.cmp_format = function()
@@ -55,6 +56,7 @@ M.cmp_format = function()
 			nvim_lua = "[Lua]",
 			latex_symbols = "[LaTeX]",
 			copilot = "[Copilot]",
+            codeium = "[Codeium]",
 		})[entry.source.name]
 
 		return vim_item

@@ -15,41 +15,44 @@ return {
 			require("nvim-web-devicons").setup({
 				override = {
 					go = {
-						icon = "",
+						icon = "󰟓",
 						color = "#519aba",
 						cterm_color = "74",
 						name = "Go",
 					},
 				},
 				override_by_filename = {
-					[".editorconfig"] = {
-						icon = "",
-						guifg = "#fff2f2",
-						name = "EditorConfig",
+					[".gitignore"] = {
+						icon = "",
 					},
-					[".eslintignore"] = {
-						icon = "󰱺",
-						guifg = "#a074c4",
-						ctermfg = "140",
-						name = "EslintIgnore",
+					[".gitattributes"] = {
+						icon = "",
 					},
-					[".eslintrc"] = {
-						icon = "󰱺",
-						guifg = "#a074c4",
-						ctermfg = "140",
-						name = "Eslintrc",
+					[".gitmodules"] = {
+						icon = "",
 					},
-					[".eslintrc.json"] = {
-						icon = "󰱺",
-						guifg = "#a074c4",
-						ctermfg = "140",
-						name = "Eslintrc",
+					["commit_editmsg"] = {
+						icon = "",
 					},
-					["tsconfig.json"] = {
-						icon = "󰛦",
-						color = "#519aba",
-						cterm_color = "74",
-						name = "TSConfig",
+					[".sassdocrc"] = {
+						icon = "",
+						color = "#f55385",
+						cterm_color = "204",
+						name = "Sassdoc",
+					},
+					[".stylelintrc.json"] = {
+						icon = "",
+						name = "Stylelint",
+					},
+					[".browserslistrc"] = {
+						icon = "",
+						name = "Browserlist",
+					},
+					["license"] = {
+						icon = "󰌆",
+						color = "#d0bf41",
+						ctermfg = "185",
+						name = "License",
 					},
 				},
 			})
@@ -65,9 +68,19 @@ return {
 		event = "BufReadPre",
 		main = "ibl",
 		config = function()
-			require("ibl").setup()
-			vim.cmd.highlight("clear @ibl.scope.underline.1")
-			vim.cmd.highlight("link @ibl.scope.underline.1 IndentBlankLineScope")
+			local hooks = require("ibl.hooks")
+			hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+			hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_tab_indent_level)
+
+			require("ibl").setup({
+				indent = {
+					char = "▏", -- This is a slightly thinner char than the default one, check :help ibl.config.indent.char
+				},
+				scope = {
+					show_start = false,
+					show_end = false,
+				},
+			})
 		end,
 	},
 
