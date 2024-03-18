@@ -24,15 +24,27 @@ return {
 				override_by_filename = {
 					[".gitignore"] = {
 						icon = "",
+						color = "#41535b",
+						ctermfg = "239",
+						name = "GitIgnore",
 					},
 					[".gitattributes"] = {
 						icon = "",
+						color = "#41535b",
+						ctermfg = "239",
+						name = "GitAttributes",
 					},
 					[".gitmodules"] = {
 						icon = "",
+						color = "#41535b",
+						ctermfg = "239",
+						name = "GitModules",
 					},
 					["commit_editmsg"] = {
 						icon = "",
+						color = "#41535b",
+						ctermfg = "239",
+						name = "GitCommit",
 					},
 					[".sassdocrc"] = {
 						icon = "",
