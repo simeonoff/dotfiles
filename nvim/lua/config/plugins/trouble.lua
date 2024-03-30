@@ -1,24 +1,26 @@
 -- A pretty list for showing diagnostics, references, etc.
 local M = {
 	"folke/trouble.nvim",
+	branch = "dev",
 	event = "BufReadPre",
 }
 
 M.config = function()
 	local trouble = require("trouble")
+	local kind_icons = require("kind").icons
 
 	trouble.setup({
-		auto_open = false,
-		indent_lines = false,
-		use_diagnostic_signs = true,
-		padding = false,
-		icons = false,
-		fold_open = " - ", -- icon used for open folds
-		fold_closed = " + ", -- icon used for closed folds
+		icons = {
+			indent = {
+				fold_closed = "+ ",
+				fold_open = "- ",
+			},
+			kinds = kind_icons,
+		},
 	})
 
 	vim.keymap.set("n", "<leader>tt", function()
-		trouble.toggle()
+		trouble.toggle({ mode = "diagnostics" })
 	end, { desc = "Toggle Trouble" })
 
 	vim.keymap.set("n", "<leader>tn", function()

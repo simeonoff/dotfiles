@@ -22,28 +22,34 @@ return {
 					},
 				},
 				override_by_filename = {
+					["go.mod"] = {
+						icon = "󰟓",
+						color = "#f55385",
+						cterm_color = "204",
+						name = "GoMod",
+					},
 					[".gitignore"] = {
 						icon = "",
 						color = "#41535b",
-						ctermfg = "239",
+						cterm_color = "239",
 						name = "GitIgnore",
 					},
 					[".gitattributes"] = {
 						icon = "",
 						color = "#41535b",
-						ctermfg = "239",
+						cterm_color = "239",
 						name = "GitAttributes",
 					},
 					[".gitmodules"] = {
 						icon = "",
 						color = "#41535b",
-						ctermfg = "239",
+						cterm_color = "239",
 						name = "GitModules",
 					},
 					["commit_editmsg"] = {
 						icon = "",
 						color = "#41535b",
-						ctermfg = "239",
+						cterm_color = "239",
 						name = "GitCommit",
 					},
 					[".sassdocrc"] = {
@@ -119,12 +125,6 @@ return {
 		config = function()
 			vim.keymap.set("n", "<leader>bd", require("bufdelete").bufdelete, { desc = "Deletes the current buffer" })
 		end,
-	},
-
-	-- Tmux naviation plugin
-	{
-		"christoomey/vim-tmux-navigator",
-		lazy = false,
 	},
 
 	-- A utility function that allows inspecing Lua tables

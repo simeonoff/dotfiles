@@ -34,16 +34,12 @@ M.config = function()
 		},
 	})
 
-	-- Only temporary until the following PRs get merged:
-	-- mason-registry - https://github.com/mason-org/mason-registry/pull/4746
-	-- mason-lspconfig - https://github.com/williamboman/mason-lspconfig.nvim/pull/372
-	require("lspconfig").somesass_ls.setup({})
-
 	require("mason-lspconfig").setup({
 		ensure_installed = {
 			"angularls",
 			"bashls",
 			"cssls",
+			"somesass_ls",
 			"emmet_ls",
 			"eslint",
 			"html",
@@ -77,6 +73,20 @@ M.config = function()
 					},
 				})
 			end,
+			require("lspconfig").yamlls.setup({
+				settings = {
+					yaml = {
+						schemaStore = {
+							-- You must disable built-in schemaStore support if you want to use
+							-- this plugin and its advanced options like `ignore`.
+							enable = false,
+							-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+							url = "",
+						},
+						schemas = require("schemastore").yaml.schemas(),
+					},
+				},
+			}),
 			cssls = function()
 				require("lspconfig").cssls.setup({
 					filetypes = { "css", "scss", "sass", "less", "typescriptreact", "javascriptreact" },
@@ -167,7 +177,7 @@ M.config = function()
 		vim.keymap.set("n", "<leader>ca", function()
 			vim.lsp.buf.code_action()
 		end, opts)
-		vim.keymap.set("n", "<leader>rn", function()
+		vim.keymap.set("n", "<leader>vrn", function()
 			vim.lsp.buf.rename()
 		end, opts)
 	end)

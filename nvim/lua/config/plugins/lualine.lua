@@ -22,6 +22,7 @@ M.config = function()
 		"oil",
 		"lazygit",
 		"Trouble",
+		"trouble",
 		"lspinfo",
 		"mason",
 	})
@@ -217,6 +218,9 @@ M.config = function()
 		function()
 			return " "
 		end,
+		on_click = function()
+			vim.cmd("LspInfo")
+		end,
 		padding = { left = 1, right = 2 },
 		color = function()
 			local clients = vim.lsp.get_active_clients()
@@ -237,6 +241,9 @@ M.config = function()
 		end,
 		cond = function()
 			return #plugin_checker.updated > 0
+		end,
+		on_click = function()
+			vim.cmd("Lazy")
 		end,
 		color = {
 			fg = palette.rose,

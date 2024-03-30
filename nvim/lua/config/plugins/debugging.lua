@@ -1,18 +1,23 @@
 local M = {
-	"mfussenegger/nvim-dap",
+	"rcarriga/nvim-dap-ui",
 
 	dependencies = {
 		{
-			"rcarriga/nvim-dap-ui",
-
-			config = function()
-				require("dapui").setup()
-			end,
+			"mfussenegger/nvim-dap",
+			"nvim-neotest/nvim-nio",
+			"leoluz/nvim-dap-go",
 		},
 	},
 }
 
 function M.init()
+	vim.fn.sign_define("DapBreakpoint", {
+		text = "■",
+		texthl = "DiagnosticSignError",
+		linehl = "",
+		numhl = "",
+	})
+
 	vim.keymap.set("n", "<leader>db", function()
 		require("dap").toggle_breakpoint()
 	end, { desc = "Toggle Breakpoint" })
@@ -40,14 +45,44 @@ function M.init()
 	vim.keymap.set("n", "<leader>du", function()
 		require("dapui").toggle({})
 	end, { desc = "Dap UI" })
+
+	vim.keymap.set("n", "<leader>dgt", function()
+		require("dap-go").debug_test()
+	end, { desc = "Debug Go Test" })
 end
 
 function M.config()
-	local dap = require("dap")
+	local dap, dapui, dapgo = require("dap"), require("dapui"), require("dap-go")
 
-	vim.fn.sign_define("DapBreakpoint", { text = "■", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+    --- @diagnostic disable: missing-fields
+	dapui.setup({
+		layouts = {
+			{
+				-- You can change the order of elements in the sidebar
+				elements = {
+					-- Provide IDs as strings or tables with "id" and "size" keys
+					{
+						id = "scopes",
+						size = 0.25, -- Can be float or integer > 1
+					},
+					{ id = "breakpoints", size = 0.25 },
+					{ id = "stacks", size = 0.25 },
+					{ id = "watches", size = 0.25 },
+				},
+				size = 40,
+				position = "right", -- Can be "left" or "right"
+			},
+			{
+				elements = {
+					"repl",
+				},
+				size = 10,
+				position = "bottom", -- Can be "bottom" or "top"
+			},
+		},
+	})
+	dapgo.setup()
 
-	local dapui = require("dapui")
 	dap.listeners.after.event_initialized["dapui_config"] = function()
 		dapui.open({})
 	end

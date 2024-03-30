@@ -1,1 +1,2 @@
-default_startup_script = "~/.config/sesh/scripts/default"
+[default_session]
+startup_script = "~/.config/sesh/scripts/default"

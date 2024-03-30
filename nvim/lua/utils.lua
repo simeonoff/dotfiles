@@ -73,9 +73,25 @@ M.on_attach = function(on_attach)
 	})
 end
 
+-- This should only work in neovim 0.10
+local get_visual_selection = function()
+	local supported = pcall(vim.fn.getregion, vim.fn.getpos("."), vim.fn.getpos("v"), { mode = vim.fn.mode() })
+
+	if supported then
+		return vim.fn.getregion(vim.fn.getpos("."), vim.fn.getpos("v"), { mode = vim.fn.mode() })
+	else
+		return { vim.fn.expand("<cword>") }
+	end
+end
+
 M.rename_cword = function()
-	-- Get the current word under the cursor
-	local current_word = vim.fn.expand("<cword>")
+	local current_word
+
+	if vim.fn.mode() == "v" then
+		current_word = table.concat(get_visual_selection())
+	else
+		current_word = vim.fn.expand("<cword>")
+	end
 
 	-- Use input the new name
 	vim.ui.input({
@@ -84,15 +100,33 @@ M.rename_cword = function()
 	}, function(new_name)
 		-- Check if the new name is not nil or the same as the current word
 		if new_name and new_name ~= current_word then
-			-- Escape special characters in the current word to use it in a Lua pattern
-			local escaped_word = current_word:gsub("([^%w])", "%%%1")
-
-			-- Replace all occurrences in the buffer
-			local pattern = "\\V\\<" .. escaped_word .. "\\>"
-			local cmd = ":%s/" .. pattern .. "/" .. new_name .. "/g"
+			-- Escape special characters
+			local escaped_word = vim.fn.escape(current_word, "\\/.*'$^~[]")
+			-- Form the pattern, considering very nomagic option
+			local pattern = "\\V" .. escaped_word
+			-- Perform the replacement
+			local cmd = ":%s/" .. pattern .. "/" .. vim.fn.escape(new_name, "/") .. "/g"
 			vim.cmd(cmd)
 		end
 	end)
+end
+
+-- Navigate to the next tmux pane or Neovim window
+M.navigate = function(direction)
+	local current_win = vim.api.nvim_get_current_win()
+	vim.cmd("wincmd " .. direction)
+
+	-- Check if we are in a tmux session and if the current window is at the edge
+	if current_win == vim.api.nvim_get_current_win() and vim.env.TMUX then
+		local tmux_commands = {
+			h = "select-pane -L",
+			j = "select-pane -D",
+			k = "select-pane -U",
+			l = "select-pane -R",
+		}
+
+		vim.fn.system("tmux " .. tmux_commands[direction])
+	end
 end
 
 return M

@@ -8,25 +8,37 @@ local M = {
 	},
 }
 
+M.recent_files = function()
+	local telescopePickers = require("telescopePickers")
+	local utils = require("utils")
+
+	telescopePickers.prettyFilesPicker({
+		picker = "oldfiles",
+		options = { prompt_title = "Recent Files", cwd = utils.get_root(), cwd_only = true },
+	})
+end
+
+M.project_files = function()
+	local telescopePickers = require("telescopePickers")
+	local opts = {}
+
+	if vim.loop.fs_stat(".git") then
+		opts.show_untracked = true
+		telescopePickers.prettyFilesPicker({ picker = "git_files", options = opts })
+	else
+		local client = vim.lsp.get_clients()[1]
+		if client then
+			opts.cwd = client.config.root_dir
+		end
+		telescopePickers.prettyFilesPicker({ picker = "find_files", options = opts })
+	end
+end
+
 M.config = function()
 	local telescope = require("telescope")
 	local actions = require("telescope.actions")
 	local builtin = require("telescope.builtin")
 	local telescopePickers = require("telescopePickers")
-
-	local project_files = function()
-		local opts = {}
-		if vim.loop.fs_stat(".git") then
-			opts.show_untracked = true
-			telescopePickers.prettyFilesPicker({ picker = "git_files", options = opts })
-		else
-			local client = vim.lsp.get_active_clients()[1]
-			if client then
-				opts.cwd = client.config.root_dir
-			end
-			telescopePickers.prettyFilesPicker({ picker = "find_files", options = opts })
-		end
-	end
 
 	telescope.setup({
 		defaults = {
@@ -42,6 +54,7 @@ M.config = function()
 			prompt_prefix = "     ",
 			selection_caret = "  ",
 			entry_prefix = "  ",
+			multi_icon = " + ",
 			initial_mode = "insert",
 			selection_strategy = "reset",
 			sorting_strategy = "ascending",
@@ -98,12 +111,13 @@ M.config = function()
 		},
 	})
 
-	-- Mappings
-	vim.keymap.set("n", "<leader>f", project_files, { desc = "Find files" })
+	-- Custom commands
+	vim.api.nvim_create_user_command("RecentFiles", M.recent_files, {})
 
-	vim.keymap.set("n", "<leader>r", function()
-		telescopePickers.prettyFilesPicker({ picker = "oldfiles" })
-	end, { desc = "Recent files" })
+	-- Mappings
+	vim.keymap.set("n", "<leader>f", M.project_files, { desc = "Find files" })
+
+	vim.keymap.set("n", "<leader>r", M.recent_files, { desc = "Recent files" })
 
 	vim.keymap.set("n", "<leader>/", function()
 		telescopePickers.prettyGrepPicker({ picker = "live_grep" })

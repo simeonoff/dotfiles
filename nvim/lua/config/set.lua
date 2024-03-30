@@ -77,6 +77,11 @@ vim.opt.showmode = false
 -- set global statusline
 vim.go.laststatus = 3
 
+-- set spelling
+vim.opt.spelllang = { "en_us" }
+vim.opt.spell = false
+vim.opt.spellsuggest = "best,8"
+
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.pumheight = 10 -- Maximum number of entries in a popup
 vim.opt.splitbelow = true -- Put new windows below current
@@ -91,7 +96,7 @@ vim.opt.backup = true
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 
 if vim.fn.has("nvim-0.8") == 1 then
-	vim.opt.cmdheight = 0
+	-- vim.opt.cmdheight = 1
 	vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
 end
 
@@ -105,4 +110,4 @@ vim.g.tmux_navigator_preserve_zoom = 1
 vim.opt.shortmess:append({ I = true })
 
 -- Disable tilde for empty lines
-vim.opt.fillchars = {eob = " "}
+vim.opt.fillchars = { eob = " " }

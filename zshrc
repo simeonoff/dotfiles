@@ -37,7 +37,6 @@ export PATH="${PATH}:${HOME}/.local/bin/"
 if [ -e $HOME/.local/bin/flutter/bin/flutter ]; then export PATH="${PATH}:${HOME}/.local/bin/flutter/bin/"; fi
 
 export PATH=~/.dotfiles/bin:${PATH}
-export PATH=/usr/local/bin/docfx:${PATH}
 
 # Modifications for go lang with homebrew
 # INFO: remove if not using go via homebrew

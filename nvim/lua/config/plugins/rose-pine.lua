@@ -8,7 +8,8 @@ local M = {
 M.config = function()
 	require("rose-pine").setup({
 		styles = {
-			transparency = true,
+			transparency = false,
+			italic = false,
 		},
 		enable = {
 			legacy_highlights = false,
@@ -36,6 +37,19 @@ M.config = function()
 			NormalFloat = { bg = "surface" },
 			WinSeparator = { fg = "highlight_med" },
 			IblIndent = { fg = "highlight_med" },
+			NotifyBackground = { fg = "text", bg = "surface" },
+
+			NoiceCmdlinePopup = { bg = "surface", fg = "subtle" },
+			NoiceCmdlinePopupBorder = { fg = "surface", bg = "surface" },
+			NoiceCmdlinePopupTitle = { fg = "gold" },
+			NoiceCmdlineIcon = { fg = "subtle" },
+
+			NoiceLspProgressSpinner = { fg = "rose" },
+			NoiceLspProgressClient = { fg = "rose", bg = "overlay" },
+			NoiceMini = { fg = "subtle", bg = "overlay" },
+			NoiceVirtualText = { fg = "highlight_high" },
+
+			TroubleNormal = { bg = "base" },
 		},
 	})
 	vim.cmd.colorscheme("rose-pine")

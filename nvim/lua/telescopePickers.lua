@@ -38,6 +38,17 @@ function telescopePickers.getPathAndTail(fileName)
 	return bufferNameTail, pathToDisplay
 end
 
+-- Function to get buffer number by full file path
+local function get_buffer_number_by_path(filepath)
+	for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+		local name = vim.api.nvim_buf_get_name(bufnr)
+		if name == filepath then
+			return bufnr
+		end
+	end
+	return nil
+end
+
 ---- Picker functions ----
 
 -- Generates a Find File picker but beautified
@@ -65,7 +76,7 @@ function telescopePickers.prettyFilesPicker(pickerAndOptions)
 	end
 
 	-- Ensure 'options' integrity
-	options = pickerAndOptions.options or {}
+	local options = pickerAndOptions.options or {}
 
 	-- Use Telescope's existing function to obtain a default 'entry_maker' function
 	-- ----------------------------------------------------------------------------
@@ -168,7 +179,7 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
 	end
 
 	-- Ensure 'options' integrity
-	options = pickerAndOptions.options or {}
+	local options = pickerAndOptions.options or {}
 
 	-- Use Telescope's existing function to obtain a default 'entry_maker' function
 	-- ----------------------------------------------------------------------------
@@ -279,7 +290,7 @@ function telescopePickers.prettyDocumentSymbols(localOptions)
 		return
 	end
 
-	options = localOptions or {}
+	local options = localOptions or {}
 
 	local originalEntryMaker = telescopeMakeEntryModule.gen_from_lsp_symbols(options)
 
@@ -315,7 +326,7 @@ function telescopePickers.prettyWorkspaceSymbols(localOptions)
 		return
 	end
 
-	options = localOptions or {}
+	local options = localOptions or {}
 
 	local originalEntryMaker = telescopeMakeEntryModule.gen_from_lsp_symbols(options)
 
@@ -361,7 +372,7 @@ function telescopePickers.prettyLspReferences(localOptions)
 		return
 	end
 
-	options = localOptions or {}
+	local options = localOptions or {}
 
 	local originalEntryMaker = telescopeMakeEntryModule.gen_from_quickfix(options)
 
@@ -402,7 +413,7 @@ function telescopePickers.prettyHarpoonPicker(marks, localOptions)
 		return
 	end
 
-	options = localOptions or {}
+	local options = localOptions or {}
 
 	local originalEntryMaker = telescopeMakeEntryModule.gen_from_file(options)
 
@@ -541,7 +552,7 @@ function telescopePickers.prettyBuffersPicker(localOptions)
 		return
 	end
 
-	options = localOptions or {}
+	local options = localOptions or {}
 
 	local originalEntryMaker = telescopeMakeEntryModule.gen_from_buffer(options)
 
@@ -633,10 +644,13 @@ function telescopePickers.prettyGrapplePicker(localOptions)
 					display = function(entry)
 						local tail, pathToDisplay = telescopePickers.getPathAndTail(entry.value[2])
 						local icon, iconHighlight = telescopeUtilities.get_devicons(tail)
+						local tailForDisplay = string.len(tail) > 0 and tail or "window"
+						local bufnr = get_buffer_number_by_path(filename)
+						local modified = vim.api.nvim_get_option_value("modified", { buf = bufnr })
 
 						return displayer({
 							{ icon, iconHighlight },
-							{ tail },
+							{ tailForDisplay .. " ", bufnr and modified and "TelescopeResultsNumber" or "" },
 							{ pathToDisplay, "TelescopeResultsComment" },
 						})
 					end,
