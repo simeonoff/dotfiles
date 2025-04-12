@@ -1,7 +1,7 @@
 -- A pretty list for showing diagnostics, references, etc.
 local M = {
 	"folke/trouble.nvim",
-	branch = "dev",
+	branch = "main",
 	event = "BufReadPre",
 }
 

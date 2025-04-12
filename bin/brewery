@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Define the list of packages you want to ensure are installed
-packages=("bash" "ca-certificates" "fd" "fontconfig" "fzf" "lazygit" "neovim" "nvm" "ripgrep" "sesh" "starship" "the_silver_searcher" "tmux" "trash" "tree-sitter" "wget" "yq" "zoxide")
+packages=("bash" "ca-certificates" "fd" "fontconfig" "fzf" "lazygit" "lua" "neovim" "nvm" "ripgrep" "sesh" "starship" "the_silver_searcher" "tmux" "trash" "tree-sitter" "wget" "yq" "zoxide")
 
 # Define the list of cask applications you want to ensure are installed
 casks=("1password-cli" "amethyst" "font-symbols-only-nerd-font" "kitty") # Add more casks as needed

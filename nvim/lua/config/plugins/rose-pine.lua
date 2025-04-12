@@ -52,7 +52,7 @@ M.config = function()
 			TroubleNormal = { bg = "base" },
 		},
 	})
-	vim.cmd.colorscheme("rose-pine")
+	vim.cmd.colorscheme("rose-pine-moon")
 end
 
 return M

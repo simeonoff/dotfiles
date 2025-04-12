@@ -1,13 +1,23 @@
 local M = {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
+	commit = "1e1900b",
 
 	dependencies = {
 		-- Sources
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
+		{
+			"hrsh7th/cmp-buffer",
+			commit = "c46b668",
+		},
+		{
+			"hrsh7th/cmp-path",
+			commit = "91ff86c",
+		},
 		"saadparwaiz1/cmp_luasnip",
-		"hrsh7th/cmp-nvim-lsp",
+		{
+			"hrsh7th/cmp-nvim-lsp",
+			commit = "99290b3",
+		},
 		"hrsh7th/cmp-nvim-lua",
 
 		-- Snippets
@@ -22,7 +32,7 @@ M.config = function()
 	require("luasnip.loaders.from_vscode").lazy_load()
 
 	local has_words_before = function()
-		if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+		if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" then
 			return false
 		end
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -30,10 +40,30 @@ M.config = function()
 	end
 
 	local cmp_config = {
+		enabled = function()
+			local files = {
+				"oil",
+			}
+
+			local buffer = vim.bo.filetype
+
+			for _, f in ipairs(files) do
+				if buffer == f then
+					return false
+				end
+			end
+
+			return true
+		end,
 		snippet = {
 			expand = function(args)
 				luasnip.lsp_expand(args.body)
 			end,
+		},
+		view = {
+			entries = {
+				follow_cursor = true,
+			},
 		},
 		window = {
 			documentation = cmp.config.window.bordered({
@@ -60,7 +90,7 @@ M.config = function()
 			end),
 		}),
 		sources = cmp.config.sources({
-            -- AI CMP plugins always first
+			-- AI CMP plugins always first
 			{ name = "codeium", group_index = 2 },
 			-- Other sources
 			{ name = "nvim_lsp", group_index = 2 },

@@ -52,18 +52,18 @@ end, { desc = "Format buffer" })
 
 map("n", "-", require("oil").open, { desc = "Open parent directory" })
 
-map("n", "<C-l>", function()
+map("n", "<C-Right>", function()
 	utils.navigate("l")
 end, { noremap = true, silent = true })
 
-map("n", "<C-h>", function()
+map("n", "<C-Left>", function()
 	utils.navigate("h")
 end, { noremap = true, silent = true })
 
-map("n", "<C-k>", function()
+map("n", "<C-Up>", function()
 	utils.navigate("k")
 end, { noremap = true, silent = true })
 
-map("n", "<C-j>", function()
+map("n", "<C-Down>", function()
 	utils.navigate("j")
 end, { noremap = true, silent = true })

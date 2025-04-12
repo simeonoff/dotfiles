@@ -125,7 +125,12 @@ M.navigate = function(direction)
 			l = "select-pane -R",
 		}
 
-		vim.fn.system("tmux " .. tmux_commands[direction])
+		local zoom_command = 'tmux display-message -p "#{window_zoomed_flag}"'
+		local is_zoomed = vim.fn.trim(vim.fn.system(zoom_command))
+
+		if is_zoomed == "0" then
+			vim.fn.system("tmux " .. tmux_commands[direction])
+		end
 	end
 end
 

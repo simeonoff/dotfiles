@@ -44,7 +44,7 @@ vim.opt.ignorecase = true
 vim.opt.backspace = { "start", "eol", "indent" }
 
 -- colors and column width
--- vim.opt.colorcolumn = "120"
+vim.opt.colorcolumn = "120"
 
 -- row offset number before scrolling
 vim.opt.scrolloff = 8
@@ -111,3 +111,6 @@ vim.opt.shortmess:append({ I = true })
 
 -- Disable tilde for empty lines
 vim.opt.fillchars = { eob = " " }
+
+-- Set list characters
+vim.opt.listchars = "tab:->,trail:·,space:·"

@@ -1,2 +1,2 @@
 [default_session]
-startup_script = "~/.config/sesh/scripts/default"
+startup_command = "tmux rename-window 'Neovim' && tmux send-keys 'vim -c 'RecentFiles'' Enter"

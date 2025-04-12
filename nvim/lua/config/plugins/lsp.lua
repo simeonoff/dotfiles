@@ -37,18 +37,20 @@ M.config = function()
 	require("mason-lspconfig").setup({
 		ensure_installed = {
 			"angularls",
+			"astro",
 			"bashls",
 			"cssls",
-			"somesass_ls",
 			"emmet_ls",
 			"eslint",
+			"gopls",
 			"html",
 			"jsonls",
 			"lua_ls",
 			"marksman",
+			"somesass_ls",
 			"stylelint_lsp",
 			"svelte",
-			"tsserver",
+			"ts_ls",
 		},
 		handlers = {
 			lsp.default_setup,
@@ -89,7 +91,13 @@ M.config = function()
 			}),
 			cssls = function()
 				require("lspconfig").cssls.setup({
-					filetypes = { "css", "scss", "sass", "less", "typescriptreact", "javascriptreact" },
+					filetypes = { "css", "less", "stylus", "styl", "typescriptreact", "javascriptreact" },
+					capabilities = capabilities,
+				})
+			end,
+			somesass_ls = function()
+				require("lspconfig").somesass_ls.setup({
+					filetypes = { "scss", "sass", "typescriptreact", "javascriptreact" },
 					capabilities = capabilities,
 				})
 			end,
@@ -122,19 +130,23 @@ M.config = function()
 				})
 			end,
 			angularls = function()
-				local languageServerPath =
+				local project_lsp =
+					require("lspconfig").util.root_pattern(".git", "package.json", "angular.json")(vim.loop.cwd())
+				local mason_lsp =
 					vim.fn.expand("$HOME/.local/share/nvim/mason/packages/angular-language-server/node_modules")
+
 				local cmd = {
 					"ngserver",
 					"--stdio",
 					"--tsProbeLocations",
-					languageServerPath,
+					project_lsp,
 					"--ngProbeLocations",
-					languageServerPath .. "/@angular/language-server/node_modules",
+					project_lsp,
+					mason_lsp .. "/@angular/language-server",
 				}
 
 				require("lspconfig").angularls.setup({
-					filetypes = { "typescript", "html" },
+					-- filetypes = { "typescript", "html" },
 					cmd = cmd,
 					on_new_config = function(new_config)
 						new_config.cmd = cmd
@@ -149,6 +161,9 @@ M.config = function()
 
 		vim.keymap.set("n", "gd", function()
 			vim.lsp.buf.definition()
+		end, opts)
+		vim.keymap.set("n", "gi", function()
+			vim.lsp.buf.implementation()
 		end, opts)
 		vim.keymap.set("n", "K", function()
 			vim.lsp.buf.hover()

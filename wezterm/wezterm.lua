@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local config = {}
 
-local colorscheme = 'rose-pine'
+local colorscheme = 'rose-pine-moon'
 
 local paint = {
 	light = "dayfox",

@@ -1,5 +1,5 @@
 local M = {
-	"Exafunction/codeium.nvim",
+	"Exafunction/windsurf.nvim",
 	cmd = "Codeium",
 	event = "InsertEnter",
 	dependencies = {

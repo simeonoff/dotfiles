@@ -38,6 +38,7 @@ M.config = function()
 	local telescope = require("telescope")
 	local actions = require("telescope.actions")
 	local builtin = require("telescope.builtin")
+    local trouble = require("trouble.sources.telescope")
 	local telescopePickers = require("telescopePickers")
 
 	telescope.setup({
@@ -95,14 +96,17 @@ M.config = function()
 					["<C-p>"] = false,
 					["<C-j>"] = actions.move_selection_next,
 					["<C-k>"] = actions.move_selection_previous,
+                    ["<C-t>"] = trouble.open,
 				},
 			},
 		},
 		extensions = {
-			fzy_native = {
-				override_generic_sorter = false,
-				override_file_sorter = true,
-			},
+            fzf = {
+                fuzzy = true,                    -- false will only do exact matching
+                override_generic_sorter = true,  -- override the generic sorter
+                override_file_sorter = true,     -- override the file sorter
+                case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+            }
 		},
 		pickers = {
 			colorscheme = {
@@ -110,6 +114,8 @@ M.config = function()
 			},
 		},
 	})
+
+    telescope.load_extension('fzf')
 
 	-- Custom commands
 	vim.api.nvim_create_user_command("RecentFiles", M.recent_files, {})
@@ -125,7 +131,7 @@ M.config = function()
 
 	vim.keymap.set("n", "<leader><leader>", function()
 		telescopePickers.prettyGrapplePicker()
-	end, { desc = "Pick from open buffeers" })
+	end, { desc = "Pick from Grapple" })
 
 	vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Broser git branches in current project" })
 

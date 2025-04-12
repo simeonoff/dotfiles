@@ -32,20 +32,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = personal_augroup,
 })
 
--- Add keyboard navigation for terminals
--- vim.api.nvim_create_autocmd("TermOpen", {
--- 	pattern = {
--- 		"term://*",
--- 	},
--- 	callback = function()
--- 		local opts = { buffer = 0 }
--- 		vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
--- 		vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
--- 		vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
--- 		vim.keymap.set("t", "<C-t>", [[<Cmd>ToggleTerm<CR>]])
--- 	end,
--- 	group = personal_augroup,
--- })
+-- Turn on spellcheck for markdown files
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown" },
+	callback = function()
+		vim.opt.spell = true
+	end,
+})
 
 -- Clears 'root_dir' variable for buffers on open/reload
 vim.api.nvim_create_autocmd("BufRead", {

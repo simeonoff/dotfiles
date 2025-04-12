@@ -89,7 +89,7 @@ M.config = function()
 			return vim.o.columns > window_width_limit
 		end,
 		hide_in_disabled_ft = function()
-			local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+			local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 			return not disabled_filetypes:contains(buf_ft)
 		end,
 	}
@@ -174,7 +174,7 @@ M.config = function()
 
 	local spaces = {
 		function()
-			local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
+			local shiftwidth = vim.api.nvim_get_option_value("shiftwidth", { buf = 0 })
 			return "Spaces: " .. shiftwidth
 		end,
 		color = {
@@ -223,7 +223,7 @@ M.config = function()
 		end,
 		padding = { left = 1, right = 2 },
 		color = function()
-			local clients = vim.lsp.get_active_clients()
+			local clients = vim.lsp.get_clients()
 			local c = {}
 
 			for _, client in pairs(clients) do

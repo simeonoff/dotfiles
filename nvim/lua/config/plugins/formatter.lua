@@ -17,6 +17,62 @@ local formatters = {
 			try_node_modules = true,
 		}
 	end,
+	astro = function()
+		local util = require("formatter.util")
+		local filepath = util.escape_path(util.get_current_buffer_file_path())
+		local root_patterns = { ".package.json", ".prettierrc" }
+		local root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
+
+		return {
+			exe = "prettierd",
+			stdin = true,
+			args = { filepath, "--write" },
+			root_dir = root_dir,
+			try_node_modules = true,
+		}
+	end,
+	eslint = function()
+		local util = require("formatter.util")
+		local filepath = util.escape_path(util.get_current_buffer_file_path())
+		local root_patterns = { "package.json", ".prettierrc" }
+		local eslint_config_files =
+			{ "eslint.config.js", "eslint.config.mjs", ".eslintrc", ".eslintrc.js", ".eslintrc.json" }
+
+		local root_file = vim.fs.find(root_patterns, { upward = true })[1]
+
+		if not root_file then
+			return nil -- No project root found
+		end
+
+		local root_dir = vim.fs.dirname(root_file)
+
+		-- Check if any ESLint config exists in the project root
+		local has_eslint_config = false
+
+		for _, config_file in ipairs(eslint_config_files) do
+			if vim.fn.filereadable(vim.fn.resolve(root_dir .. "/" .. config_file)) == 1 then
+				has_eslint_config = true
+				break
+			end
+		end
+
+		if has_eslint_config then
+			return {
+				exe = "eslint_d",
+				args = {
+					"--stdin",
+					"--stdin-filename",
+					filepath,
+					"--fix-to-stdout",
+				},
+				root_dir = root_dir,
+				stdin = true,
+				try_node_modules = true,
+			}
+		else
+			return nil
+		end
+	end,
 }
 
 M.config = function()
@@ -29,7 +85,7 @@ M.config = function()
 			},
 			typescript = {
 				require("formatter.filetypes.typescript").prettierd,
-				require("formatter.filetypes.typescript").eslint_d,
+				formatters.eslint,
 			},
 			typescriptreact = {
 				require("formatter.filetypes.typescript").prettierd,
@@ -44,15 +100,18 @@ M.config = function()
 				require("formatter.filetypes.css").prettierd,
 				formatters.stylelint,
 			},
-            go = {
-                require("formatter.filetypes.go").goimports,
-            },
+			go = {
+				require("formatter.filetypes.go").goimports,
+			},
 			scss = {
 				require("formatter.filetypes.css").prettierd,
 				formatters.stylelint,
 			},
 			html = {
 				require("formatter.filetypes.html").prettierd,
+			},
+			astro = {
+				formatters.astro,
 			},
 			json = {
 				require("formatter.filetypes.json").prettierd,

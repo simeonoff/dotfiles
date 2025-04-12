@@ -30,6 +30,8 @@ export EDITOR="$VISUAL"
 source ~/.shell/aliases.sh
 alias vim="env TERM=wezterm nvim --listen /tmp/nvim_instance_$(echo $$).sock"
 alias cd="z"
+alias python="python3"
+alias path="copy-path"
 
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
@@ -64,3 +66,9 @@ eval "$(zoxide init zsh)"
 
 # Load the starship theme
 eval "$(starship init zsh)"
+
+# Load direnv
+eval "$(direnv hook zsh)"
+
+# Add .NET Core SDK tools
+export PATH="$PATH:/Users/SSimeonov/.dotnet/tools"

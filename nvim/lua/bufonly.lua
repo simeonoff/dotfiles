@@ -1,6 +1,6 @@
 local g = vim.g
 local api = vim.api
-local option = api.nvim_buf_get_option
+local option = api.nvim_get_option_value
 
 local M = {}
 
@@ -13,12 +13,12 @@ function M.BufOnly()
 
 	for _, n in ipairs(api.nvim_list_bufs()) do
 		-- If the iter buffer is modified one, then don't do anything
-		if option(n, "modified") then
+		if option("modified", { buf = n }) then
 			-- iter is not equal to current buffer
 			-- iter is modifiable or del_non_modifiable == true
 			-- `modifiable` check is needed as it will prevent closing file tree ie. NERD_tree
 			modified = modified + 1
-		elseif n ~= cur and (option(n, "modifiable") or del_non_modifiable) then
+		elseif n ~= cur and (option("modifiable", { buf = n }) or del_non_modifiable) then
 			api.nvim_buf_delete(n, {})
 			deleted = deleted + 1
 		end

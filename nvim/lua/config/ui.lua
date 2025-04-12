@@ -1,7 +1,7 @@
 local M = {}
 
 -- Variable to store the colorscheme
-local colorscheme = "rose-pine"
+local colorscheme = "rose-pine-moon"
 
 -- Function to be called when the colorscheme changes
 local function onColorSchemeChange(newScheme)

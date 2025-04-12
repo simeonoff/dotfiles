@@ -49,6 +49,7 @@ return {
 				},
 			},
 			ensure_installed = {
+                "astro",
 				"bash",
 				"go",
 				"gomod",
@@ -70,6 +71,7 @@ return {
 				"markdown",
 				"markdown_inline",
 				"vim",
+				"vimdoc",
 			},
 			indent = {
 				enable = false,
