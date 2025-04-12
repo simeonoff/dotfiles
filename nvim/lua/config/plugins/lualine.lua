@@ -219,7 +219,7 @@ M.config = function()
 			return " "
 		end,
 		on_click = function()
-			vim.cmd("LspInfo")
+			vim.cmd("checkhealth lsp")
 		end,
 		padding = { left = 1, right = 2 },
 		color = function()

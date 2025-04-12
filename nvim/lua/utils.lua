@@ -1,5 +1,7 @@
 local M = {}
 
+local iswin = vim.uv.os_uname().version:match 'Windows'
+
 M.open_location = function()
 	local loc = vim.fn.expand("<cfile>")
 	local executable = nil
@@ -41,7 +43,7 @@ M.get_root = function()
 		return vim.loop.cwd()
 	end
 
-	for _, client in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+	for _, client in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
 		local workspace_folders = client.config.workspace_folders or {}
 		local root_dirs = vim.tbl_map(function(ws)
 			return vim.uri_to_fname(ws.uri)
@@ -132,6 +134,66 @@ M.navigate = function(direction)
 			vim.fn.system("tmux " .. tmux_commands[direction])
 		end
 	end
+end
+
+M.root_pattern = function(markers, start_path)
+	local path = start_path or vim.fn.getcwd()
+	local root_file = vim.fs.find(markers, { path = path, upward = true })[1]
+	return root_file and vim.fs.dirname(root_file) or path
+end
+
+M.set_sign_icons = function(opts)
+	local ds = vim.diagnostic.severity
+	local levels = {
+		[ds.ERROR] = "error",
+		[ds.WARN] = "warn",
+		[ds.INFO] = "info",
+		[ds.HINT] = "hint",
+	}
+
+	local text = {}
+
+	for i, l in pairs(levels) do
+		if type(opts[l]) == "string" then
+			text[i] = opts[l]
+		end
+	end
+
+	vim.diagnostic.config({ signs = { text = text } })
+
+	local sign = function(args)
+		if opts[args.name] == nil then
+			return
+		end
+
+		vim.fn.sign_define(args.hl, {
+			texthl = args.hl,
+			text = opts[args.name],
+			numhl = "",
+		})
+	end
+
+	sign({ name = "error", hl = "DiagnosticSignError" })
+	sign({ name = "warn", hl = "DiagnosticSignWarn" })
+	sign({ name = "hint", hl = "DiagnosticSignHint" })
+	sign({ name = "info", hl = "DiagnosticSignInfo" })
+end
+
+M.insert_package_json = function(config_files, field, fname)
+  local path = vim.fn.fnamemodify(fname, ':h')
+  local root_with_package = vim.fs.dirname(vim.fs.find('package.json', { path = path, upward = true })[1])
+
+  if root_with_package then
+    -- only add package.json if it contains field parameter
+    local path_sep = iswin and '\\' or '/'
+    for line in io.lines(root_with_package .. path_sep .. 'package.json') do
+      if line:find(field) then
+        config_files[#config_files + 1] = 'package.json'
+        break
+      end
+    end
+  end
+  return config_files
 end
 
 return M
