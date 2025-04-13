@@ -38,7 +38,7 @@ M.config = function()
 	local telescope = require("telescope")
 	local actions = require("telescope.actions")
 	local builtin = require("telescope.builtin")
-    local trouble = require("trouble.sources.telescope")
+	local trouble = require("trouble.sources.telescope")
 	local telescopePickers = require("telescopePickers")
 
 	telescope.setup({
@@ -96,17 +96,18 @@ M.config = function()
 					["<C-p>"] = false,
 					["<C-j>"] = actions.move_selection_next,
 					["<C-k>"] = actions.move_selection_previous,
-                    ["<C-t>"] = trouble.open,
+					["<C-t>"] = trouble.open,
+					["<esc>"] = actions.close,
 				},
 			},
 		},
 		extensions = {
-            fzf = {
-                fuzzy = true,                    -- false will only do exact matching
-                override_generic_sorter = true,  -- override the generic sorter
-                override_file_sorter = true,     -- override the file sorter
-                case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-            }
+			fzf = {
+				fuzzy = true, -- false will only do exact matching
+				override_generic_sorter = true, -- override the generic sorter
+				override_file_sorter = true, -- override the file sorter
+				case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+			},
 		},
 		pickers = {
 			colorscheme = {
@@ -115,7 +116,7 @@ M.config = function()
 		},
 	})
 
-    telescope.load_extension('fzf')
+	telescope.load_extension("fzf")
 
 	-- Custom commands
 	vim.api.nvim_create_user_command("RecentFiles", M.recent_files, {})

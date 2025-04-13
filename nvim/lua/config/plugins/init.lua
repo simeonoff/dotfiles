@@ -18,15 +18,6 @@ return {
 	"junegunn/fzf.vim",
 	{ "junegunn/fzf", build = ":call fzf#install()" },
 
-	-- Handle buffer deletion
-	{
-		"famiu/bufdelete.nvim",
-		event = "BufAdd",
-		config = function()
-			vim.keymap.set("n", "<leader>bd", require("bufdelete").bufdelete, { desc = "Deletes the current buffer" })
-		end,
-	},
-
 	-- A utility function that allows inspecing Lua tables
 	{
 		"kikito/inspect.lua",

@@ -1,15 +1,18 @@
 local utils = require("utils")
-local group_id = vim.api.nvim_create_augroup("rooter", { clear = true })
-local personal_augroup = vim.api.nvim_create_augroup("personal_augroup", { clear = true })
 local bufonly = require("bufonly")
 local lualine = require("lualine")
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local group_id = augroup("rooter", { clear = true })
+local personal_augroup = augroup("personal_augroup", { clear = true })
+local view_group = augroup("auto_view", { clear = true })
 
 vim.api.nvim_create_user_command("BufOnly", function()
 	bufonly.BufOnly()
 end, {})
 
 -- Pressing q closes the quickfix, help and other windows
-vim.api.nvim_create_autocmd({ "FileType" }, {
+autocmd({ "FileType" }, {
 	pattern = {
 		"qf",
 		"help",
@@ -24,7 +27,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- Change conceallevel for specific filetypes
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
 	pattern = { "json", "jsonc", "md", "markdown" },
 	callback = function()
 		vim.wo.conceallevel = 0
@@ -33,7 +36,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Turn on spellcheck for markdown files
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
 	pattern = { "markdown" },
 	callback = function()
 		vim.opt.spell = true
@@ -41,7 +44,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Clears 'root_dir' variable for buffers on open/reload
-vim.api.nvim_create_autocmd("BufRead", {
+autocmd("BufRead", {
 	group = group_id,
 	callback = function()
 		vim.api.nvim_buf_set_var(0, "root_dir", nil)
@@ -49,7 +52,7 @@ vim.api.nvim_create_autocmd("BufRead", {
 })
 
 -- Change the current working directory to the root dir of the buffer
-vim.api.nvim_create_autocmd("BufEnter", {
+autocmd("BufEnter", {
 	group = group_id,
 	nested = true,
 	callback = function()
@@ -71,7 +74,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("RecordingEnter", {
+autocmd("RecordingEnter", {
 	callback = function()
 		lualine.refresh({
 			place = { "statusline" },
@@ -79,7 +82,7 @@ vim.api.nvim_create_autocmd("RecordingEnter", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("RecordingLeave", {
+autocmd("RecordingLeave", {
 	callback = function()
 		-- This is going to seem really weird!
 		-- Instead of just calling refresh we need to wait a moment because of the nature of
@@ -101,9 +104,9 @@ vim.api.nvim_create_autocmd("RecordingLeave", {
 })
 
 -- Automatically jump to the last known cursor position
-vim.api.nvim_create_autocmd("BufRead", {
+autocmd("BufRead", {
 	callback = function(opts)
-		vim.api.nvim_create_autocmd("BufWinEnter", {
+		autocmd("BufWinEnter", {
 			once = true,
 			buffer = opts.buf,
 			callback = function()
@@ -118,6 +121,33 @@ vim.api.nvim_create_autocmd("BufRead", {
 				end
 			end,
 		})
+	end,
+})
+
+-- Preserve folds
+autocmd({ "BufWinLeave", "BufWritePost", "WinLeave" }, {
+	desc = "Save view with mkview for real files",
+	group = view_group,
+	callback = function(args)
+		if vim.b[args.buf].view_activated then
+			vim.cmd.mkview({ mods = { emsg_silent = true } })
+		end
+	end,
+})
+
+autocmd("BufWinEnter", {
+	desc = "Try to load file view if available and enable view saving for real files",
+	group = view_group,
+	callback = function(args)
+		if not vim.b[args.buf].view_activated then
+			local filetype = vim.api.nvim_get_option_value("filetype", { buf = args.buf })
+			local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+			local ignore_filetypes = { "gitcommit", "gitrebase", "svg", "hgcommit" }
+			if buftype == "" and filetype and filetype ~= "" and not vim.tbl_contains(ignore_filetypes, filetype) then
+				vim.b[args.buf].view_activated = true
+				vim.cmd.loadview({ mods = { emsg_silent = true } })
+			end
+		end
 	end,
 })
 

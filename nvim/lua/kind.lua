@@ -41,8 +41,17 @@ M.icons = {
 	Package = " ",
 	Copilot = " ",
 	Suggestion = " ",
-    Codeium = "󰘦 "
+	Codeium = "󰘦 ",
 }
+
+M.get_icon = function(kind)
+	for key, value in pairs(M.icons) do
+		if key == kind then
+			return value
+		end
+	end
+	return nil
+end
 
 M.cmp_format = function()
 	return function(entry, vim_item)
@@ -56,7 +65,7 @@ M.cmp_format = function()
 			nvim_lua = "[Lua]",
 			latex_symbols = "[LaTeX]",
 			copilot = "[Copilot]",
-            codeium = "[Codeium]",
+			codeium = "[Codeium]",
 		})[entry.source.name]
 
 		return vim_item

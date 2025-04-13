@@ -33,4 +33,15 @@ M.config = function()
 	})
 end
 
+M.keys = {
+	{
+		"-",
+		function()
+			require("oil").open()
+		end,
+		mode = "n",
+		desc = "Open parent directory",
+	},
+}
+
 return M

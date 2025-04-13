@@ -1,7 +1,8 @@
 local M = {}
 
-local iswin = vim.uv.os_uname().version:match 'Windows'
+local iswin = vim.uv.os_uname().version:match("Windows")
 
+-- Open the location under the cursor
 M.open_location = function()
 	local loc = vim.fn.expand("<cfile>")
 	local executable = nil
@@ -18,20 +19,6 @@ M.open_location = function()
 		})
 	else
 		print("Error: opening locations is not supported on this OS")
-	end
-end
-
-M.delete_buffers = function()
-	vim.cmd("%bd|e#|bd#")
-end
-
-M.toggle_diffview = function()
-	local diffview = require("diffview.lib").get_current_view()
-
-	if not diffview then
-		vim.cmd("DiffviewOpen")
-	else
-		vim.cmd("DiffviewClose")
 	end
 end
 
@@ -65,17 +52,7 @@ M.get_root = function()
 	return root and vim.fs.dirname(root) or vim.loop.cwd()
 end
 
-M.on_attach = function(on_attach)
-	vim.api.nvim_create_autocmd("LspAttach", {
-		callback = function(args)
-			local buffer = args.buf
-			local client = vim.lsp.get_client_by_id(args.data.client_id)
-			on_attach(client, buffer)
-		end,
-	})
-end
-
--- This should only work in neovim 0.10
+-- Returns the visual selection text the cursor
 local get_visual_selection = function()
 	local supported = pcall(vim.fn.getregion, vim.fn.getpos("."), vim.fn.getpos("v"), { mode = vim.fn.mode() })
 
@@ -86,6 +63,7 @@ local get_visual_selection = function()
 	end
 end
 
+-- Rename word under cursor or visual selection
 M.rename_cword = function()
 	local current_word
 
@@ -136,12 +114,14 @@ M.navigate = function(direction)
 	end
 end
 
+-- Find the root directory of the project by searching for specific markers
 M.root_pattern = function(markers, start_path)
 	local path = start_path or vim.fn.getcwd()
 	local root_file = vim.fs.find(markers, { path = path, upward = true })[1]
 	return root_file and vim.fs.dirname(root_file) or path
 end
 
+-- Sets the sign icons for diagnostics
 M.set_sign_icons = function(opts)
 	local ds = vim.diagnostic.severity
 	local levels = {
@@ -179,21 +159,22 @@ M.set_sign_icons = function(opts)
 	sign({ name = "info", hl = "DiagnosticSignInfo" })
 end
 
+-- Insert package.json to config_files if it contains the specified field
 M.insert_package_json = function(config_files, field, fname)
-  local path = vim.fn.fnamemodify(fname, ':h')
-  local root_with_package = vim.fs.dirname(vim.fs.find('package.json', { path = path, upward = true })[1])
+	local path = vim.fn.fnamemodify(fname, ":h")
+	local root_with_package = vim.fs.dirname(vim.fs.find("package.json", { path = path, upward = true })[1])
 
-  if root_with_package then
-    -- only add package.json if it contains field parameter
-    local path_sep = iswin and '\\' or '/'
-    for line in io.lines(root_with_package .. path_sep .. 'package.json') do
-      if line:find(field) then
-        config_files[#config_files + 1] = 'package.json'
-        break
-      end
-    end
-  end
-  return config_files
+	if root_with_package then
+		-- only add package.json if it contains field parameter
+		local path_sep = iswin and "\\" or "/"
+		for line in io.lines(root_with_package .. path_sep .. "package.json") do
+			if line:find(field) then
+				config_files[#config_files + 1] = "package.json"
+				break
+			end
+		end
+	end
+	return config_files
 end
 
 return M

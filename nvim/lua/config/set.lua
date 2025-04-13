@@ -86,8 +86,13 @@ vim.opt.pumblend = 0 -- Popup blend
 vim.opt.pumheight = 10 -- Maximum number of entries in a popup
 vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new windows right of current
-vim.opt.foldmethod = "indent"
+
+-- set folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
+vim.opt.foldcolumn = "0"
+vim.opt.foldtext = ""
 
 vim.opt.undofile = true
 vim.opt.undolevels = 10000

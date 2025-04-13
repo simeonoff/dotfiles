@@ -28,30 +28,6 @@ map("n", "<leader>gc", function()
 	vim.cmd("tab Git commits")
 end, { silent = true, desc = "Open git commits" })
 
-map("n", "<leader>bo", function()
-	vim.cmd("BufOnly")
-end, { desc = "Deletes all buffers except the current one" })
-
-map("n", "[b", function()
-	local ft = vim.bo.filetype
-	if ft ~= "neo-tree" then
-		vim.cmd("bprevious")
-	end
-end, { desc = "Navigates to the previous buffer" })
-
-map("n", "]b", function()
-	local ft = vim.bo.filetype
-	if ft ~= "neo-tree" then
-		vim.cmd("bnext")
-	end
-end, { desc = "Navigates to the next buffer" })
-
-map("n", "<leader>i", function()
-	vim.cmd("Format")
-end, { desc = "Format buffer" })
-
-map("n", "-", require("oil").open, { desc = "Open parent directory" })
-
 map("n", "<C-Right>", function()
 	utils.navigate("l")
 end, { noremap = true, silent = true })
