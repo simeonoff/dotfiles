@@ -119,3 +119,6 @@ vim.opt.fillchars = { eob = " " }
 
 -- Set list characters
 vim.opt.listchars = "tab:->,trail:·,space:·"
+
+-- Disable swap files globally
+vim.opt.swapfile = false
