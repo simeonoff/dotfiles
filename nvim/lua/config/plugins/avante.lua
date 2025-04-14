@@ -7,8 +7,6 @@ local M = {
 	enabled = true,
 	version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
 
-	opts = {},
-
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	build = "make",
 
@@ -46,5 +44,16 @@ local M = {
 		},
 	},
 }
+
+M.config = function()
+	require("avante").setup({
+		behaviour = {
+			enable_token_counting = false,
+		},
+	})
+	require("1password").load_env_vars({
+		ANTHROPIC_API_KEY = "Personal/Anthropic/API key",
+	})
+end
 
 return M

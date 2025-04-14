@@ -47,7 +47,7 @@ M.config = function()
 			astro = { "prettierd" },
 			lua = { "stylua" },
 			javascript = { "prettierd" },
-			typescript = { "prettierd", "eslint_d" },
+			typescript = { "prettierd" },
 			typescriptreact = { "prettierd" },
 			javascriptreact = { "prettierd" },
 			css = { "prettierd", "stylelint" },
@@ -61,11 +61,11 @@ M.config = function()
 			svelte = { "prettierd" },
 			go = { "goimports" },
 		},
-		format_on_save = {
-			-- These options will be passed to conform.format()
-			timeout_ms = 500,
-			lsp_format = "fallback",
-		},
+		-- format_on_save = {
+		-- 	-- These options will be passed to conform.format()
+		-- 	timeout_ms = 500,
+		-- 	lsp_format = "fallback",
+		-- },
 	})
 end
 
