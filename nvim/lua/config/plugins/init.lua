@@ -1,30 +1,30 @@
 return {
-	-- A UI library for Neovim
-	"MunifTanjim/nui.nvim",
+  -- A UI library for Neovim
+  'MunifTanjim/nui.nvim',
 
-	-- A collection of nvim APIs
-	"nvim-lua/plenary.nvim",
+  -- A collection of nvim APIs
+  'nvim-lua/plenary.nvim',
 
-	-- Reload plugins lazily
-	"MaximilianLloyd/lazy-reload.nvim",
+  -- Reload plugins lazily
+  'MaximilianLloyd/lazy-reload.nvim',
 
-	-- Work with markdown tables
-	{
-		"dhruvasagar/vim-table-mode",
-		event = "BufEnter",
-	},
+  -- Work with markdown tables
+  {
+    'dhruvasagar/vim-table-mode',
+    event = 'BufEnter',
+  },
 
-	-- Fuzzy finding
-	"junegunn/fzf.vim",
-	{ "junegunn/fzf", build = ":call fzf#install()" },
+  -- Fuzzy finding
+  'junegunn/fzf.vim',
+  { 'junegunn/fzf', build = ':call fzf#install()' },
 
-	-- A utility function that allows inspecing Lua tables
-	{
-		"kikito/inspect.lua",
-		lazy = false,
-	},
+  -- A utility function that allows inspecing Lua tables
+  {
+    'kikito/inspect.lua',
+    lazy = false,
+  },
 
-	{
-		import = "config.plugins.local",
-	},
+  {
+    import = 'config.plugins.local',
+  },
 }
