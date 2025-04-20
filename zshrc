@@ -40,15 +40,13 @@ if [ -e $HOME/.local/bin/flutter/bin/flutter ]; then export PATH="${PATH}:${HOME
 
 export PATH=~/.dotfiles/bin:${PATH}
 
-# Modifications for go lang with homebrew
-# INFO: remove if not using go via homebrew
-export GOROOT="$(brew --prefix golang)/libexec"
+# Modifications for go lang with nix
+# INFO: remove if not using go via nix
+export GOROOT="/run/current-system/sw/bin"
 export PATH=${PATH}:${HOME}/go/bin
 
-# nvm use default
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# Modifications for nodejs with nix
+export PATH=${PATH}:${HOME}/.npm-global/bin
 
 # Change the config path for Lazygit
 export XDG_CONFIG_HOME="$HOME/.config"

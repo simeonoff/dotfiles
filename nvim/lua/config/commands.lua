@@ -146,6 +146,7 @@ autocmd('BufWinEnter', {
 vim.api.nvim_create_user_command('PaintTheme', function(opts)
   local ui = require('config.ui')
   local colorscheme = opts.args
+  dd(colorscheme)
 
   ui.colorscheme.value = colorscheme
 end, { nargs = 1 })

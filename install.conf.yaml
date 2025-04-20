@@ -23,12 +23,6 @@
     ~/.zshrc:
 
 - shell:
-    - command: ./bin/brewery
-      description: Get things brewing
-      quiet: false
-    - command: ./bin/noder && cd ./bin/paint-nvim && npm ci
-      description: Install node, npm and nvim-paint
-      quiet: false
     - command: nvim --headless "+Lazy! sync" +qa
       description: Prepare Neovim
       quiet: false

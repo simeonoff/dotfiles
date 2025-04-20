@@ -50,6 +50,7 @@ return {
       },
       ensure_installed = {
         'astro',
+        'angular',
         'bash',
         'go',
         'gomod',

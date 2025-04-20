@@ -101,9 +101,11 @@ vim.opt.backup = true
 vim.opt.sessionoptions = { 'buffers', 'curdir', 'tabpages', 'winsize' }
 
 if vim.fn.has('nvim-0.8') == 1 then
-  -- vim.opt.cmdheight = 1
   vim.opt.backupdir = vim.fn.stdpath('state') .. '/backup'
 end
+
+-- Reduce the height of the command line
+vim.opt.cmdheight = 0
 
 -- Disable tmux navigator when zooming the vim pane
 vim.g.tmux_navigator_disable_when_zoomed = 1

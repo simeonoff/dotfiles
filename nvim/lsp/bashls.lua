@@ -1,3 +1,7 @@
+local utils = require('utils')
+
+local root_dir = utils.root_pattern({ '.git' })
+
 return {
   cmd = { 'bash-language-server', 'start' },
   settings = {
@@ -13,6 +17,6 @@ return {
     },
   },
   filetypes = { 'bash', 'sh' },
-  root_dir = function(fname) return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1]) end,
+  root_dir = root_dir,
   single_file_support = true,
 }

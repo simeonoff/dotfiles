@@ -7,7 +7,6 @@ local M = {
   event = 'InsertEnter',
   lazy = false,
   ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
   opts = {
     -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
     -- 'super-tab' for mappings similar to vscode (tab to accept)
@@ -66,7 +65,38 @@ local M = {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'buffer', 'snippets', 'path', 'copilot' },
+      default = { 'lsp', 'buffer', 'snippets', 'path' },
+      providers = {
+        lazydev = {
+          name = 'LazyDev',
+          module = 'lazydev.integrations.blink',
+          -- Make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
+        lsp = {
+          min_keyword_length = 2, -- Number of characters to trigger provider
+          score_offset = 5, -- Boost/penalize the score of the items
+        },
+        path = {
+          min_keyword_length = 0,
+        },
+        snippets = {
+          min_keyword_length = 2,
+          score_offset = 0,
+        },
+        copilot = {
+          min_keyword_length = 2,
+          score_offset = 0,
+          module = 'blink_copilot',
+        },
+        buffer = {
+          min_keyword_length = 4,
+          max_items = 5,
+        },
+      },
+      per_filetype = {
+        lua = { 'lsp', 'snippets' },
+      },
     },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
@@ -80,7 +110,7 @@ local M = {
           if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then return end
           return b.client_name == 'emmetls'
         end,
-        -- "exact",
+        -- 'exact',
         -- defaults
         'score',
         'sort_text',

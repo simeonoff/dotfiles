@@ -58,6 +58,7 @@ M.config = function()
       yaml = { 'prettierd' },
       svelte = { 'prettierd' },
       go = { 'goimports' },
+      nix = { 'nixpkgs_fmt' },
     },
     -- format_on_save = {
     -- 	-- These options will be passed to conform.format()

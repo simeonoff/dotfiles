@@ -20,7 +20,6 @@ return {
   filetypes = {
     'astro',
     'css',
-    'html',
     'less',
     'scss',
     'sugarss',
