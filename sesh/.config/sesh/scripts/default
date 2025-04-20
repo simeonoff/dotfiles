@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+tmux rename-window "Neovim"
+tmux send-keys "vim -c 'RecentFiles'" Enter

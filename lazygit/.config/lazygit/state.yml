@@ -1,0 +1,40 @@
+lastupdatecheck: 0
+recentrepos:
+    - /Users/SSimeonov/dotfiles
+    - /Users/SSimeonov/Projects/igniteui-webcomponents
+    - /Users/SSimeonov/Projects/igniteui-angular
+    - /Users/SSimeonov/Projects/zmk-config
+    - /Users/SSimeonov/Projects/igniteui-sassdoc-theme-new
+    - /Users/SSimeonov/Projects/nvim-plugins/1password.nvim
+    - /Users/SSimeonov/Projects/sassdoc-plugin-localization
+    - /Users/SSimeonov/Projects/igniteui-sassdoc-theme
+    - /Users/SSimeonov/Projects/igniteui-theming
+    - /Users/SSimeonov/Projects/igniteui-webcomponents.wiki
+    - /Users/SSimeonov/Projects/igniteui-angular-samples
+    - /Users/SSimeonov/Projects/igniteui-angular-master
+    - /Users/SSimeonov/Projects/igniteui-docfx
+    - /Users/SSimeonov/Projects/ig-typedoc-theme
+    - /Users/SSimeonov/Projects/typedoc-plugin-localization
+    - /Users/SSimeonov/Projects/show-and-tell/angular-change-detection
+    - /Users/SSimeonov/.qmk
+    - /Users/SSimeonov/Projects/igniteui-webcomponents-docs
+    - /Users/SSimeonov/Projects/igniteui-chart-themes-samples
+    - /Users/SSimeonov/Projects/igniteui-webcomponents-samples
+    - /Users/SSimeonov/Projects/tmp/test_1723
+    - /Users/SSimeonov/Projects/igniteui-angular.wiki
+    - /Users/SSimeonov/Projects/scratch/go_tutorials
+startuppopupversion: 5
+lastversion: 0.48.0
+customcommandshistory:
+    - w
+    - wa
+    - 'style(icon-service): update table declarations'
+    - simeonoff/json-parsing
+hidecommandlog: false
+ignorewhitespaceindiffview: true
+diffcontextsize: 3
+renamesimilaritythreshold: 50
+localbranchsortorder: recency
+remotebranchsortorder: alphabetical
+gitlogorder: topo-order
+gitlogshowgraph: always

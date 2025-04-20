@@ -1,0 +1,45 @@
+# NOTE: you can use vars with $<var> and ${<var>} as long as the str is double quoted: ""
+# WARNING: hex colors can't contain capital letters
+
+# --> Nightfox (Carbonfox)
+thm_base="#161616"
+background="#161616"
+
+thm_surface="#2a2a2a"
+selection_background="#2a2a2a"
+
+thm_overlay="#535353"
+inactive_border_color="#535353"
+
+thm_muted="#6e6f70"
+inactive_tab_foreground="#6e6f70"
+
+thm_text="#f2f4f8"
+foreground="#f2f4f8"
+
+thm_love="#ee5396"
+color1="#ee5396"
+
+thm_gold="#3ddbd9"
+bell_border_color="#3ddbd9"
+
+thm_pine="#f16da6"
+color9="#f16da6"
+
+thm_rose="#33b1ff"
+color6="#33b1ff"
+
+thm_foam="#08bdba"
+color3="#08bdba"
+
+thm_iris="#8cb6ff"
+color12="#8cb6ff"
+
+thm_hl_low="#282828"
+color0="#282828"
+
+thm_hl_med="#2a2a2a"
+inactive_tab_background="#2a2a2a"
+
+thm_hl_high="#484848"
+color8="#484848"
