@@ -25,6 +25,7 @@ M.config = function()
     'trouble',
     'lspinfo',
     'mason',
+    'snacks_dashboard'
   })
 
   local lsp_kind = {

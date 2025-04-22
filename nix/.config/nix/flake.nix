@@ -31,6 +31,7 @@
           ./hosts/common.nix
           ./modules/packages.nix
           ./modules/system.nix
+          ./modules/fonts.nix
 
           # macOS specific configurations
           ./hosts/mbp-16.nix

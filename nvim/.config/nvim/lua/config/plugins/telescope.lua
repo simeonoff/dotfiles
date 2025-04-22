@@ -1,3 +1,5 @@
+local telescopePickers = require('telescopePickers')
+
 local M = {
   'nvim-telescope/telescope.nvim',
   lazy = false,
@@ -9,7 +11,6 @@ local M = {
 }
 
 M.recent_files = function()
-  local telescopePickers = require('telescopePickers')
   local utils = require('utils')
 
   telescopePickers.prettyFilesPicker({
@@ -19,7 +20,6 @@ M.recent_files = function()
 end
 
 M.project_files = function()
-  local telescopePickers = require('telescopePickers')
   local opts = {}
 
   if vim.loop.fs_stat('.git') then
@@ -32,12 +32,22 @@ M.project_files = function()
   end
 end
 
+M.config_files = function()
+  telescopePickers.prettyFilesPicker({
+    picker = 'find_files',
+    options = { prompt_title = 'Config Files', cwd = vim.fn.stdpath('config'), cwd_only = true },
+  })
+end
+
+M.find_text = function() telescopePickers.prettyGrepPicker({ picker = 'live_grep' }) end
+
+M.grapple_pick = function() telescopePickers.prettyGrapplePicker() end
+
 M.config = function()
   local telescope = require('telescope')
   local actions = require('telescope.actions')
   local builtin = require('telescope.builtin')
   local trouble = require('trouble.sources.telescope')
-  local telescopePickers = require('telescopePickers')
 
   telescope.setup({
     defaults = {
@@ -117,29 +127,18 @@ M.config = function()
   telescope.load_extension('fzf')
 
   -- Custom commands
+  vim.api.nvim_create_user_command('FindFiles', M.project_files, {})
   vim.api.nvim_create_user_command('RecentFiles', M.recent_files, {})
+  vim.api.nvim_create_user_command('FindText', M.find_text, {})
+  vim.api.nvim_create_user_command('GrapplePick', M.grapple_pick, {})
+  vim.api.nvim_create_user_command('ConfigFiles', M.config_files, {})
 
   -- Mappings
   vim.keymap.set('n', '<leader>f', M.project_files, { desc = 'Find files' })
-
   vim.keymap.set('n', '<leader>r', M.recent_files, { desc = 'Recent files' })
-
-  vim.keymap.set(
-    'n',
-    '<leader>/',
-    function() telescopePickers.prettyGrepPicker({ picker = 'live_grep' }) end,
-    { desc = 'Global search' }
-  )
-
-  vim.keymap.set(
-    'n',
-    '<leader><leader>',
-    function() telescopePickers.prettyGrapplePicker() end,
-    { desc = 'Pick from Grapple' }
-  )
-
+  vim.keymap.set('n', '<leader>/', M.find_text, { desc = 'Global search' })
+  vim.keymap.set('n', '<leader><leader>', M.grapple_pick, { desc = 'Pick from Grapple' })
   vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = 'Broser git branches in current project' })
-
   vim.keymap.set('n', "<leader>'", builtin.resume, { desc = 'Resume the last opened telescope prompt' })
 end
 

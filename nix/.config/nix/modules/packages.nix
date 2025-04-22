@@ -27,9 +27,10 @@
     just
     lazygit
     neovim
-    nodejs_22
+    nodePackages_latest.nodejs
     python313
     python313Packages.west
+    wezterm
 
     # Languages and Runtimes
     dart-sass
@@ -42,6 +43,7 @@
 
     # Other tools
     _1password-cli
+    iosevka
     sesh
     starship
     yq-go

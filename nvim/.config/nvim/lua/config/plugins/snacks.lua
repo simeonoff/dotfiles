@@ -1,3 +1,5 @@
+local banners = require('banners')
+
 return {
   'folke/snacks.nvim',
   priority = 1000,
@@ -8,7 +10,22 @@ return {
     -- or leave it empty to use ihe default settings
     -- refer to the configuration section below
     bigfile = { enabled = false },
-    dashboard = { enabled = false },
+    dashboard = {
+      enabled = true,
+      preset = {
+        pick = nil,
+        keys = {
+          { icon = ' ', key = 'f', desc = 'Find File', action = ':FindFiles' },
+          { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
+          { icon = ' ', key = 'g', desc = 'Find Text', action = ':FindText' },
+          { icon = ' ', key = 'r', desc = 'Recent Files', action = ':RecentFiles' },
+          { icon = ' ', key = 'c', desc = 'Config', action = ':ConfigFiles' },
+          { icon = '󰒲 ', key = 'L', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
+          { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+        },
+        header = banners['shinobi'],
+      },
+    },
     explorer = { enabled = false },
     indent = {
       enabled = true,

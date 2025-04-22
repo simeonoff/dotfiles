@@ -1,7 +1,13 @@
 local M = {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
-  dependencies = { 'rafamadriz/friendly-snippets' },
+  dependencies = {
+    'rafamadriz/friendly-snippets',
+    {
+      'fang2hou/blink-copilot',
+      enabled = false,
+    },
+  },
   -- use a release tag to download pre-built binaries
   version = '1.*',
   event = 'InsertEnter',
@@ -65,7 +71,7 @@ local M = {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'buffer', 'snippets', 'path' },
+      default = { 'lazydev', 'lsp', 'buffer', 'snippets', 'path' },
       providers = {
         lazydev = {
           name = 'LazyDev',
@@ -85,20 +91,17 @@ local M = {
           score_offset = 0,
         },
         copilot = {
-          min_keyword_length = 2,
-          score_offset = 0,
-          module = 'blink_copilot',
+          name = 'copilot',
+          module = 'blink-copilot',
+          score_offset = 100,
+          async = true,
         },
         buffer = {
           min_keyword_length = 4,
           max_items = 5,
         },
       },
-      per_filetype = {
-        lua = { 'lsp', 'snippets' },
-      },
     },
-
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
     -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
     -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`

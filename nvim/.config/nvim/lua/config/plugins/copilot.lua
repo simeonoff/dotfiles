@@ -3,27 +3,6 @@ return {
   cmd = 'Copilot',
   event = 'InsertEnter',
   enabled = true,
-  dependencies = {
-    {
-      'saghen/blink.cmp',
-      optional = true,
-      dependencies = { 'fang2hou/blink-copilot' },
-      enabled = false,
-      opts = {
-        sources = {
-          default = { 'copilot' },
-          providers = {
-            copilot = {
-              name = 'copilot',
-              module = 'blink-copilot',
-              score_offset = 100,
-              async = true,
-            },
-          },
-        },
-      },
-    },
-  },
   opts = {
     suggestion = {
       enabled = true,
