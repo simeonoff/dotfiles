@@ -52,6 +52,8 @@ M.config = function()
       NoiceVirtualText = { fg = 'highlight_high' },
 
       TroubleNormal = { bg = 'base' },
+      Comment = { italic = true },
+      Keyword = { italic = true },
     },
   })
 

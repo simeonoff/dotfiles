@@ -21,9 +21,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- display diagnostics
     vim.diagnostic.config({
-      virtual_text = {
-        current_line = true,
-      },
+      virtual_text = false,
+      virtual_lines = false,
     })
 
     -- keymaps
@@ -35,7 +34,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', function() pickers.prettyLspReferences() end, opts)
     vim.keymap.set('n', '<leader>ds', function() pickers.prettyDocumentSymbols() end, opts)
     vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action({ apply = true }) end, opts)
     vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
   end,
 })

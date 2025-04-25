@@ -6,6 +6,7 @@
     enable = true;
     brews = [
       "mas"
+      "ninja"
     ];
     casks = [
       "1password"

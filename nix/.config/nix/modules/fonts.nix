@@ -20,5 +20,8 @@ let
   };
 in
 {
-  fonts.packages = [ iosevka ];
+  fonts.packages = [
+    iosevka
+    pkgs.maple-mono.truetype
+  ];
 }

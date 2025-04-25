@@ -22,6 +22,7 @@
     zoxide
 
     # Development
+    cmake
     git
     go
     just
@@ -43,7 +44,6 @@
 
     # Other tools
     _1password-cli
-    iosevka
     sesh
     starship
     yq-go
