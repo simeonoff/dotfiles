@@ -1,2 +1,2 @@
 [default_session]
-startup_command = "tmux rename-window 'Neovim' && tmux send-keys 'vim' Enter"
+startup_command = "~/.config/sesh/start_sesh.sh"

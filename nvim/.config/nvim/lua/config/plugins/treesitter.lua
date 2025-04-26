@@ -66,6 +66,8 @@ return {
         'jsdoc',
         'regex',
         'lua',
+        'nu',
+        'nix',
         'svelte',
         'yaml',
         'help',

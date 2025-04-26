@@ -90,12 +90,12 @@ local M = {
           min_keyword_length = 2,
           score_offset = 0,
         },
-        copilot = {
-          name = 'copilot',
-          module = 'blink-copilot',
-          score_offset = 100,
-          async = true,
-        },
+        -- copilot = {
+        --   name = 'copilot',
+        --   module = 'blink-copilot',
+        --   score_offset = 100,
+        --   async = true,
+        -- },
         buffer = {
           min_keyword_length = 4,
           max_items = 5,

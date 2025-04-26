@@ -1,0 +1,500 @@
+starship
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+nu --version
+clera
+clear
+artar
+claer
+clear
+ls
+ll
+ls all
+all
+clear
+all
+ls
+ll
+clea
+clear
+ls
+cd p
+starship init nu
+$nu.config-path
+clear
+ssh simeonoff@shinobi.localdomain
+clear
+ll
+vim
+nvim
+clear
+ll
+clear 
+nvim ~/.config/nushell/config.nu
+source $nu.config-path
+ll
+ls
+clear
+source $nu.env-path
+ll
+clear
+ls
+clea
+clear
+$nu.data-dir
+cd ~
+clear
+eza
+zoxide p
+zoxide Projects/
+zoxide angula
+ls
+clear
+starship init nu
+clera
+claer
+clear
+l
+clear
+eza
+clear
+eza
+clear
+eza
+cleaz
+clear
+l
+ls
+clear
+ls
+cd Projects/
+ll
+cd igniteui-angular/
+ll
+claer
+clear
+ps
+$env
+ls | sort
+clear
+ps | where cpu > 5
+echo "test" | decrcribe
+echo "test" | describe 
+v
+clear
+ls | where name="package.json"
+ls | where name=package.json
+ls | where name == package.json
+clear
+open package | from json | to yaml
+open package.json | from json | to yaml
+open package.json | to yaml
+open package.json | to yaml | query devDependencies
+open package.json | to yaml | to json
+open package.json | to yaml | cat
+claer
+clear
+nvim package.json
+source env.nu
+source $nu.env-nu
+source $nu.env-path
+source $nu.env-conf
+clear
+source $nu.config-path
+sourse $nu.env-path
+clear
+lls
+ls
+clear
+..
+cd igniteui-webcomponents/
+clear
+ll
+nvim
+clea
+clear
+$nu.env-path
+nvim /Users/SSimeonov/.config/nushell/env.nu
+ll
+cd proj
+zoxide proj
+clear
+source $nu.env-path
+zoxide Proje
+nvim $nu.cofig-path
+nvim ~/
+nvim ~/.config/nushell/config.nu
+clear
+zoxide Proj
+source $nu.env-path
+sourse $nu.config-path
+source $nu.config-path
+clear
+zoxide proj
+nvim ~/.zshrc
+clear
+z proj
+z angl
+z angular
+cleea
+cclear
+z
+clear
+z angular
+t
+z dotfiles
+z
+z angular
+z dotfiles
+nvim 
+darwin-rebuild --switch flake ~/.config/nix#mbp-16
+darwin-rebuild switch --flake ~/.config/nix#mbp-16
+nvim ~/.config/nushell/config.nu
+source $nu.config-path
+source $nu.env-path
+clear
+cd angular
+z angular
+clear
+cd webcomponents
+z webcomponents
+clear
+ll
+clear
+ll
+clear
+ls
+clear
+ls
+clear
+which new
+which nu
+clear
+nvim ~/.config/nushell/env.nu 
+clera
+config nu
+cera
+config nu
+clera
+config nu
+scope aliases
+ls -l
+config nu
+exec lu
+clear
+config nu
+ll
+clear
+ll
+ll | sort
+ll | filter package.json
+clear
+config nu
+ls -A
+clear
+config nu
+exec lu
+lazygit
+clear
+ll
+l
+ll
+clear
+ll
+config nu 
+clear
+..
+cd webcomp
+z
+zoxide
+clear
+z
+clear
+cd
+z 
+zoxide
+z
+config nu
+z
+z dotfiles
+all
+clear
+scope aliases
+vim
+t
+tt
+ll
+clear
+ll
+~
+lll
+ll
+ls -l
+ls -lh
+ls -l-
+ls -lA
+ls -lh
+ls -a
+ls -al
+ls -all
+ls -al
+config nu
+clear
+ll
+ll | filter {|name| $name != ".DS_Store"}
+ls -la | filter {|name| $name != ".DS_Store"}
+ls -la | filter {|name| $name != ".DS_Store"} | sortby name
+ls -la | filter {|name| $name != ".DS_Store"} | sort-by name
+ls -la | filter {|name| $name != ".DS_Store"} | sort-by type
+ls -la | filter {|name| $name != ".DS_Store"} | sort-by type -r
+ls -la | filter {|x| $x.name != ".DS_Store"} | sort-by type -r
+ls -la | filter {|x| $x.name != ".DS_Store"} | sort-by type
+ll | filter {|x| $x.name != ".DS_Store"} | sort-by type
+config nu
+ll
+ls -la | filter {|x| $x.name != ".DS_Store"} | sort-by type
+config nu
+ll
+config nu
+ll
+config nu
+clera
+ll
+claer
+ll
+ll 
+ll | filter {|x| $x.name != ".zshrc"} | sort-by type
+ll | filter {|x| $x.name != ".zsh"} | sort-by type
+ll | filter {|x| $x.name != ".zshrc"} | sort-by type
+ll | filter {|x| $x.name != ".zshrc"} | sort-by size
+claea
+1 + 2
+clear
+ll
+clear
+ll
+let name = "Simo"
+name
+$name
+clear
+ll
+exit
+nu
+clea
+ll
+exit
+ll
+exit
+ll
+clear
+ll
+clear
+aristn
+clear
+cd webcomp
+z webcomp
+clear
+which nu
+t
+claer
+ll
+which nu
+chsh -s /run/current-system/sw/bin/nu
+cat /etc/shells
+ll
+claer
+cleaa
+ll
+cat /etc/shells
+clear
+sudo echo "/run/current-system/sw/bin/nu" >> /etc/shells
+cat /etc/shells
+sudo vim /etc/shells
+cat /etc/shells
+chsh -s /run/current-system/sw/bin/nu
+clear
+exit
+nvmim
+nvim
+clear
+ll
+exit
+$nu.config-path
+exit
+ll
+nvim
+clear
+ll
+cd "/Users/SSimeonov/Library/Application Support/nushell/"
+ll
+vim config.nu 
+rm config.nu env.nu
+ll
+exit
+nvim
+clear
+$nu.config-path
+ll
+cliar
+clear
+ll
+vim dotfiles/
+$env.USER
+clear
+ll
+clear
+vim 
+darwin-rebuild switch --flake ~/.config/nix#mbp-16
+exit
+ll
+clear
+nvim
+vim
+exit
+лл
+ll
+clear
+ll
+vim dotfiles/
+clear
+цлеар
+clear
+ll
+clear
+ll
+clar
+clear
+t
+clear
+config nu
+exec nu
+nu
+clear
+ll
+clear
+t
+tmux rename-window 'Neovim' && tmux send-keys 'vim' Enter
+vim 
+t
+exit
+t
+ext
+t
+vim dotfiles/
+bash -c tmux rename-window 'Neovim' && tmux send-keys 'vim' Enter
+exit
+t
+vim dotfiles/
+ll
+cd dotfiles
+cd sesh/
+ll
+cd .config/
+ll
+cd sesh/
+claer
+ll
+touch start_sesh.sh
+vim start_sesh.sh 
+chmod +x start_sesh.sh 
+ll
+vim sesh.toml 
+exit
+./start_sesh.sh
+ll
+cd sesh/
+ll
+cd .config/sesh
+./start_sesh.sh
+vim start_sesh.sh 
+./start_sesh.sh
+vim 
+ll
+vim start_sesh.sh 
+exit
+t
+./start_sesh.sh
+cd .config/sesh/
+ll
+cd sesh/.config/sesh/
+ll
+vim start_sesh.sh 
+./start_sesh.sh
+vim
+vim sesh.toml 
+exit
+$HOME/.config/sesh/start_sesh.sh
+cd sesh/.config/sesh/
+ll
+vim sesh.toml 
+exit
+t
+($HOME)/.config/sesh/start_sesh.sh
+vim 
+cd sesh/.config/sesh/
+ll
+vim start_sesh.sh 
+exit
+($env.HOME)/.config/sesh/start_sesh.sh
+cd sesh/.config/sesh/
+vim start_sesh.sh 
+vim sesh.toml 
+exit
+t
+exec($HOME/.config/sesh/start_sesh.sh)
+clear
+ll
+cd sesh/.config/sesh/
+vim start_sesh.sh 
+vim sesh.toml
+exit
+~/.config/sesh/start_sesh.sh)
+cd sesh/.config/sesh/
+vim sesh.toml
+exit
+t
+~/.config/sesh/start_sesh.sh
+vim
+exit
+~/.config/sesh/start_sesh.sh
+vim
+exit
+t
+~/.config/sesh/start_sesh.sh
+vim
+t
+exit
+~/.config/sesh/start_sesh.sh
+vim
+clera
+clear
+ll
+exit
+t
+exit
+ll
+clera
+ll
+~/.config/sesh/start_sesh.sh
+vim
+clear
+vim ~/.zshrc 
+which nu
+which nushell
+clear
+which bash
+which zsh
+which zoxide
+clear
+config nu
+exit
+config nu
+exit
+nvmin
+nvmim
+nvim
+exit
+t
+config nu
+exit
+t
+~/.config/sesh/start_sesh.sh

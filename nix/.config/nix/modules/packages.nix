@@ -8,10 +8,15 @@
   # Shared packages that work across Linux and macOS
   environment.systemPackages = with pkgs; [
     # CLI Tools
-    bash
+    bat
+    carapace
+    curl
     direnv
+    eza
     fd
     fzf
+    jq
+    openssl
     ripgrep
     silver-searcher
     stow
@@ -44,6 +49,7 @@
 
     # Other tools
     _1password-cli
+    pkg-config
     sesh
     starship
     yq-go

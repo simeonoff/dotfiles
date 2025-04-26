@@ -1,10 +1,11 @@
 lastupdatecheck: 0
 recentrepos:
-    - /Users/SSimeonov/Projects/zmk-config
-    - /Users/SSimeonov/Projects/sassdoc-plugin-localization
-    - /Users/SSimeonov/Projects/igniteui-sassdoc-theme-new
     - /Users/SSimeonov/dotfiles
     - /Users/SSimeonov/Projects/igniteui-webcomponents
+    - /Users/SSimeonov/Projects/igniteui-sassdoc-theme-new
+    - /Users/SSimeonov/Projects/igniteui-webcomponents-samples
+    - /Users/SSimeonov/Projects/zmk-config
+    - /Users/SSimeonov/Projects/sassdoc-plugin-localization
     - /Users/SSimeonov/Projects/igniteui-angular
     - /Users/SSimeonov/Projects/nvim-plugins/1password.nvim
     - /Users/SSimeonov/Projects/igniteui-sassdoc-theme
@@ -19,7 +20,6 @@ recentrepos:
     - /Users/SSimeonov/.qmk
     - /Users/SSimeonov/Projects/igniteui-webcomponents-docs
     - /Users/SSimeonov/Projects/igniteui-chart-themes-samples
-    - /Users/SSimeonov/Projects/igniteui-webcomponents-samples
     - /Users/SSimeonov/Projects/tmp/test_1723
     - /Users/SSimeonov/Projects/igniteui-angular.wiki
     - /Users/SSimeonov/Projects/scratch/go_tutorials
