@@ -10,7 +10,6 @@
     ];
     casks = [
       "1password"
-      "amethyst"
       "firefox"
       "font-symbols-only-nerd-font"
       "ghostty"

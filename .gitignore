@@ -2,3 +2,4 @@ packer_compiled.lua
 *.bak
 node_modules
 .DS_Store
+history.txt

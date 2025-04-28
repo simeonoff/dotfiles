@@ -19,6 +19,18 @@
 
 $env.config = {
     buffer_editor: "nvim",
+    edit_mode: "vi",
+    keybindings: [
+        {
+            name: accept-autosuggestion,
+            modifier : control,
+            keycode: char_y,
+            mode: vi_insert,
+            event: {
+                send: HistoryHintComplete
+            }
+        }
+    ],
     hooks: {
         pre_prompt: [{ ||
             if (which direnv | is-empty) {

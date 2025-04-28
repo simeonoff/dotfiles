@@ -24,6 +24,7 @@ in
 
   # macOS-specific packages
   environment.systemPackages = with pkgs; [
+    aerospace
     bartender
     mkalias
   ];
