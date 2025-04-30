@@ -63,7 +63,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = { inherit username; };
-                users.${username} = import ./home-manager/mbp-16/home.nix;
+                users.${username} = import ./home/home.nix;
               };
             }
           ];

@@ -18,6 +18,7 @@ $env.config = {
 $env.PATH = ($env.PATH | prepend [
     $"($env.HOME)/dotfiles/bin"
     $"($env.HOME)/.npm-global/bin"
+    $"/etc/profiles/per-user/($env.USER)/bin"
 ])
 
 $env.FZF_DEFAULT_OPTS = [
@@ -37,3 +38,6 @@ alias vim = nvim
 def ll [] {
     ls -la | filter {|x| $x.name != ".DS_Store"} | sort-by type
 }
+
+# Load Zoxide
+source ~/.zoxide.nu

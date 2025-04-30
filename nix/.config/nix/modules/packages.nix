@@ -9,7 +9,6 @@
   environment.systemPackages = with pkgs; [
     # CLI Tools
     bat
-    carapace
     curl
     eza
     fd
@@ -24,10 +23,6 @@
     tree
     wget
     xz
-    zoxide
-
-    # Language servers
-    lua-language-server
 
     # Development
     cmake
@@ -54,7 +49,6 @@
     _1password-cli
     pkg-config
     sesh
-    starship
     yq-go
   ];
 }

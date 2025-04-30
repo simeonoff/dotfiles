@@ -14,11 +14,6 @@
     shell = pkgs.zsh;
   };
 
-  programs.zsh.enable = true;
-  programs.zsh.promptInit = ''
-    exec ${pkgs.nushell}/bin/nu
-  '';
-
   environment.variables = {
     XDG_CONFIG_HOME = "$HOME/.config";
   };
