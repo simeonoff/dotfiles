@@ -24,35 +24,50 @@
     {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake ~/.config/nix#mbp-16
-      darwinConfigurations."mbp-16" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self; };
-        modules = [
-          # Common configurations
-          ./hosts/common.nix
-          ./modules/packages.nix
-          ./modules/system.nix
-          ./modules/fonts.nix
+      darwinConfigurations."mbp-16" =
+        let
+          username = "SSimeonov";
+        in
+        nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit self username; };
+          modules = [
+            # Common configurations
+            ./hosts/common.nix
+            ./modules/packages.nix
+            ./modules/system.nix
+            ./modules/fonts.nix
 
-          # macOS specific configurations
-          ./hosts/mbp-16.nix
-          ./modules/homebrew.nix
+            # macOS specific configurations
+            ./hosts/mbp-16.nix
+            ./modules/homebrew.nix
 
-          # Homebrew module
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              enableRosetta = true;
+            # Homebrew module
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                enable = true;
+                enableRosetta = true;
 
-              # User owning the Homebrew prefix
-              user = "SSimeonov";
+                # User owning the Homebrew prefix
+                user = username;
 
-              # Automatically migrate existing Homebrew installations
-              autoMigrate = true;
-            };
-          }
-        ];
-      };
+                # Automatically migrate existing Homebrew installations
+                autoMigrate = true;
+              };
+            }
+
+            # Home Manager Module
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit username; };
+                users.${username} = import ./home-manager/mbp-16/home.nix;
+              };
+            }
+          ];
+        };
     }
     # Merge with flake-utils outputs for development shells
     // flake-utils.lib.eachDefaultSystem (system:

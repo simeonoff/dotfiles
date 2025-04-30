@@ -1,9 +1,5 @@
 # Configuration specific to the mbp-16 MacBook
-{ pkgs, ... }:
-
-let
-  username = "SSimeonov";
-in
+{ pkgs, username, ... }:
 {
   environment.shells = [
     pkgs.bash
@@ -11,7 +7,12 @@ in
     pkgs.nushell
   ];
 
-  users.users.${username}.shell = pkgs.zsh;
+  # Define the user more explicitly
+  users.users.${username} = {
+    name = username;
+    home = "/Users/${username}";
+    shell = pkgs.zsh;
+  };
 
   programs.zsh.enable = true;
   programs.zsh.promptInit = ''

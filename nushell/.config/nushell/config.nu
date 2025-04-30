@@ -18,6 +18,7 @@
 # them for future reference.
 
 $env.config = {
+    show_banner: false,
     buffer_editor: "nvim",
     edit_mode: "vi",
     keybindings: [
@@ -47,6 +48,8 @@ $env.config = {
 
 $env.PATH = ($env.PATH | prepend [
     $"($env.HOME)/dotfiles/bin"
+    $"($env.HOME)/.npm-global/bin"
+    $"/etc/profiles/per-user/($env.USER)/bin"
 ])
 
 $env.FZF_DEFAULT_OPTS = [

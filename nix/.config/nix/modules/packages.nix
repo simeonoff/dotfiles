@@ -11,11 +11,11 @@
     bat
     carapace
     curl
-    direnv
     eza
     fd
     fzf
     jq
+    mosh
     openssl
     ripgrep
     silver-searcher
@@ -25,6 +25,9 @@
     wget
     xz
     zoxide
+
+    # Language servers
+    lua-language-server
 
     # Development
     cmake
