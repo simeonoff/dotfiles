@@ -124,8 +124,6 @@ M.config = function()
     },
   })
 
-  telescope.load_extension('fzf')
-
   -- Custom commands
   vim.api.nvim_create_user_command('FindFiles', M.project_files, {})
   vim.api.nvim_create_user_command('RecentFiles', M.recent_files, {})
